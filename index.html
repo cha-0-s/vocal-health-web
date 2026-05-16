@@ -699,13 +699,15 @@ body {
 // ============================================================
 
 const EXAM_DATES = {
-  englishProject: '2026-05-19',
-  examsStart: '2026-06-08',
-  examsEnd: '2026-06-13',
-  waterpark: '2026-06-19',
+  englishProject: '2026-05-19',  // Advertisement Makeover project deadline
+  examsStart: '2026-06-08',      // Monday — exams begin
+  examsEnd: '2026-06-12',        // Friday — last exam day
+  waterpark: '2026-06-19',       // Friday — waterpark trip
+  feedbackStart: '2026-06-22',   // Monday — feedback days begin (school ends 13:15)
   feedbackDays: ['2026-06-22','2026-06-23'],
-  lastDay: '2026-06-23',
-  graduation: '2026-06-24'
+  lastDay: '2026-06-23',         // Tuesday — last school day
+  graduation: '2026-06-24',      // Wednesday 20:30 — Prize Giving & Graduation
+  graduationTime: '20:30'
 };
 
 const SUBJECTS = [
@@ -783,16 +785,39 @@ const SUBJECTS = [
         icon: '📺',
         checklist: [
           "I understand what myths and legends are and why cultures have them",
-          "I know how descriptive language is used to create mythical monsters",
-          "I can analyse how adverts use persuasive language and visual choices",
-          "I understand how documentaries can show bias",
-          "I know how film marketing posters work"
+          "I know how descriptive language is used to create mythical monsters (p.32)",
+          "I can analyse how adverts use persuasive language and visual choices (p.85-91, p.98-99)",
+          "I understand how documentaries can show bias (p.20) and how to authenticate content",
+          "I know how film marketing posters work (p.22)",
+          "I understand setting in stories and how to 'grab the reader' (p.65)"
         ],
         quiz: [
           { q: "Which of these is a presentational device used in advertisements?", opts: ["Rhyme scheme","Colour, layout and images","Chapters and subheadings","Verb tenses"], correct: 1 },
           { q: "What does it mean when a documentary shows 'bias'?", opts: ["It uses many cameras","It presents one side more favourably than another","It is very long","It has a narrator"], correct: 1 },
           { q: "What is the PURPOSE of a film marketing poster?", opts: ["To explain the whole plot","To attract audience and create interest","To list the actors' salaries","To show where to buy tickets"], correct: 1 },
-          { q: "Why do myths exist in almost every culture in the world?", opts: ["Because people copy each other","Because they help explain the world and teach moral lessons","Because writers travel a lot","Because schools teach them"], correct: 1 }
+          { q: "Why do myths exist in almost every culture in the world?", opts: ["Because people copy each other","Because they help explain the world and teach moral lessons","Because writers travel a lot","Because schools teach them"], correct: 1 },
+          { q: "What does it mean when a text tries to 'grab the reader' at the opening?", opts: ["Use very long sentences","Start with a shocking statement, question or image to hook attention","List all the characters","Start with a dictionary definition"], correct: 1 },
+          { q: "What is the purpose of advertising according to our unit?", opts: ["To entertain people","To teach grammar","To persuade people to buy or believe something","To tell historical stories"], correct: 2 }
+        ]
+      },
+      {
+        id: 'advert_project',
+        nameRu: '⚠️ Проект: Реклама (сдать 19 мая!)',
+        nameEn: 'Advertisement Makeover Project — Due 19 May',
+        icon: '🗓',
+        checklist: [
+          "I have chosen a real advertisement (print/poster/video/social media)",
+          "Criterion A: I have analysed type, purpose, target audience, persuasive language and stylistic choices in paragraphs",
+          "I have evaluated the advert's effectiveness (what works, what could improve, is it ethical?)",
+          "Criterion C: I have redesigned/improved the advert for a specific audience",
+          "Criterion D: I have written a reflection explaining what I changed and why, and which techniques I used",
+          "My response is well-organised with clear paragraphs (Criterion B)"
+        ],
+        quiz: [
+          { q: "What are the FOUR criteria assessed in the Advertisement Makeover project?", opts: ["Reading, Writing, Speaking, Listening","Analysing (A), Organising (B), Producing Text (C), Using Language (D)","Planning, Drafting, Editing, Publishing","Ideas, Structure, Vocabulary, Accuracy"], correct: 1 },
+          { q: "Which section of the project should be written in paragraphs, NOT bullet points?", opts: ["The reflection","The redesigned advert","The analysis of how the advert works (Criterion A)","The bibliography"], correct: 2 },
+          { q: "What does it mean to evaluate an advert's effectiveness?", opts: ["Just describe it","Comment on whether it works, what is strong, what could improve, and if it is ethical","Count the words","Draw a new logo"], correct: 1 },
+          { q: "When redesigning the advert, which is NOT a valid approach?", opts: ["Change the target audience","Make it more ethical","Improve persuasiveness","Copy it exactly with no changes"], correct: 3 }
         ]
       }
     ]
@@ -908,31 +933,40 @@ const SUBJECTS = [
         nameEn: 'Microorganisms & Food Chains',
         icon: '🦠',
         checklist: [
-          "I know the 4 types of microorganisms (bacteria, fungi, viruses, protozoa)",
-          "I know why viruses are NOT considered fully living organisms",
+          "I know the 4 types of microorganisms (bacteria, fungi, viruses, protozoa) with one example each",
+          "I know why viruses are NOT considered fully living organisms (not made of cells, cannot reproduce independently)",
           "I can explain MRS GREN (7 life processes)",
-          "I understand food chains: producer → primary consumer → secondary consumer",
-          "I know how temperature and pH affect food spoilage"
+          "I understand food chains: producer → primary consumer → secondary consumer → decomposer",
+          "I know that on average 10% of energy is passed from one level to the next in a food chain",
+          "I know the role of decomposers in nutrient recycling in ecosystems",
+          "I know Louis Pasteur's experiment: proved microorganisms cause food spoilage (variables: dependent, independent, controlled)",
+          "I know how temperature, pH and water content affect food spoilage"
         ],
         quiz: [
           { q: "Which of the following is NOT one of the 4 types of microorganism?", opts: ["Bacteria","Fungi","Algae","Viruses"], correct: 2 },
           { q: "What does MRS GREN stand for? (first letter)", opts: ["Movement, Respiration, Sensitivity, Growth, Reproduction, Excretion, Nutrition","Mass, Rotation, Speed, Gravity, Radius, Energy, Newton","Microbes, Reaction, Size, Growth, Rust, Energy, Nutrition","Movement, Resistance, Sensitivity, Genetics, Reproduction, Excretion, Nutrition"], correct: 0 },
           { q: "Why are viruses different from other microorganisms?", opts: ["They are larger","They cannot reproduce","They are not made of cells and cannot reproduce independently","They are found only in water"], correct: 2 },
           { q: "In a food chain, what is a PRODUCER?", opts: ["An animal that eats plants","A decomposer","A plant that makes its own food through photosynthesis","A top predator"], correct: 2 },
-          { q: "Why does food spoil faster at higher temperatures?", opts: ["Heat makes food wet","Microorganisms reproduce faster at warmer temperatures","Cold air preserves food","Heat removes nutrients"], correct: 1 }
+          { q: "Why does food spoil faster at higher temperatures?", opts: ["Heat makes food wet","Microorganisms reproduce faster at warmer temperatures","Cold air preserves food","Heat removes nutrients"], correct: 1 },
+          { q: "On average, what percentage of energy is transferred from one level to the next in a food chain?", opts: ["50%","25%","10%","1%"], correct: 2 },
+          { q: "What is the role of DECOMPOSERS in an ecosystem?", opts: ["They hunt other animals","They break down dead organisms and recycle nutrients back into the soil","They produce food through photosynthesis","They compete with producers"], correct: 1 },
+          { q: "What did Louis Pasteur's experiment prove?", opts: ["That bacteria grow only in cold conditions","That microorganisms are responsible for food spoilage","That viruses cause all diseases","That fungi cannot grow on food"], correct: 1 }
         ]
       },
       {
         id: 'electricity',
-        nameRu: 'Электричество',
-        nameEn: 'Electricity',
+        nameRu: 'Электричество и научный метод',
+        nameEn: 'Electricity & Scientific Method',
         icon: '⚡',
         checklist: [
-          "I know the components of a circuit: power source, path (wire), load (bulb/buzzer)",
-          "I know circuit symbols and can draw a simple series circuit",
-          "I understand what an ammeter measures (current, in Amperes) and how to connect it",
-          "I know: more cells = more energy; more bulbs in series = dimmer light",
-          "I know the difference between conductors and insulators (with examples)"
+          "I know the 3 components of a circuit: power source, path (wire), load (bulb/buzzer/motor)",
+          "I know circuit symbols and can draw and read a simple series circuit diagram",
+          "I understand what an ammeter measures (current, Amperes) and connect it IN SERIES",
+          "I know: more cells = more energy; more bulbs in series = dimmer light (more resistance)",
+          "I know electrons and conventional current flow in OPPOSITE directions",
+          "I know the difference between conductors and insulators (copper = conductor; rubber/plastic = insulator)",
+          "Scientific method: hypothesis, independent variable, dependent variable, controlled variables",
+          "A hypothesis describes the relationship between the independent and dependent variable"
         ],
         quiz: [
           { q: "What does an ammeter measure?", opts: ["Voltage","Resistance","Electric current","Power"], correct: 2 },
@@ -1165,17 +1199,19 @@ const SUBJECTS = [
         nameEn: 'Weather & Days (Καιρός)',
         icon: '☀️',
         checklist: [
-          "I know at least 10 weather vocabulary words (ο καιρός, ζέστη, κρύο, βροχή, etc.)",
-          "I know all 7 days of the week in Greek",
-          "I can form future tense: θα + verb (θα βρέξει, θα κάνει ζέστη)",
-          "I can answer: Τι καιρό κάνει; / Πότε θα βρέξει;",
-          "I can write 3–4 sentences describing today's weather"
+          "I know all 10 weather words: ο καιρός (weather), ζέστη (heat/hot), κρύο (cold), η βροχή (rain), βρέχει (it rains), τα σύννεφα (clouds), η καταιγίδα (storm), οι αστραπές (lightning), ο ήλιος (sun), ο ουρανός (sky)",
+          "I know all 7 days of the week: Δευτέρα, Τρίτη, Τετάρτη, Πέμπτη, Παρασκευή, Σάββατο, Κυριακή",
+          "I can form future tense with θα: θα βρέξει (it will rain), θα κάνει ζέστη (it will be hot), θα αλλάξει (it will change)",
+          "I can answer: Τι καιρό κάνει; (What is the weather like?) / Πότε θα βρέξει; (When will it rain?) / Πότε θα έχει ήλιο; (When will it be sunny?)",
+          "I can write 3–4 sentences describing the weather (e.g. Σήμερα ο καιρός είναι καλός…)"
         ],
         quiz: [
           { q: "What does 'βροχή' mean?", opts: ["Sun","Storm","Rain","Cloud"], correct: 2 },
+          { q: "What does 'η καταιγίδα' mean?", opts: ["Lightning","Cloud","Sun","Storm"], correct: 3 },
           { q: "How do you form the future tense in Greek?", opts: ["Change the verb ending","Use 'θα' before the verb","Add '-ed' to the verb","Use 'να' before the verb"], correct: 1 },
           { q: "What does 'Τι καιρό κάνει;' mean in English?", opts: ["What time is it?","What day is it?","What is the weather like?","Where are you going?"], correct: 2 },
-          { q: "Which is the Greek word for 'Wednesday'?", opts: ["Δευτέρα","Παρασκευή","Τετάρτη","Κυριακή"], correct: 2 }
+          { q: "Which is the Greek word for 'Wednesday'?", opts: ["Δευτέρα","Παρασκευή","Τετάρτη","Κυριακή"], correct: 2 },
+          { q: "What does 'θα βρέξει' mean?", opts: ["It is raining","It rained","It will rain","It stopped raining"], correct: 2 }
         ]
       },
       {
@@ -1184,36 +1220,82 @@ const SUBJECTS = [
         nameEn: 'Travel & Theatre (Ταξίδι / Θέατρο)',
         icon: '✈️',
         checklist: [
-          "I know travel vocabulary (αεροπλάνο, εισιτήριο, σταθμός, πτήση, θέση)",
-          "I can write a short text about a trip (Ταξίδεψα στην Αθήνα…)",
-          "I know theatre vocabulary (θέατρο, παράσταση, κλείνω θέσεις, πληρώνω)",
-          "I can act out a dialogue buying theatre tickets",
-          "I can answer comprehension questions about a travel/theatre text"
+          "I know travel vocabulary: ταξιδεύω (travel), τρένο (train), αεροπλάνο (airplane), εισιτήριο (ticket), πτήση (flight), σταθμός (station), θάλασσα (sea), παράθυρο (window), θέση (seat), καφετέρια (café)",
+          "I can write about a trip: 'Ταξίδεψα στην Αθήνα με αεροπλάνο. Το ταξίδι ήταν ωραίο. Είδα τη θάλασσα και πολλά μουσεία.'",
+          "I know theatre vocabulary: θέατρο, παράσταση (performance), κλείνω (book/reserve), αγοράζω (buy), πληρώνω (pay), θέση (seat), ευρώ, εισιτήριο",
+          "I can act out a ticket-buying dialogue (Πελάτης: Θέλω δύο εισιτήρια. / Για ποια ώρα; / Για τις οκτώ. / Τα εισιτήρια κοστίζουν 15 ευρώ.)",
+          "I can answer: Τι ώρα είναι η παράσταση; / Πόσο κάνει το εισιτήριο; / Μπορώ να κλείσω θέσεις;"
         ],
         quiz: [
           { q: "What does 'εισιτήριο' mean?", opts: ["Passport","Ticket","Seat","Flight"], correct: 1 },
+          { q: "What does 'παράσταση' mean?", opts: ["Theatre","Ticket","Performance","Station"], correct: 2 },
           { q: "How would you say \"I travelled to Athens by plane\" in Greek?", opts: ["Ταξίδεψα στην Αθήνα με τρένο","Ταξίδεψα στην Αθήνα με αεροπλάνο","Πήγα στην Αθήνα με αεροπλάνο χθες","Θα ταξιδέψω στην Αθήνα"], correct: 1 },
           { q: "What does 'κλείνω θέσεις' mean?", opts: ["Pay for tickets","Cancel a reservation","Book/reserve seats","Change seats"], correct: 2 },
-          { q: "In a theatre dialogue, a customer says: \"Θέλω δύο εισιτήρια.\" What do they want?", opts: ["One ticket","Two tickets","Two seats at the front","Two programmes"], correct: 1 }
+          { q: "In a theatre dialogue, a customer says: \"Θέλω δύο εισιτήρια.\" What do they want?", opts: ["One ticket","Two tickets","Two seats at the front","Two programmes"], correct: 1 },
+          { q: "The seller says 'Τα εισιτήρια κοστίζουν 15 ευρώ.' What does this mean?", opts: ["The show is at 15:00","The tickets cost 15 euros","There are 15 seats left","You need to pay tomorrow"], correct: 1 }
         ]
       },
       {
         id: 'daily_routine',
-        nameRu: 'Распорядок дня и грамматика',
-        nameEn: 'Daily Routine & Grammar (Καθημερινό)',
+        nameRu: 'Распорядок дня и настоящее время',
+        nameEn: 'Daily Routine & Present Tense (Καθημερινό)',
         icon: '📅',
         checklist: [
-          "I know daily routine verbs (ξυπνάω, πηγαίνω, τρώω, διαβάζω, κοιμάμαι)",
-          "I know time expressions (το πρωί, το μεσημέρι, το απόγευμα, το βράδυ)",
-          "I can fully conjugate ταξιδεύω in present tense (all 6 persons)",
-          "I can fully conjugate βλέπω in present tense (all 6 persons)",
-          "I can form future tense with ταξιδεύω: θα ταξιδέψω, θα ταξιδέψεις…"
+          "I know daily routine verbs: ξυπνάω (wake up), πηγαίνω (go), δουλεύω (work), τρώω (eat), διαβάζω (study/read), κοιμάμαι (sleep), βοηθάω (help), βλέπω (watch/see)",
+          "I know time expressions: το πρωί, το μεσημέρι, το απόγευμα, το βράδυ, πάντα, μερικές φορές",
+          "I can fully conjugate ταξιδεύω in present tense: ταξιδεύω / ταξιδεύεις / ταξιδεύει / ταξιδεύουμε / ταξιδεύετε / ταξιδεύουν",
+          "I can fully conjugate βλέπω in present tense: βλέπω / βλέπεις / βλέπει / βλέπουμε / βλέπετε / βλέπουν",
+          "I can fully conjugate πηγαίνω in present tense: πηγαίνω / πηγαίνεις / πηγαίνει / πηγαίνουμε / πηγαίνετε / πηγαίνουν",
+          "I can write 4–5 sentences about my daily routine using correct verb forms"
         ],
         quiz: [
           { q: "What does 'ξυπνάω' mean?", opts: ["Go to sleep","Eat","Wake up","Study"], correct: 2 },
           { q: "Complete: Εγώ ___ στο σχολείο. (πηγαίνω)", opts: ["πηγαίνει","πηγαίνεις","πηγαίνω","πηγαίνουμε"], correct: 2 },
-          { q: "How do you say \"I will travel\" in Greek?", opts: ["Ταξιδεύω","Θα ταξιδέψω","Ταξίδεψα","Θα ταξιδεύει"], correct: 1 },
-          { q: "What does 'το απόγευμα' mean?", opts: ["In the morning","At night","In the afternoon","At noon"], correct: 2 }
+          { q: "What does 'το απόγευμα' mean?", opts: ["In the morning","At night","In the afternoon","At noon"], correct: 2 },
+          { q: "Which is the correct form of βλέπω for 'we'?", opts: ["βλέπω","βλέπετε","βλέπουμε","βλέπουν"], correct: 2 },
+          { q: "Which word means 'always' in Greek?", opts: ["μερικές φορές","πάντα","το βράδυ","ποτέ"], correct: 1 }
+        ]
+      },
+      {
+        id: 'airplane_party',
+        nameRu: 'Самолёт, Вечеринка и Будущее время',
+        nameEn: 'Airplane Travel, Party & Future Tense',
+        icon: '🎉',
+        checklist: [
+          "I know airplane travel vocabulary: αλλάζω (change), πληρώνω (pay), κρατώ ανοικτό (keep open), ημερομηνία (date), ώρα (time), αριθμός εισιτηρίου (ticket number)",
+          "I can answer airplane questions: Πότε είναι η πτήση; / Τι ώρα φεύγουμε; / Πόσο κοστίζει το εισιτήριο;",
+          "I know party vocabulary: πάρτι, έκπληξη (surprise), φίλοι (friends), αυλή (yard), ψώνια (shopping), ποτά (drinks), φαγητό (food)",
+          "I can conjugate ταξιδεύω in future tense: θα ταξιδέψω / θα ταξιδέψεις / θα ταξιδέψει / θα ταξιδέψουμε / θα ταξιδέψετε / θα ταξιδέψουν",
+          "I can conjugate πηγαίνω in future tense: θα πάω / θα πας / θα πάει / θα πάμε / θα πάτε / θα πάνε",
+          "I can conjugate κάνω in future tense: θα κάνω / θα κάνεις / θα κάνει / θα κάνουμε / θα κάνετε / θα κάνουν"
+        ],
+        quiz: [
+          { q: "What does 'ημερομηνία' mean?", opts: ["Flight","Ticket number","Date","Time"], correct: 2 },
+          { q: "What does 'έκπληξη' mean?", opts: ["Party","Friends","Shopping","Surprise"], correct: 3 },
+          { q: "How do you say 'We will go' in Greek?", opts: ["Θα πάω","Θα πάτε","Θα πάμε","Θα πάει"], correct: 2 },
+          { q: "What question asks 'What time does the flight leave?'", opts: ["Πότε είναι η πτήση;","Τι ώρα φεύγουμε;","Πόσο κοστίζει;","Πού είναι ο σταθμός;"], correct: 1 },
+          { q: "What does 'κρατώ ανοικτό' mean?", opts: ["I pay","I change","I keep open","I book"], correct: 2 }
+        ]
+      },
+      {
+        id: 'past_tense',
+        nameRu: 'Прошедшее время (Αόριστος)',
+        nameEn: 'Past Tense — Αόριστος',
+        icon: '⏰',
+        checklist: [
+          "I can conjugate ταξιδεύω in past tense: ταξίδεψα / ταξίδεψες / ταξίδεψε / ταξιδέψαμε / ταξιδέψατε / ταξίδεψαν",
+          "I can conjugate βλέπω in past tense: είδα / είδες / είδε / είδαμε / είδατε / είδαν",
+          "I can conjugate πηγαίνω in past tense: πήγα / πήγες / πήγε / πήγαμε / πήγατε / πήγαν",
+          "I can conjugate κάνω in past tense: έκανα / έκανες / έκανε / κάναμε / κάνατε / έκαναν",
+          "I can conjugate καλώ in past tense: κάλεσα / κάλεσες / κάλεσε / καλέσαμε / καλέσατε / κάλεσαν",
+          "I can use past tense in sentences: 'Το καλοκαίρι ταξίδεψα στην Αγγλία.' / 'Πέρσι πήγαμε στην Ελλάδα.'"
+        ],
+        quiz: [
+          { q: "How do you say 'I travelled' (past tense) in Greek?", opts: ["Ταξιδεύω","Θα ταξιδέψω","Ταξίδεψα","Ταξίδεψε"], correct: 2 },
+          { q: "What does 'Πέρσι πήγαμε στην Ελλάδα' mean?", opts: ["We will go to Greece","We are going to Greece","Last year we went to Greece","We went to Greece today"], correct: 2 },
+          { q: "What is the past tense of 'βλέπω' for 'I'?", opts: ["Θα δω","Βλέπω","Είδες","Είδα"], correct: 3 },
+          { q: "Complete: 'Χθες ___ τα μαθήματά μου.' (κάνω)", opts: ["κάνω","θα κάνω","έκανα","κάναμε"], correct: 2 },
+          { q: "How do you say 'She invited her friends to the party'?", opts: ["Η Μαρία καλεί τους φίλους","Η Μαρία θα καλέσει τους φίλους","Η Μαρία κάλεσε τους φίλους της στο πάρτι","Η Μαρία κάλεσε τους φίλους στο σχολείο"], correct: 2 }
         ]
       }
     ]
@@ -1248,32 +1330,38 @@ const BADGES_DEF = [
 
 // Schedule data (May 19 – June 13)
 const SCHEDULE = [
-  { date:'2026-05-19', subject:'english', task:'Сдать английский проект', isExamDay:false },
-  { date:'2026-05-20', subject:'english', task:'Wonder: персонажи — чеклист', isExamDay:false },
-  { date:'2026-05-21', subject:'science', task:'Гравитация и силы — чеклист', isExamDay:false },
-  { date:'2026-05-22', subject:'maths', task:'Десятичные числа — практика', isExamDay:false },
-  { date:'2026-05-23', subject:'humanities', task:'Карты и предвзятость — чеклист', isExamDay:false },
-  { date:'2026-05-24', subject:'greek', task:'Погода и дни недели — словарь', isExamDay:false },
-  { date:'2026-05-25', subject:'english', task:'Wonder: темы и символы — чеклист', isExamDay:false },
-  { date:'2026-05-26', subject:'science', task:'Солнечная система — планеты', isExamDay:false },
-  { date:'2026-05-27', subject:'maths', task:'Геометрия — углы и площади', isExamDay:false },
-  { date:'2026-05-28', subject:'humanities', task:'Глобальное гражданство — экология', isExamDay:false },
-  { date:'2026-05-29', subject:'greek', task:'Путешествия и театр — диалог', isExamDay:false },
-  { date:'2026-05-30', subject:'english', task:'PEA и убеждение — квиз', isExamDay:false },
-  { date:'2026-05-31', subject:'science', task:'Луна и затмения — чеклист', isExamDay:false },
-  { date:'2026-06-01', subject:'maths', task:'Проценты — задачи', isExamDay:false },
-  { date:'2026-06-02', subject:'humanities', task:'Деревья и официальное письмо', isExamDay:false },
-  { date:'2026-06-03', subject:'greek', task:'Распорядок дня — спряжение', isExamDay:false },
-  { date:'2026-06-04', subject:'english', task:'Мифы и медиа — квиз', isExamDay:false },
-  { date:'2026-06-05', subject:'science', task:'Металлы и сплавы — чеклист', isExamDay:false },
-  { date:'2026-06-06', subject:'maths', task:'Паттерны и формулы — квиз', isExamDay:false },
-  { date:'2026-06-07', subject:'science', task:'Кислоты и pH — повторение', isExamDay:false },
-  { date:'2026-06-08', subject:'english', task:'ЭКЗАМЕН: English 📝', isExamDay:true },
-  { date:'2026-06-09', subject:'science', task:'ЭКЗАМЕН: Science 📝', isExamDay:true },
-  { date:'2026-06-10', subject:'maths', task:'ЭКЗАМЕН: Maths 📝', isExamDay:true },
-  { date:'2026-06-11', subject:'humanities', task:'ЭКЗАМЕН: Humanities 📝', isExamDay:true },
-  { date:'2026-06-12', subject:'greek', task:'ЭКЗАМЕН: Greek 📝', isExamDay:true },
-  { date:'2026-06-13', subject:'english', task:'Последний день экзаменов 🎉', isExamDay:true },
+  // Week of 19 May — Project deadline + start revision
+  { date:'2026-05-19', subject:'english', task:'🚨 СДАТЬ проект "Реклама" (дедлайн сегодня!)', isExamDay:false },
+  { date:'2026-05-20', subject:'english', task:'Wonder: персонажи — Auggie, Via, Jack, Summer, Julian', isExamDay:false },
+  { date:'2026-05-21', subject:'science', task:'Гравитация: масса vs вес, формула W = m × g', isExamDay:false },
+  { date:'2026-05-22', subject:'maths', task:'Десятичные числа (Ch 3.6) — сложение, вычитание, округление', isExamDay:false },
+  { date:'2026-05-23', subject:'humanities', task:'Карты и контурные линии — первичные vs вторичные источники', isExamDay:false },
+  // Week of 25 May
+  { date:'2026-05-25', subject:'greek', task:'Погода: βροχή, ζέστη, σύννεφα + дни недели', isExamDay:false },
+  { date:'2026-05-26', subject:'english', task:'Wonder: темы (Choose Kind, дружба, перспектива) и символы', isExamDay:false },
+  { date:'2026-05-27', subject:'science', task:'Солнечная система: 8 планет по порядку, эллиптические орбиты', isExamDay:false },
+  { date:'2026-05-28', subject:'maths', task:'Геометрия (Ch 4): углы в треугольнике, площади, симметрия', isExamDay:false },
+  { date:'2026-05-29', subject:'humanities', task:'Глобальное гражданство: пластик → океан, вырубка лесов', isExamDay:false },
+  { date:'2026-05-30', subject:'greek', task:'Путешествия и театр: εισιτήριο, θέση, диалог в кассе', isExamDay:false },
+  // Week of 1 June
+  { date:'2026-06-01', subject:'english', task:'PEA параграфы и убедительная речь — риторические вопросы', isExamDay:false },
+  { date:'2026-06-02', subject:'science', task:'Луна и затмения: солнечное vs лунное, приливы Spring/Neap', isExamDay:false },
+  { date:'2026-06-03', subject:'maths', task:'Проценты (Ch 5): нахождение %, конвертация дроби↔%', isExamDay:false },
+  { date:'2026-06-04', subject:'humanities', task:'Деревья в городе — официальное письмо 150–200 слов', isExamDay:false },
+  { date:'2026-06-05', subject:'greek', task:'Распорядок дня: спряжение πηγαίνω, βλέπω, ταξιδεύω (настоящее)', isExamDay:false },
+  { date:'2026-06-06', subject:'english', task:'Мифы, медиа и реклама: анализ постеров, документалистика', isExamDay:false },
+  // Week of 7 June — final revision
+  { date:'2026-06-07', subject:'science', task:'Металлы, сплавы, кислоты и pH — финальное повторение', isExamDay:false },
+  // Exam week (8–12 June — Пн–Пт)
+  { date:'2026-06-08', subject:'english', task:'📝 ЭКЗАМЕН: English Language & Literature (2 часа)', isExamDay:true },
+  { date:'2026-06-09', subject:'science', task:'📝 ЭКЗАМЕН: Integrated Science (2 часа) — 80% Science + 20% Environmental', isExamDay:true },
+  { date:'2026-06-10', subject:'maths', task:'📝 ЭКЗАМЕН: Maths', isExamDay:true },
+  { date:'2026-06-11', subject:'humanities', task:'📝 ЭКЗАМЕН: Humanities', isExamDay:true },
+  { date:'2026-06-12', subject:'greek', task:'📝 ЭКЗАМЕН: Greek (Beginners)', isExamDay:true },
+  // Post-exam
+  { date:'2026-06-19', subject:'english', task:'🎢 Поездка в аквапарк! (если нет — остаёмся дома)', isExamDay:false },
+  { date:'2026-06-22', subject:'english', task:'🏫 Обратная связь от учителей (школа до 13:15)', isExamDay:false },
+  { date:'2026-06-23', subject:'english', task:'🏫 Обратная связь + последний день в школе (до 13:15)', isExamDay:false },
 ];
 
 // ============================================================
@@ -1431,11 +1519,17 @@ function renderHome() {
   // Countdown
   const today = new Date(); today.setHours(0,0,0,0);
   const examStart = new Date(EXAM_DATES.examsStart); examStart.setHours(0,0,0,0);
+  const examEnd = new Date(EXAM_DATES.examsEnd); examEnd.setHours(0,0,0,0);
+  const waterpark = new Date(EXAM_DATES.waterpark); waterpark.setHours(0,0,0,0);
+  const graduation = new Date(EXAM_DATES.graduation); graduation.setHours(0,0,0,0);
   const diff = Math.ceil((examStart - today) / 86400000);
   const cdBadge = document.getElementById('countdown-badge');
-  if (diff > 0) cdBadge.textContent = '🗓 До экзаменов: ' + diff + ' дн.';
-  else if (diff === 0) cdBadge.textContent = '🎓 Сегодня экзамен!';
-  else cdBadge.textContent = '🎉 Экзамены позади!';
+  if (diff > 0) cdBadge.textContent = '🗓 До экзаменов: ' + diff + ' дн. (с 8 июня)';
+  else if (diff === 0) cdBadge.textContent = '🎓 Сегодня начало экзаменов!';
+  else if (today <= examEnd) cdBadge.textContent = '📝 Идут экзамены (до 12 июня)';
+  else if (today < waterpark) cdBadge.textContent = '🎉 Экзамены позади! 🎢 Аквапарк: ' + Math.ceil((waterpark - today)/86400000) + ' дн.';
+  else if (today <= graduation) cdBadge.textContent = '🎓 Выпускной: ' + formatDate(EXAM_DATES.graduation) + ' в 20:30';
+  else cdBadge.textContent = '🌟 Каникулы! Наслаждайся!';
 
   // English project deadline
   const projDate = new Date(EXAM_DATES.englishProject); projDate.setHours(0,0,0,0);
@@ -1444,7 +1538,11 @@ function renderHome() {
   if (projDiff > 0) {
     dlBadge.style.display = 'inline-flex';
     dlBadge.className = projDiff <= 2 ? 'deadline-badge' : 'deadline-badge warning';
-    dlBadge.innerHTML = '⚠️ Проект English: через ' + projDiff + ' дн.';
+    dlBadge.innerHTML = '⚠️ Проект "Реклама" (English): через ' + projDiff + ' дн.';
+  } else if (projDiff === 0) {
+    dlBadge.style.display = 'inline-flex';
+    dlBadge.className = 'deadline-badge';
+    dlBadge.innerHTML = '🚨 СЕГОДНЯ сдать проект "Реклама"!';
   } else {
     dlBadge.style.display = 'none';
   }
