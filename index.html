@@ -1,2229 +1,430 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Melly's Exam Adventure 🐥</title>
+<title>Melly's Science Revision 🔬</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap');
+:root{--bg:#fff9f0;--yellow:#FFD166;--pink:#FF8FAB;--lav:#C77DFF;--mint:#6BCB77;--peach:#FF9F6B;--blue:#4ECDC4;--red:#FF6B6B;--card:#fff;--shadow:rgba(0,0,0,0.08);--text:#3d3d3d;--muted:#888;--border:#f0e8d8}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+#app{max-width:430px;margin:0 auto;min-height:100vh}
+.screen{display:none;min-height:100vh;padding-bottom:80px}
+.screen.active{display:block}
 
-:root {
-  --bg: #fff9f0;
-  --yellow: #FFD166;
-  --pink: #FF8FAB;
-  --lavender: #C77DFF;
-  --mint: #6BCB77;
-  --peach: #FF9F6B;
-  --blue: #4ECDC4;
-  --card: #ffffff;
-  --shadow: rgba(0,0,0,0.08);
-  --text: #3d3d3d;
-  --text-light: #888;
-}
+/* HEADER */
+.hdr{background:var(--card);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px var(--shadow);position:sticky;top:0;z-index:100}
+.hdr-title{font-family:'Fredoka One',cursive;font-size:1.1rem;flex:1;text-align:center}
+.back{background:none;border:none;font-size:1.4rem;cursor:pointer;padding:4px 8px;color:var(--text);border-radius:8px;min-width:40px}
+.hdr-right{min-width:40px;text-align:right;font-size:0.8rem;font-weight:700;color:var(--mint)}
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+/* CARDS */
+.card{background:var(--card);border-radius:16px;padding:16px;margin:0 16px 12px;box-shadow:0 2px 8px var(--shadow)}
+.sec-title{font-family:'Fredoka One',cursive;font-size:0.95rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;padding:16px 16px 6px}
 
-body {
-  font-family: 'Nunito', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+/* PROGRESS */
+.pb-wrap{background:#f0e8d8;border-radius:99px;height:8px;overflow:hidden}
+.pb-fill{height:100%;border-radius:99px;background:linear-gradient(to right,var(--mint),var(--blue));transition:width .4s}
+.pb-label{font-size:.78rem;color:var(--muted);font-weight:600;margin-top:4px}
 
-/* ===== LAYOUT ===== */
-#app { max-width: 430px; margin: 0 auto; min-height: 100vh; position: relative; }
+/* COUNTDOWN */
+.countdown{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:16px;padding:18px 16px;margin:12px 16px;text-align:center}
+.cd-days{font-family:'Fredoka One',cursive;font-size:3rem;line-height:1}
+.cd-lbl{font-size:.85rem;opacity:.88;margin-top:4px}
+.cd-date{font-size:.75rem;opacity:.7;margin-top:2px}
 
-.screen { display: none; min-height: 100vh; padding-bottom: 80px; }
-.screen.active { display: block; }
+/* HOME */
+.home-top{padding:16px 16px 4px}
+.home-title{font-family:'Fredoka One',cursive;font-size:1.7rem}
+.home-sub{font-size:.85rem;color:var(--muted);margin-top:2px}
+.overall-stats{display:flex;justify-content:space-around;margin-top:12px}
+.stat-num{font-family:'Fredoka One',cursive;font-size:1.6rem;text-align:center}
+.stat-lbl{font-size:.7rem;color:var(--muted);font-weight:600;text-align:center}
 
-/* ===== HEADER ===== */
-.app-header {
-  background: var(--card);
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.header-title { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: var(--text); }
-.header-stats { display: flex; gap: 10px; align-items: center; font-weight: 700; font-size: 0.9rem; }
-.stat-badge { background: var(--bg); border-radius: 20px; padding: 4px 10px; display: flex; align-items: center; gap: 4px; }
-.back-btn {
-  background: none; border: none; font-size: 1.4rem; cursor: pointer;
-  padding: 8px; border-radius: 50%; transition: background 0.2s;
-}
-.back-btn:active { background: var(--bg); }
+/* GROUP CARDS */
+.g-card{margin:0 16px 12px;border-radius:16px;padding:16px;cursor:pointer;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .15s}
+.g-card:active{transform:scale(.98)}
+.g-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.g-icon{font-size:1.8rem}
+.g-name{font-family:'Fredoka One',cursive;font-size:1.1rem}
+.g-count{font-size:.8rem;opacity:.85}
+.g-arrow{margin-left:auto;font-size:1.3rem;opacity:.8}
+.g-card .pb-wrap{background:rgba(255,255,255,.3)}
+.g-card .pb-fill{background:rgba(255,255,255,.9)}
+.g-card .pb-label{color:rgba(255,255,255,.85)}
 
-/* ===== BOTTOM NAV ===== */
-.bottom-nav {
-  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-  width: 100%; max-width: 430px;
-  background: var(--card);
-  display: flex;
-  border-top: 1px solid rgba(0,0,0,0.06);
-  z-index: 200;
-  box-shadow: 0 -2px 12px var(--shadow);
-}
-.nav-btn {
-  flex: 1; padding: 10px 4px 6px; background: none; border: none;
-  cursor: pointer; display: flex; flex-direction: column; align-items: center;
-  gap: 2px; font-family: 'Nunito', sans-serif; font-size: 0.65rem;
-  color: var(--text-light); transition: color 0.2s; font-weight: 600;
-}
-.nav-btn.active { color: var(--yellow); }
-.nav-btn .nav-icon { font-size: 1.4rem; }
+/* TOPIC LIST */
+.t-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.t-row:last-child{border-bottom:none}
+.t-row:active{opacity:.7}
+.t-icon{font-size:1.4rem;width:36px;text-align:center;flex-shrink:0}
+.t-info{flex:1}
+.t-name{font-weight:700;font-size:.95rem}
+.t-status{font-size:.75rem;font-weight:600;margin-top:2px}
+.t-arr{color:var(--muted)}
 
-/* ===== CARDS ===== */
-.card {
-  background: var(--card);
-  border-radius: 20px;
-  box-shadow: 0 4px 16px var(--shadow);
-  padding: 16px;
-  margin: 12px 16px;
-}
+/* STEP INDICATOR */
+.steps{display:flex;align-items:center;padding:10px 16px;gap:4px}
+.step{flex:1;text-align:center;font-size:.78rem;font-weight:700;padding:8px 4px;border-radius:8px;color:var(--muted);background:#f0e8d8}
+.step.active{background:var(--yellow);color:var(--text)}
+.step.done{background:var(--mint);color:#fff}
+.step-sep{color:var(--muted);font-size:1rem}
 
-/* ===== BUTTONS ===== */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  border: none; border-radius: 50px; cursor: pointer;
-  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem;
-  padding: 12px 24px; min-height: 44px; transition: transform 0.15s, opacity 0.15s;
-}
-.btn:active { transform: scale(0.96); }
-.btn-primary { background: var(--yellow); color: #5a3e00; }
-.btn-pink { background: var(--pink); color: #fff; }
-.btn-mint { background: var(--mint); color: #fff; }
-.btn-lavender { background: var(--lavender); color: #fff; }
-.btn-peach { background: var(--peach); color: #fff; }
-.btn-blue { background: var(--blue); color: #fff; }
-.btn-outline { background: transparent; border: 2px solid var(--yellow); color: #5a3e00; }
-.btn-sm { padding: 8px 16px; font-size: 0.82rem; min-height: 36px; }
-.btn-full { width: 100%; }
-.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+/* NOTES */
+.notes-wrap{padding:4px 16px 100px}
+.n-h3{font-family:'Fredoka One',cursive;font-size:1.05rem;margin:18px 0 8px;color:var(--text)}
+.n-p{font-size:.88rem;line-height:1.65;margin-bottom:8px}
+.key-box{background:#fff8e1;border-left:4px solid var(--yellow);border-radius:0 8px 8px 0;padding:12px 14px;font-size:.87rem;line-height:1.55;margin:10px 0}
+.formula-box{background:#e8f4fd;border:2px solid var(--blue);border-radius:12px;padding:16px;margin:12px 0;text-align:center}
+.f-title{font-size:.72rem;font-weight:700;color:var(--blue);text-transform:uppercase;margin-bottom:6px;letter-spacing:.05em}
+.f-eq{font-family:'Fredoka One',cursive;font-size:1.6rem;margin-bottom:8px}
+.f-vars{font-size:.8rem;color:var(--muted);text-align:left;line-height:1.7}
+.n-table{width:100%;border-collapse:collapse;font-size:.82rem;margin:10px 0}
+.n-table th{background:var(--text);color:#fff;padding:8px;text-align:left;font-weight:700}
+.n-table td{padding:7px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+.n-table tr:nth-child(even) td{background:#fafafa}
+.n-ul,.n-ol{font-size:.88rem;line-height:1.7;margin:8px 0 8px 18px}
+.n-ul li,.n-ol li{margin-bottom:3px}
+.diagram{background:#f8f8f8;border:1px solid var(--border);border-radius:8px;padding:12px;font-family:monospace;font-size:.78rem;line-height:1.6;white-space:pre;overflow-x:auto;margin:10px 0}
+.tip-box{background:#f0fff4;border-left:4px solid var(--mint);border-radius:0 8px 8px 0;padding:12px 14px;font-size:.87rem;line-height:1.55;margin:10px 0}
+.warn-box{background:#fff5f0;border-left:4px solid var(--peach);border-radius:0 8px 8px 0;padding:12px 14px;font-size:.87rem;line-height:1.55;margin:10px 0}
+.links-head{font-family:'Fredoka One',cursive;font-size:.95rem;margin:18px 0 8px}
+.link-item{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--card);border-radius:10px;margin-bottom:8px;text-decoration:none;color:var(--text);border:1px solid var(--border);font-size:.85rem;font-weight:600}
+.link-item:active{opacity:.7}
 
-/* ===== PROGRESS BAR ===== */
-.progress-wrap { background: #f0ede8; border-radius: 50px; height: 10px; overflow: hidden; }
-.progress-fill {
-  height: 100%; border-radius: 50px;
-  transition: width 0.6s ease;
-}
+/* FIXED BOTTOM BAR */
+.bottom-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;padding:12px 16px;background:var(--bg);border-top:1px solid var(--border);z-index:50}
 
-/* ===== DUCK ===== */
-#duck-container {
-  display: flex; flex-direction: column; align-items: center;
-  padding: 8px 0 0;
-}
-#duck-svg { width: 110px; height: 110px; cursor: pointer; }
-#speech-bubble {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 10px 16px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-align: center;
-  box-shadow: 0 3px 10px var(--shadow);
-  max-width: 240px;
-  position: relative;
-  margin-top: 8px;
-}
-#speech-bubble::before {
-  content: '';
-  position: absolute;
-  top: -8px; left: 50%; transform: translateX(-50%);
-  border: 8px solid transparent;
-  border-bottom-color: var(--card);
-  border-top: none;
-}
+/* BUTTONS */
+.btn{width:100%;padding:14px;border-radius:12px;border:none;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:transform .1s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:linear-gradient(135deg,#4ECDC4,#2b8fc0);color:#fff}
+.btn-success{background:linear-gradient(135deg,var(--mint),#3a9a45);color:#fff}
+.btn-sec{background:var(--border);color:var(--text)}
 
-@keyframes wobble {
-  0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(8deg)}
-}
-@keyframes bounce {
-  0%,100%{transform:translateY(0)}30%{transform:translateY(-18px)}60%{transform:translateY(-8px)}
-}
-@keyframes shake {
-  0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}
-}
-@keyframes pulse-scale {
-  0%,100%{transform:scale(1)}50%{transform:scale(1.08)}
-}
-@keyframes float {
-  0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}
-}
-@keyframes fadeInUp {
-  from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}
-}
-@keyframes checkBounce {
-  0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}
-}
-@keyframes starFly {
-  0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(1.5)}
-}
-@keyframes confettiFall {
-  0%{transform:translateY(0) rotate(0) scale(1);opacity:1}
-  80%{opacity:1}
-  100%{transform:translateY(600px) rotate(720deg) scale(0.5);opacity:0}
-}
+/* QUIZ */
+.qz-hdr{padding:10px 16px;display:flex;align-items:center;gap:10px}
+.qz-prog{font-size:.8rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.qz-q{font-size:1rem;font-weight:700;line-height:1.5;margin-bottom:16px}
+.qz-opts{display:flex;flex-direction:column;gap:8px}
+.qz-opt{padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:.9rem;cursor:pointer;text-align:left;background:#fff;font-family:'Nunito',sans-serif;font-weight:600;transition:all .15s}
+.qz-opt:active{transform:scale(.98)}
+.qz-opt.sel{border-color:var(--blue);background:#e8fafa}
+.qz-opt.ok{border-color:var(--mint);background:#f0fff4}
+.qz-opt.bad{border-color:var(--red);background:#fff0f5}
+.qz-explain{background:#fff8e1;border-radius:10px;padding:12px;font-size:.85rem;line-height:1.5;margin-top:12px;display:none}
+.btn-next{width:100%;padding:14px;border-radius:12px;border:none;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;margin-top:12px;background:var(--blue);color:#fff;display:none}
 
-.duck-wobble { animation: wobble 0.6s ease; }
-.duck-bounce { animation: bounce 0.7s ease; }
-.duck-shake { animation: shake 0.5s ease; }
-.duck-float { animation: float 3s ease-in-out infinite; }
-.duck-pulse { animation: pulse-scale 0.4s ease; }
-
-/* ===== HOME SCREEN ===== */
-.home-greeting {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.8rem;
-  text-align: center;
-  padding: 16px 16px 0;
-  color: var(--text);
-}
-.home-stats-row {
-  display: flex; gap: 10px; padding: 0 16px; margin-top: 8px;
-}
-.home-stat-card {
-  flex: 1; background: var(--card); border-radius: 16px;
-  padding: 12px; text-align: center;
-  box-shadow: 0 3px 10px var(--shadow);
-}
-.home-stat-card .stat-num {
-  font-family: 'Fredoka One', cursive; font-size: 1.6rem;
-}
-.home-stat-card .stat-label { font-size: 0.72rem; color: var(--text-light); font-weight: 600; }
-
-.section-title {
-  font-family: 'Fredoka One', cursive; font-size: 1.1rem;
-  padding: 16px 16px 8px; color: var(--text);
-}
-
-.today-card { background: linear-gradient(135deg, #fff9f0, #fff0e0); }
-.today-task-main { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
-.today-task-small { font-size: 0.82rem; color: var(--text-light); }
-.countdown-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--yellow); border-radius: 50px; padding: 6px 14px;
-  font-weight: 700; font-size: 0.85rem; margin-top: 10px; color: #5a3e00;
-}
-.deadline-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #FF4757; border-radius: 50px; padding: 6px 14px;
-  font-weight: 700; font-size: 0.82rem; margin-top: 6px; color: #fff;
-}
-.deadline-badge.warning { background: #FF9F6B; }
-
-/* ===== SUBJECT CARDS ===== */
-.subjects-scroll {
-  display: flex; gap: 12px;
-  padding: 4px 16px 16px;
-  overflow-x: auto; scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.subjects-scroll::-webkit-scrollbar { display: none; }
-.subject-card {
-  min-width: 140px; border-radius: 20px;
-  padding: 16px 14px; cursor: pointer;
-  scroll-snap-align: start;
-  box-shadow: 0 4px 16px var(--shadow);
-  transition: transform 0.2s;
-  position: relative; overflow: hidden;
-}
-.subject-card:active { transform: scale(0.96); }
-.subject-card .subj-icon { font-size: 2rem; margin-bottom: 8px; }
-.subject-card .subj-name {
-  font-family: 'Fredoka One', cursive; font-size: 1rem; color: #fff;
-  margin-bottom: 6px;
-}
-.subject-card .subj-stars { font-size: 0.8rem; color: rgba(255,255,255,0.9); font-weight: 700; }
-.subject-card .subj-trophy {
-  position: absolute; top: 10px; right: 10px; font-size: 1.1rem;
-}
-.subject-card .subj-progress {
-  background: rgba(255,255,255,0.3); border-radius: 50px;
-  height: 6px; overflow: hidden; margin-top: 8px;
-}
-.subject-card .subj-progress-fill {
-  height: 100%; background: rgba(255,255,255,0.9); border-radius: 50px;
-  transition: width 0.6s ease;
-}
-
-/* ===== SUBJECT SCREEN ===== */
-.subject-header {
-  padding: 16px; border-radius: 0 0 24px 24px;
-  margin-bottom: 4px;
-}
-.subject-header h1 { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: #fff; }
-.subject-header .subj-deadline { color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-top: 4px; font-weight: 600; }
-.subj-progress-card { margin-top: -4px; }
-.progress-label { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-light); margin-bottom: 6px; font-weight: 600; }
-
-.topic-card {
-  display: flex; align-items: center; gap: 12px;
-  background: var(--card); border-radius: 16px;
-  padding: 14px; margin: 8px 16px;
-  box-shadow: 0 3px 10px var(--shadow);
-  cursor: pointer; transition: transform 0.2s;
-}
-.topic-card:active { transform: scale(0.98); }
-.topic-icon { font-size: 1.6rem; flex-shrink: 0; }
-.topic-info { flex: 1; }
-.topic-name { font-weight: 700; font-size: 0.95rem; }
-.topic-name-en { font-size: 0.75rem; color: var(--text-light); }
-.topic-status { font-size: 0.78rem; font-weight: 600; margin-top: 4px; }
-.topic-arrow { color: var(--text-light); font-size: 1.1rem; }
-
-.final-quiz-section { padding: 8px 16px 16px; }
-
-/* ===== TOPIC SCREEN ===== */
-.topic-breadcrumb { font-size: 0.78rem; color: var(--text-light); font-weight: 600; padding: 0 16px; margin-bottom: 2px; }
-.topic-screen-title { font-family: 'Fredoka One', cursive; font-size: 1.5rem; padding: 4px 16px 12px; }
-
-.checklist-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  padding: 10px 0; border-bottom: 1px solid #f0ede8;
-}
-.checklist-item:last-child { border-bottom: none; }
-.checklist-cb { display: none; }
-.checklist-label {
-  display: flex; align-items: flex-start; gap: 10px;
-  cursor: pointer; flex: 1; font-size: 0.88rem; line-height: 1.4;
-}
-.cb-box {
-  width: 24px; height: 24px; border-radius: 8px;
-  border: 2px solid #ddd; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s; font-size: 0.8rem; margin-top: 1px;
-}
-.checklist-cb:checked + .checklist-label .cb-box {
-  background: var(--mint); border-color: var(--mint); color: #fff;
-  animation: checkBounce 0.3s ease;
-}
-.checklist-cb:checked + .checklist-label { color: var(--text-light); text-decoration: line-through; }
-
-.quiz-unlock-banner {
-  background: linear-gradient(135deg, var(--yellow), #ffba00);
-  border-radius: 16px; padding: 14px; margin-top: 12px;
-  text-align: center; display: none;
-}
-.quiz-unlock-banner.visible { display: block; animation: fadeInUp 0.4s ease; }
-.quiz-unlock-banner p { font-weight: 700; font-size: 0.9rem; color: #5a3e00; margin-bottom: 10px; }
-
-/* ===== QUIZ SCREEN ===== */
-.quiz-progress-bar { margin: 0 16px 16px; }
-.quiz-q-num { font-size: 0.82rem; color: var(--text-light); font-weight: 700; margin-bottom: 6px; }
-.quiz-question-card {
-  background: var(--card); border-radius: 20px;
-  padding: 20px; margin: 0 16px 16px;
-  box-shadow: 0 4px 16px var(--shadow);
-  font-size: 1.05rem; font-weight: 600; line-height: 1.5;
-}
-.quiz-answers { display: flex; flex-direction: column; gap: 10px; padding: 0 16px; }
-.answer-btn {
-  background: var(--card); border: 2px solid #eee;
-  border-radius: 14px; padding: 14px 16px;
-  text-align: left; cursor: pointer;
-  font-family: 'Nunito', sans-serif; font-weight: 600;
-  font-size: 0.9rem; min-height: 52px; line-height: 1.4;
-  transition: all 0.2s; box-shadow: 0 2px 8px var(--shadow);
-}
-.answer-btn:active:not(:disabled) { transform: scale(0.98); }
-.answer-btn.correct { background: #d4f7dc; border-color: var(--mint); color: #1e5c2a; }
-.answer-btn.wrong { background: #fdd; border-color: #e05555; color: #7a1a1a; }
-.answer-btn:disabled { cursor: default; }
-
-.quiz-duck-msg {
-  text-align: center; font-weight: 700; font-size: 0.9rem;
-  padding: 8px 16px; min-height: 32px; transition: opacity 0.3s;
-}
-
-.quiz-result-card { text-align: center; padding: 24px; }
-.quiz-result-card .result-emoji { font-size: 3rem; margin-bottom: 12px; }
-.quiz-result-card h2 { font-family: 'Fredoka One', cursive; font-size: 1.6rem; margin-bottom: 8px; }
-.quiz-result-card .result-score { font-size: 1rem; color: var(--text-light); font-weight: 600; margin-bottom: 16px; }
-.stars-earned { font-size: 1.5rem; font-weight: 700; color: #e6a800; margin-bottom: 16px; }
-
-/* ===== SCHEDULE SCREEN ===== */
-.schedule-scroll {
-  overflow-x: auto; padding: 0 16px 16px;
-  -webkit-overflow-scrolling: touch;
-}
-.schedule-scroll::-webkit-scrollbar { display: none; }
-.week-group { margin-bottom: 16px; }
-.week-label { font-family: 'Fredoka One', cursive; font-size: 0.95rem; color: var(--text-light); margin-bottom: 8px; }
-.days-row { display: flex; gap: 10px; }
-.day-card {
-  min-width: 110px; background: var(--card); border-radius: 16px;
-  padding: 12px; box-shadow: 0 3px 10px var(--shadow);
-  position: relative; overflow: hidden;
-}
-.day-card.exam-day { border: 2px solid #FF4757; }
-.day-card.today { border: 2px solid var(--yellow); }
-.day-date { font-weight: 700; font-size: 0.82rem; color: var(--text-light); }
-.day-name { font-family: 'Fredoka One', cursive; font-size: 0.95rem; margin-bottom: 6px; }
-.day-task { font-size: 0.75rem; line-height: 1.4; margin-bottom: 8px; }
-.day-color-strip { position: absolute; top: 0; left: 0; width: 4px; height: 100%; border-radius: 16px 0 0 16px; }
-.day-done-label {
-  display: flex; align-items: center; gap: 5px;
-  cursor: pointer; font-size: 0.72rem; font-weight: 700;
-}
-.day-done-cb { display: none; }
-.day-done-box {
-  width: 18px; height: 18px; border-radius: 6px;
-  border: 2px solid #ddd; display: flex; align-items: center; justify-content: center;
-  font-size: 0.6rem; transition: all 0.2s; flex-shrink: 0;
-}
-.day-done-cb:checked + .day-done-label .day-done-box { background: var(--mint); border-color: var(--mint); color: #fff; }
-.exam-badge {
-  background: #FF4757; color: #fff; border-radius: 6px;
-  font-size: 0.65rem; font-weight: 700; padding: 2px 6px; margin-top: 4px; display: inline-block;
-}
-
-/* ===== ACHIEVEMENTS SCREEN ===== */
-.cups-shelf {
-  display: flex; gap: 16px; justify-content: center;
-  flex-wrap: wrap; padding: 8px 0 16px;
-}
-.cup-item { text-align: center; }
-.cup-icon { font-size: 2.5rem; filter: grayscale(1) opacity(0.4); transition: all 0.4s; }
-.cup-icon.earned { filter: none; }
-.cup-label { font-size: 0.72rem; font-weight: 700; color: var(--text-light); margin-top: 4px; }
-
-.stars-jar {
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; padding: 16px;
-}
-.stars-jar-visual {
-  font-size: 4rem; position: relative;
-  display: flex; align-items: center; justify-content: center;
-}
-.stars-count-big { font-family: 'Fredoka One', cursive; font-size: 2rem; color: var(--yellow); margin-top: 8px; }
-
-.badges-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-.badge-item {
-  background: var(--card); border-radius: 14px;
-  padding: 10px 14px; font-size: 0.8rem; font-weight: 700;
-  box-shadow: 0 2px 8px var(--shadow);
-  opacity: 0.35; transition: opacity 0.4s;
-  display: flex; align-items: center; gap: 6px;
-}
-.badge-item.earned { opacity: 1; }
-
-/* ===== SAVE/RESTORE MODAL ===== */
-.modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 1000; padding: 16px; display: none;
-}
-.modal-overlay.open { display: flex; }
-.modal-box {
-  background: var(--card); border-radius: 24px;
-  padding: 24px; width: 100%; max-width: 360px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-}
-.modal-box h3 { font-family: 'Fredoka One', cursive; font-size: 1.3rem; margin-bottom: 12px; }
-.modal-code {
-  background: var(--bg); border-radius: 12px; padding: 12px;
-  font-family: monospace; font-size: 0.75rem;
-  word-break: break-all; margin-bottom: 12px;
-  max-height: 100px; overflow-y: auto;
-}
-.modal-input {
-  width: 100%; border: 2px solid #eee; border-radius: 12px;
-  padding: 10px 14px; font-family: 'Nunito', sans-serif;
-  font-size: 0.88rem; margin-bottom: 12px; outline: none;
-}
-.modal-input:focus { border-color: var(--yellow); }
-.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.4rem; cursor: pointer; }
-.modal-row { display: flex; gap: 8px; flex-wrap: wrap; }
-
-/* ===== CONFETTI ===== */
-.confetti-piece {
-  position: fixed; width: 10px; height: 10px;
-  border-radius: 2px; z-index: 9999; pointer-events: none;
-  animation: confettiFall linear forwards;
-}
-
-/* ===== STAR FLY ===== */
-.star-fly {
-  position: fixed; font-size: 1.4rem; pointer-events: none; z-index: 9999;
-  animation: starFly 0.8s ease-out forwards;
-}
-
-/* ===== STREAKS ===== */
-.streak-flame {
-  font-size: 1.2rem;
-}
-
-/* Responsive tweaks */
-@media (min-width: 430px) {
-  .subjects-scroll { padding: 4px 24px 16px; }
-  .card { margin: 12px 24px; }
-}
+/* RESULT */
+.result-wrap{text-align:center;padding:40px 24px}
+.r-emoji{font-size:4rem;margin-bottom:12px}
+.r-title{font-family:'Fredoka One',cursive;font-size:2rem;margin-bottom:8px}
+.r-pct{font-family:'Fredoka One',cursive;font-size:3.5rem;color:var(--mint);margin:10px 0}
+.r-msg{font-size:.95rem;color:var(--muted);margin-bottom:24px}
+.r-btns{display:flex;flex-direction:column;gap:10px}
+.btn-action{padding:14px;border-radius:12px;border:none;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;cursor:pointer}
 </style>
 </head>
 <body>
 <div id="app">
 
-  <!-- ===== SCREENS ===== -->
-
-  <!-- HOME -->
-  <div id="screen-home" class="screen active">
-    <div class="app-header">
-      <span class="header-title">🐥 Melly</span>
-      <div class="header-stats">
-        <div class="stat-badge" id="header-stars">⭐ 0</div>
-        <div class="stat-badge" id="header-cups">🏆 0</div>
-      </div>
-    </div>
-
-    <div class="home-greeting" id="home-greeting">Привет, Melly! 🌟</div>
-
-    <div id="duck-container">
-      <svg id="duck-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="duck-float">
-        <!-- Body -->
-        <ellipse cx="60" cy="78" rx="38" ry="30" fill="#FFD166"/>
-        <!-- Head -->
-        <circle cx="72" cy="48" r="26" fill="#FFD166"/>
-        <!-- Eye -->
-        <circle cx="82" cy="42" r="5" fill="#3d3d3d"/>
-        <circle cx="84" cy="40" r="1.5" fill="#fff"/>
-        <!-- Cheek blush -->
-        <ellipse cx="88" cy="48" rx="6" ry="4" fill="#FF8FAB" opacity="0.5"/>
-        <!-- Beak -->
-        <path d="M96 46 Q106 44 104 52 Q100 56 94 52 Z" fill="#FF9F6B"/>
-        <!-- Wing -->
-        <ellipse cx="38" cy="76" rx="16" ry="10" fill="#FFBC3D" transform="rotate(-15,38,76)"/>
-        <!-- Feet -->
-        <path d="M48 105 Q44 112 38 112 Q36 112 36 110 Q36 108 40 107 Q42 107 44 110 Q44 106 48 105Z" fill="#FF9F6B"/>
-        <path d="M70 107 Q66 114 60 114 Q58 114 58 112 Q58 110 62 109 Q64 109 66 112 Q66 108 70 107Z" fill="#FF9F6B"/>
-        <!-- Tail feather -->
-        <ellipse cx="25" cy="72" rx="10" ry="6" fill="#FFBC3D" transform="rotate(30,25,72)"/>
-        <!-- Hat for style ✨ -->
-        <ellipse cx="68" cy="25" rx="22" ry="5" fill="#FF8FAB"/>
-        <rect x="57" y="12" width="22" height="14" rx="4" fill="#FF8FAB"/>
-        <ellipse cx="68" cy="12" rx="11" ry="3" fill="#ff6b99"/>
-        <!-- Stars on hat -->
-        <text x="62" y="21" font-size="7" fill="white">★</text>
-      </svg>
-      <div id="speech-bubble">Привет, Melly! 🌟</div>
-    </div>
-
-    <div class="home-stats-row">
-      <div class="home-stat-card">
-        <div class="stat-num" id="home-stars-num" style="color:var(--yellow)">0 ⭐</div>
-        <div class="stat-label">Звёздочки</div>
-      </div>
-      <div class="home-stat-card">
-        <div class="stat-num" id="home-cups-num" style="color:#e6a800">0 🏆</div>
-        <div class="stat-label">Кубки</div>
-      </div>
-      <div class="home-stat-card">
-        <div class="stat-num" id="home-streak-num" style="color:var(--pink)">0 🔥</div>
-        <div class="stat-label">Дней подряд</div>
-      </div>
-    </div>
-
-    <div class="section-title">Сегодня 📅</div>
-    <div class="card today-card">
-      <div class="today-task-main" id="today-task-main">Загрузка...</div>
-      <div class="today-task-small" id="today-task-small"></div>
-      <div id="countdown-badge" class="countdown-badge">🗓 До экзаменов: — дн.</div>
-      <div id="deadline-badge" style="display:none"></div>
-    </div>
-
-    <div class="section-title">Предметы 📚</div>
-    <div class="subjects-scroll" id="subjects-scroll"></div>
-
-    <div style="display:flex;gap:8px;padding:0 16px 8px;flex-wrap:wrap">
-      <button class="btn btn-outline btn-sm" onclick="openSaveModal()">💾 Сохранить прогресс</button>
-      <button class="btn btn-outline btn-sm" onclick="openRestoreModal()">📥 Восстановить</button>
+<!-- HOME -->
+<div id="screen-home" class="screen">
+  <div class="hdr">
+    <div style="min-width:40px"></div>
+    <span class="hdr-title">🔬 Science Revision</span>
+    <div class="hdr-right" id="home-badge"></div>
+  </div>
+  <div class="home-top">
+    <div class="home-title">Melly's Science Exam 🐥</div>
+    <div class="home-sub">S1B–S1R · Teacher: Kyriakos Solomou</div>
+  </div>
+  <div class="countdown" id="countdown"></div>
+  <div class="card">
+    <div style="font-weight:700;font-size:.95rem;margin-bottom:10px">Overall Progress</div>
+    <div class="pb-wrap"><div class="pb-fill" id="overall-bar" style="width:0%"></div></div>
+    <div class="pb-label" id="overall-label">0 of 18 topics mastered</div>
+    <div class="overall-stats">
+      <div><div class="stat-num" id="s-mastered">0</div><div class="stat-lbl">Mastered ✅</div></div>
+      <div><div class="stat-num" id="s-read">0</div><div class="stat-lbl">Studied 📖</div></div>
+      <div><div class="stat-num">18</div><div class="stat-lbl">Total Topics</div></div>
     </div>
   </div>
+  <div class="sec-title">Topic Groups</div>
+  <div id="groups-list"></div>
+</div>
 
-  <!-- SUBJECT -->
-  <div id="screen-subject" class="screen">
-    <div class="app-header">
-      <button class="back-btn" onclick="showScreen('home')">←</button>
-      <span class="header-title" id="subj-header-title">Предмет</span>
-      <div class="header-stats">
-        <div class="stat-badge" id="header-stars-subj">⭐ 0</div>
-      </div>
-    </div>
-    <div id="subject-header-div" class="subject-header">
-      <h1 id="subject-title">Subject</h1>
-      <div class="subj-deadline" id="subject-deadline"></div>
-    </div>
-    <div class="card subj-progress-card">
-      <div class="progress-label">
-        <span id="subj-topics-done">0 из 0 тем</span>
-        <span id="subj-stars-earned">⭐ 0</span>
-      </div>
-      <div class="progress-wrap"><div class="progress-fill" id="subj-progress-fill" style="width:0%;background:var(--mint)"></div></div>
-    </div>
+<!-- GROUP -->
+<div id="screen-group" class="screen">
+  <div class="hdr">
+    <button class="back" onclick="goHome()">←</button>
+    <span class="hdr-title" id="g-title"></span>
+    <div style="min-width:40px"></div>
+  </div>
+  <div style="padding:10px 16px 0">
+    <div class="pb-wrap"><div class="pb-fill" id="g-bar" style="width:0%"></div></div>
+    <div class="pb-label" id="g-bar-lbl"></div>
+  </div>
+  <div class="card" style="padding:8px 16px;margin-top:10px">
     <div id="topics-list"></div>
-    <div class="final-quiz-section" id="final-quiz-section" style="display:none">
-      <button class="btn btn-full" id="final-quiz-btn" onclick="startFinalQuiz()">🏆 Финальный квиз предмета!</button>
-    </div>
-  </div>
-
-  <!-- TOPIC -->
-  <div id="screen-topic" class="screen">
-    <div class="app-header">
-      <button class="back-btn" id="topic-back-btn">←</button>
-      <span class="header-title" id="topic-header-title">Тема</span>
-      <div class="header-stats">
-        <div class="stat-badge" id="header-stars-topic">⭐ 0</div>
-      </div>
-    </div>
-    <div class="topic-breadcrumb" id="topic-breadcrumb"></div>
-    <div class="topic-screen-title" id="topic-screen-title"></div>
-
-    <div class="card">
-      <div style="font-family:'Fredoka One',cursive;font-size:1rem;margin-bottom:12px">📋 Что нужно знать</div>
-      <div id="checklist-container"></div>
-      <div class="quiz-unlock-banner" id="quiz-unlock-banner">
-        <p id="duck-unlock-msg">Отлично! Проверим знания? 🎉</p>
-        <button class="btn btn-primary" onclick="startTopicQuiz()">🎯 Мини-квиз</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- QUIZ -->
-  <div id="screen-quiz" class="screen">
-    <div class="app-header">
-      <button class="back-btn" id="quiz-back-btn">←</button>
-      <span class="header-title" id="quiz-header-title">Квиз</span>
-      <div class="header-stats">
-        <div class="stat-badge" id="header-stars-quiz">⭐ 0</div>
-      </div>
-    </div>
-    <div id="quiz-content"></div>
-  </div>
-
-  <!-- SCHEDULE -->
-  <div id="screen-schedule" class="screen">
-    <div class="app-header">
-      <span class="header-title">📅 Расписание</span>
-      <div class="header-stats">
-        <div class="stat-badge" id="header-stars-sched">⭐ 0</div>
-      </div>
-    </div>
-    <div id="schedule-content" style="padding:12px 16px"></div>
-  </div>
-
-  <!-- ACHIEVEMENTS -->
-  <div id="screen-achievements" class="screen">
-    <div class="app-header">
-      <span class="header-title">🏆 Награды</span>
-      <div class="header-stats">
-        <div class="stat-badge" id="header-stars-ach">⭐ 0</div>
-      </div>
-    </div>
-
-    <div class="section-title">Кубки 🏆</div>
-    <div class="card">
-      <div class="cups-shelf" id="cups-shelf"></div>
-    </div>
-
-    <div class="section-title">Звёздочки ⭐</div>
-    <div class="card stars-jar">
-      <div class="stars-jar-visual">🫙</div>
-      <div class="stars-count-big" id="stars-big-num">0 ⭐</div>
-      <div style="font-size:0.82rem;color:var(--text-light);font-weight:600">Всего заработано</div>
-    </div>
-
-    <div class="section-title">Достижения 🎖</div>
-    <div class="card">
-      <div class="badges-grid" id="badges-grid"></div>
-    </div>
-  </div>
-
-  <!-- ===== BOTTOM NAV ===== -->
-  <div class="bottom-nav">
-    <button class="nav-btn active" id="nav-home" onclick="showScreen('home')">
-      <span class="nav-icon">🏠</span>Главная
-    </button>
-    <button class="nav-btn" id="nav-schedule" onclick="showScreen('schedule')">
-      <span class="nav-icon">📅</span>Расписание
-    </button>
-    <button class="nav-btn" id="nav-achievements" onclick="showScreen('achievements')">
-      <span class="nav-icon">🏆</span>Награды
-    </button>
-  </div>
-
-</div>
-
-<!-- ===== MODALS ===== -->
-<div class="modal-overlay" id="modal-save">
-  <div class="modal-box" style="position:relative">
-    <h3>💾 Твой прогресс</h3>
-    <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:8px">Скопируй этот код и сохрани в надёжном месте:</p>
-    <div class="modal-code" id="save-code-display"></div>
-    <div class="modal-row">
-      <button class="btn btn-primary" onclick="copyCode()">📋 Скопировать</button>
-      <button class="btn btn-outline" onclick="closeModals()">Закрыть</button>
-    </div>
-    <button class="modal-close" onclick="closeModals()">✕</button>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-restore">
-  <div class="modal-box" style="position:relative">
-    <h3>📥 Восстановить прогресс</h3>
-    <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:8px">Вставь сохранённый код:</p>
-    <textarea class="modal-input" id="restore-input" rows="4" placeholder="Вставь код сюда..."></textarea>
-    <div class="modal-row">
-      <button class="btn btn-mint" onclick="restoreCode()">✅ Восстановить</button>
-      <button class="btn btn-outline" onclick="closeModals()">Отмена</button>
-    </div>
-    <button class="modal-close" onclick="closeModals()">✕</button>
+<!-- TOPIC -->
+<div id="screen-topic" class="screen">
+  <div class="hdr">
+    <button class="back" id="t-back">←</button>
+    <span class="hdr-title" id="t-title"></span>
+    <div style="min-width:40px"></div>
+  </div>
+  <div class="steps">
+    <div class="step" id="step1">📖 Study Notes</div>
+    <div class="step-sep">›</div>
+    <div class="step" id="step2">🎯 Test</div>
+  </div>
+  <div class="notes-wrap">
+    <div id="notes-body"></div>
+    <div id="notes-links"></div>
+  </div>
+  <div class="bottom-bar">
+    <button class="btn btn-primary" id="quiz-btn" onclick="startQuiz()">🎯 Take the Test</button>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-cup">
-  <div class="modal-box" style="text-align:center;position:relative">
-    <div style="font-size:4rem;margin-bottom:8px">🏆</div>
-    <h3 id="cup-modal-title">Кубок получен!</h3>
-    <p id="cup-modal-msg" style="font-size:0.88rem;color:var(--text-light);margin:8px 0 16px"></p>
-    <button class="btn btn-primary btn-full" onclick="closeModals()">🎉 Отлично!</button>
+<!-- QUIZ -->
+<div id="screen-quiz" class="screen">
+  <div class="hdr">
+    <button class="back" id="qz-back">←</button>
+    <span class="hdr-title" id="qz-title">Knowledge Test</span>
+    <div style="min-width:40px"></div>
   </div>
+  <div class="qz-hdr">
+    <div class="pb-wrap" style="flex:1"><div class="pb-fill" id="qz-bar" style="width:0%"></div></div>
+    <div class="qz-prog" id="qz-prog">1/6</div>
+  </div>
+  <div style="padding:0 16px 100px" id="qz-body"></div>
 </div>
+
+<!-- RESULT -->
+<div id="screen-result" class="screen">
+  <div class="hdr">
+    <div style="min-width:40px"></div>
+    <span class="hdr-title">Result</span>
+    <div style="min-width:40px"></div>
+  </div>
+  <div class="result-wrap" id="result-body"></div>
+</div>
+
+</div><!-- #app -->
 
 <script>
-// ============================================================
-//  DATA
-// ============================================================
+// ── STATE ────────────────────────────────────────────────────────
+const SK = 'melly_sci_v2';
+let ST = {};
+function loadST(){ try{ ST = JSON.parse(localStorage.getItem(SK)||'{}'); }catch(e){ ST={}; } }
+function saveST(){ localStorage.setItem(SK, JSON.stringify(ST)); }
+function ts(id){ if(!ST[id]) ST[id]={read:false,passed:false,score:0,max:0}; return ST[id]; }
 
-const EXAM_DATES = {
-  englishProject: '2026-05-19',  // Advertisement Makeover project deadline
-  examsStart: '2026-06-08',      // Monday — exams begin
-  examsEnd: '2026-06-12',        // Friday — last exam day
-  waterpark: '2026-06-19',       // Friday — waterpark trip
-  feedbackStart: '2026-06-22',   // Monday — feedback days begin (school ends 13:15)
-  feedbackDays: ['2026-06-22','2026-06-23'],
-  lastDay: '2026-06-23',         // Tuesday — last school day
-  graduation: '2026-06-24',      // Wednesday 20:30 — Prize Giving & Graduation
-  graduationTime: '20:30'
-};
+// ── NAV ──────────────────────────────────────────────────────────
+let curGroup = null, curTopic = null;
+let qzQs=[], qzIdx=0, qzScore=0, qzDone=false;
 
-const SUBJECTS = [
-  {
-    id: 'english',
-    name: 'English',
-    nameRu: 'Английский',
-    icon: '📕',
-    color: '#FF8FAB',
-    colorDark: '#d4607e',
-    deadline: '2026-06-07',
-    topics: [
-      {
-        id: 'wonder_characters',
-        nameRu: 'Wonder — Персонажи',
-        nameEn: 'Wonder — Characters',
-        icon: '🎭',
-        checklist: [
-          "I know Auggie's story and his facial difference",
-          "I can describe Via's role and her feelings",
-          "I know Jack Will's mistake and how he changed",
-          "I know Summer and what she represents",
-          "I can describe Julian as a bully and what drives him"
-        ],
-        quiz: [
-          { q: "What is Auggie's full name in the novel 'Wonder'?", opts: ["August Pullman","Auggie Palmer","August Prince","Augie Pullins"], correct: 0 },
-          { q: "Why does Auggie say \"I wish every day could be Halloween\"?", opts: ["He loves costumes","He can hide his face and not be judged","He gets candy","School is closed"], correct: 1 },
-          { q: "What big mistake does Jack Will make at Halloween?", opts: ["He forgets his costume","He talks badly about Auggie behind his back","He doesn't come to school","He fights with Summer"], correct: 1 },
-          { q: "Which character chooses kindness from the very beginning?", opts: ["Julian","Jack Will","Summer","Via"], correct: 2 },
-          { q: "What does the quote \"August is the sun\" mean?", opts: ["Auggie is very smart","Everything in the family revolves around August","Auggie is warm and kind","August is the favourite child"], correct: 1 }
-        ]
-      },
-      {
-        id: 'wonder_themes',
-        nameRu: 'Wonder — Темы и символы',
-        nameEn: 'Wonder — Themes & Symbols',
-        icon: '💛',
-        checklist: [
-          "I understand the theme of kindness (\"Choose Kind\")",
-          "I understand how perspective works in the novel (multiple narrators)",
-          "I can explain the theme of friendship with examples",
-          "I know the key symbols: mask/Halloween, switching tables, the sun quote",
-          "I remember at least 3 key quotes"
-        ],
-        quiz: [
-          { q: "What is Mr. Browne's famous precept in 'Wonder'?", opts: ["Be yourself","Never give up","Choose Kind","Friends first"], correct: 2 },
-          { q: "Why does the author use multiple narrators in Wonder?", opts: ["To make the book longer","To show that everyone experiences events differently","Because Auggie can't speak","To confuse the reader"], correct: 1 },
-          { q: "What does \"switching tables\" symbolise in the novel?", opts: ["The school canteen is crowded","Jack choosing friendship over popularity","Summer being rude","Auggie getting lost"], correct: 1 },
-          { q: "What happens at the Nature Retreat that is important?", opts: ["Auggie gets lost in the forest","Julian apologises","Students start treating Auggie better","Jack and Auggie fight"], correct: 2 }
-        ]
-      },
-      {
-        id: 'pea_persuasion',
-        nameRu: 'Навыки письма — PEA и убеждение',
-        nameEn: 'Language Skills — PEA & Persuasion',
-        icon: '✍️',
-        checklist: [
-          "I know what PEA stands for (Point, Evidence, Analysis)",
-          "I can identify persuasive language techniques (rhetorical questions, rule of three, emotive language)",
-          "I understand narrative voice: first person vs third person",
-          "I know the difference between narrative, descriptive and for-and-against essays",
-          "I can identify presentational devices in adverts"
-        ],
-        quiz: [
-          { q: "What does PEA stand for in essay writing?", opts: ["Paragraph, Evidence, Answer","Point, Evidence, Analysis","Point, Example, Argument","Purpose, Effect, Audience"], correct: 1 },
-          { q: "Which of these is an example of a rhetorical question?", opts: ["\"The sky is blue.\"","\"She ran quickly.\"","\"Isn't it time we made a change?\"","\"He went to the shop.\""], correct: 2 },
-          { q: "In first-person narrative, which pronoun is mainly used?", opts: ["He/She","They","I/We","You"], correct: 2 },
-          { q: "What is the PURPOSE of a for-and-against essay?", opts: ["To tell a story","To describe a place","To present both sides of an argument","To write a letter"], correct: 2 }
-        ]
-      },
-      {
-        id: 'myths_media',
-        nameRu: 'Мифы, медиа и реклама',
-        nameEn: 'Myths, Media & Advertising',
-        icon: '📺',
-        checklist: [
-          "I understand what myths and legends are and why cultures have them",
-          "I know how descriptive language is used to create mythical monsters (p.32)",
-          "I can analyse how adverts use persuasive language and visual choices (p.85-91, p.98-99)",
-          "I understand how documentaries can show bias (p.20) and how to authenticate content",
-          "I know how film marketing posters work (p.22)",
-          "I understand setting in stories and how to 'grab the reader' (p.65)"
-        ],
-        quiz: [
-          { q: "Which of these is a presentational device used in advertisements?", opts: ["Rhyme scheme","Colour, layout and images","Chapters and subheadings","Verb tenses"], correct: 1 },
-          { q: "What does it mean when a documentary shows 'bias'?", opts: ["It uses many cameras","It presents one side more favourably than another","It is very long","It has a narrator"], correct: 1 },
-          { q: "What is the PURPOSE of a film marketing poster?", opts: ["To explain the whole plot","To attract audience and create interest","To list the actors' salaries","To show where to buy tickets"], correct: 1 },
-          { q: "Why do myths exist in almost every culture in the world?", opts: ["Because people copy each other","Because they help explain the world and teach moral lessons","Because writers travel a lot","Because schools teach them"], correct: 1 },
-          { q: "What does it mean when a text tries to 'grab the reader' at the opening?", opts: ["Use very long sentences","Start with a shocking statement, question or image to hook attention","List all the characters","Start with a dictionary definition"], correct: 1 },
-          { q: "What is the purpose of advertising according to our unit?", opts: ["To entertain people","To teach grammar","To persuade people to buy or believe something","To tell historical stories"], correct: 2 }
-        ]
-      },
-      {
-        id: 'advert_project',
-        nameRu: '⚠️ Проект: Реклама (сдать 19 мая!)',
-        nameEn: 'Advertisement Makeover Project — Due 19 May',
-        icon: '🗓',
-        checklist: [
-          "I have chosen a real advertisement (print/poster/video/social media)",
-          "Criterion A: I have analysed type, purpose, target audience, persuasive language and stylistic choices in paragraphs",
-          "I have evaluated the advert's effectiveness (what works, what could improve, is it ethical?)",
-          "Criterion C: I have redesigned/improved the advert for a specific audience",
-          "Criterion D: I have written a reflection explaining what I changed and why, and which techniques I used",
-          "My response is well-organised with clear paragraphs (Criterion B)"
-        ],
-        quiz: [
-          { q: "What are the FOUR criteria assessed in the Advertisement Makeover project?", opts: ["Reading, Writing, Speaking, Listening","Analysing (A), Organising (B), Producing Text (C), Using Language (D)","Planning, Drafting, Editing, Publishing","Ideas, Structure, Vocabulary, Accuracy"], correct: 1 },
-          { q: "Which section of the project should be written in paragraphs, NOT bullet points?", opts: ["The reflection","The redesigned advert","The analysis of how the advert works (Criterion A)","The bibliography"], correct: 2 },
-          { q: "What does it mean to evaluate an advert's effectiveness?", opts: ["Just describe it","Comment on whether it works, what is strong, what could improve, and if it is ethical","Count the words","Draw a new logo"], correct: 1 },
-          { q: "When redesigning the advert, which is NOT a valid approach?", opts: ["Change the target audience","Make it more ethical","Improve persuasiveness","Copy it exactly with no changes"], correct: 3 }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'science',
-    name: 'Science',
-    nameRu: 'Наука',
-    icon: '🔬',
-    color: '#6BCB77',
-    colorDark: '#3a8a45',
-    deadline: '2026-06-07',
-    topics: [
-      {
-        id: 'gravity_forces',
-        nameRu: 'Гравитация и силы',
-        nameEn: 'Gravity & Forces',
-        icon: '🌍',
-        checklist: [
-          "I know the difference between mass (kg) and weight (N)",
-          "I can use the formula: Weight = Mass × Gravitational Field Strength",
-          "I know that on Earth, g ≈ 9.8 N/kg",
-          "I understand gravity is a non-contact force",
-          "I can draw and interpret force diagrams"
-        ],
-        quiz: [
-          { q: "What is the unit of WEIGHT?", opts: ["Kilograms (kg)","Metres (m)","Newtons (N)","Watts (W)"], correct: 2 },
-          { q: "An object has a mass of 8 kg. What is its weight on Earth? (g = 9.8 N/kg)", opts: ["8 N","78.4 N","0.82 N","800 N"], correct: 1 },
-          { q: "Gravity is described as a 'non-contact force'. What does this mean?", opts: ["Objects must touch to feel gravity","Gravity only works in space","Objects don't need to touch for gravity to act","Gravity pushes objects apart"], correct: 2 },
-          { q: "In which direction does gravitational force always point?", opts: ["Upward","Sideways","Toward the centre of the attracting object","Away from the Earth"], correct: 2 },
-          { q: "Which of the following CHANGES when you travel from Earth to the Moon?", opts: ["Mass","Weight","Both mass and weight","Neither mass nor weight"], correct: 1 },
-          { q: "A rock weighs 37 N on Earth (g = 9.8 N/kg). What is its mass (to 1 d.p.)?", opts: ["362.6 kg","3.8 kg","37 kg","9.8 kg"], correct: 1 },
-          { q: "On which planet would you weigh the MOST?", opts: ["Earth (g = 9.8 N/kg)","Mars (g = 3.7 N/kg)","Jupiter (g = 24.8 N/kg)","The Moon (g = 1.6 N/kg)"], correct: 2 },
-          { q: "Two forces act on a book resting on a table. Which pair is correct?", opts: ["Weight downward and air resistance upward","Weight downward and normal (reaction) force upward","Gravity sideways and friction upward","Tension downward and weight upward"], correct: 1 }
-        ]
-      },
-      {
-        id: 'solar_system',
-        nameRu: 'Солнечная система и космос',
-        nameEn: 'Solar System & Space',
-        icon: '🌌',
-        checklist: [
-          "I can name all 8 planets in order from the Sun (My Very Energetic Mother Just Served Us Nachos)",
-          "I know what dwarf planets, asteroids and comets are (comets' tails point AWAY from Sun)",
-          "I understand why planets stay in orbit (gravity + forward momentum, no friction in space)",
-          "I know why Venus is hot (thick atmosphere, greenhouse effect) and Mars is cold (far from Sun, thin atmosphere)",
-          "I understand the difference between rotation (spin) and revolution (orbit)",
-          "I know how the Solar System formed: solar nebula → collapse → accretion disc → planetesimals → planets",
-          "I know why inner planets are rocky and outer planets are gas giants (heat vaporised light gases near Sun)"
-        ],
-        quiz: [
-          { q: "What shape are planetary orbits around the Sun?", opts: ["Perfectly circular","Square","Elliptical (oval-shaped)","Spiral"], correct: 2 },
-          { q: "Why are planets able to keep moving in space without slowing down?", opts: ["Rocket engines keep them going","Space is a vacuum with no friction","The Sun pushes them","They are made of special material"], correct: 1 },
-          { q: "Why is Mars much colder than Earth?", opts: ["Mars has no Sun","Mars is farther from the Sun and has a thin atmosphere","Mars rotates faster","Mars has too many clouds"], correct: 1 },
-          { q: "What is the difference between a planet and a dwarf planet?", opts: ["Size only","Colour","A dwarf planet does not clear other objects from its orbit","Dwarf planets have no moons"], correct: 2 },
-          { q: "Which direction do most planets orbit the Sun?", opts: ["Clockwise","Anticlockwise","Back and forth","Random directions"], correct: 1 },
-          { q: "A comet's tail always points:", opts: ["Towards the Sun","Away from the Sun","In the direction the comet is travelling","Toward Earth"], correct: 1 },
-          { q: "Why are the inner planets (Mercury–Mars) rocky while the outer planets are gas giants?", opts: ["Rocky materials are heavier and fell inward","Heat near the Sun vaporised lighter gases, leaving only rocky material","The Sun attracted only rocky material","Gas planets pushed the rocky ones inward"], correct: 1 },
-          { q: "Which planet rotates in the OPPOSITE direction to most other planets?", opts: ["Mars","Jupiter","Uranus","Venus"], correct: 3 },
-          { q: "Why is Venus so much hotter than Mercury, even though Mercury is closer to the Sun?", opts: ["Venus is larger","Venus has a thick atmosphere that traps heat (extreme greenhouse effect)","Venus rotates faster","Venus is made of different rock"], correct: 1 }
-        ]
-      },
-      {
-        id: 'moon_eclipses',
-        nameRu: 'Луна, затмения и приливы',
-        nameEn: 'Moon, Eclipses & Tides',
-        icon: '🌙',
-        checklist: [
-          "I know all Moon phases in order: New → Waxing Crescent → First Quarter → Waxing Gibbous → Full → Waning Gibbous → Third Quarter → Waning Crescent",
-          "I can explain solar eclipse (Moon between Sun & Earth, New Moon) vs lunar eclipse (Earth between Sun & Moon, Full Moon)",
-          "I know: umbra = total eclipse shadow; penumbra = partial eclipse shadow",
-          "I understand spring tides (Sun+Moon aligned, New or Full Moon) vs neap tides (at right angles, Quarter Moons)",
-          "I know why the same side of the Moon always faces Earth (tidal locking / synchronous rotation)",
-          "I know why eclipses don't happen every month (Moon's orbit is tilted ~5° relative to Earth's orbit)"
-        ],
-        quiz: [
-          { q: "During a SOLAR eclipse, what is the correct order?", opts: ["Earth is between Sun and Moon","Moon is between Sun and Earth","Sun is between Earth and Moon","All three are side by side"], correct: 1 },
-          { q: "During which Moon phase does a LUNAR eclipse occur?", opts: ["New Moon","First Quarter","Full Moon","Third Quarter"], correct: 2 },
-          { q: "When do SPRING TIDES occur?", opts: ["Only in the spring season","When Sun and Moon are at right angles","When Sun, Moon and Earth are aligned","Every day"], correct: 2 },
-          { q: "What causes NEAP tides?", opts: ["Sun and Moon aligned","Full Moon only","Sun and Moon at right angles to Earth","Very strong winds"], correct: 2 },
-          { q: "Why does the same side of the Moon always face Earth?", opts: ["The Moon doesn't rotate","Because of tidal locking — the Moon's rotation matches its orbit","The Moon is flat","Gravity stops the Moon spinning"], correct: 1 },
-          { q: "Why don't we have a solar eclipse every single month?", opts: ["The Moon moves too fast","The Moon's orbit is tilted ~5°, so it usually passes above or below the Sun's line","The Sun is too far away","The Moon is too small"], correct: 1 },
-          { q: "Why does the Moon turn reddish-orange during a LUNAR eclipse?", opts: ["The Moon gets hot","Red light from Earth's atmosphere bends around and reaches the Moon","The shadow of Earth is red","Dust from space colours it"], correct: 1 },
-          { q: "The Moon takes approximately how long to orbit Earth?", opts: ["7 days","14 days","27.3 days","365 days"], correct: 2 }
-        ]
-      },
-      {
-        id: 'metals_alloys',
-        nameRu: 'Металлы, неметаллы и сплавы',
-        nameEn: 'Metals, Non-metals & Alloys',
-        icon: '⚗️',
-        checklist: [
-          "I know 5+ properties of metals: malleable, ductile, conduct heat & electricity, high melting point, lustrous (shiny)",
-          "I know metals conduct electricity because of FREE ELECTRONS in a metallic lattice",
-          "I know 4 properties of non-metals: brittle (if solid), dull, poor conductor (insulator), low melting point — exception: graphite conducts",
-          "I can define an alloy: a mixture of 2+ elements where at least one is a metal (e.g. steel = iron + carbon)",
-          "I can give 3 alloy examples: steel (Fe+C, stronger), stainless steel (Fe+Cr+Ni, no rust), brass (Cu+Zn, musical instruments)",
-          "I can explain WHY alloys are harder: different-sized atoms disrupt layers, preventing sliding",
-          "I can justify material choices: copper for wires (ductile + conducts), aluminium for aircraft (low density), tungsten for bulbs (high melting point)"
-        ],
-        quiz: [
-          { q: "What does 'malleable' mean?", opts: ["Conducts electricity","Can be hammered into shapes without breaking","Has a high melting point","Reacts with water"], correct: 1 },
-          { q: "What is an alloy?", opts: ["A pure metal","A mixture of two or more elements, where at least one is a metal","A non-metal compound","A liquid metal at room temperature"], correct: 1 },
-          { q: "Which property makes metals good for electrical wiring?", opts: ["They are shiny","They are malleable","They conduct electricity well due to free electrons","They have high density"], correct: 2 },
-          { q: "Why are non-metals used as electrical insulators?", opts: ["They are cheap","They are strong","Their electrons are tightly bound — they do not conduct electricity","They are lightweight"], correct: 2 },
-          { q: "Which of the following is NOT a typical property of metals?", opts: ["Malleable","Brittle","Ductile","Lustrous (shiny)"], correct: 1 },
-          { q: "Brass is an alloy of:", opts: ["Iron and carbon","Copper and zinc","Aluminium and copper","Tin and lead"], correct: 1 },
-          { q: "Which non-metal can conduct electricity (and is used in pencils and electrodes)?", opts: ["Sulfur","Diamond","Graphite","Chlorine"], correct: 2 },
-          { q: "Why are alloys generally harder than pure metals?", opts: ["Alloys have more electrons","Different-sized atoms disrupt the regular layers, preventing them from sliding","Alloys are heated to a higher temperature","Pure metals have no atoms"], correct: 1 }
-        ]
-      },
-      {
-        id: 'acids_ph',
-        nameRu: 'Кислоты, щёлочи и pH',
-        nameEn: 'Acids, Alkalis & pH',
-        icon: '🧪',
-        checklist: [
-          "I understand the pH scale 0–14: acids (0–6), neutral (7), alkalis (8–14)",
-          "I know acids contain H⁺ ions and alkalis contain OH⁻ ions",
-          "I know litmus: blue → red in acid; red → blue in alkali. Universal indicator gives an approximate pH number",
-          "I can name everyday acids: HCl (stomach), H₂SO₄ (car battery), citric acid (lemons), ethanoic acid (vinegar)",
-          "I can name everyday alkalis: NaOH (oven cleaner), ammonia (cleaning), NaHCO₃ (baking soda), toothpaste",
-          "I can explain acid rain: SO₂ + NOₓ from burning fossil fuels → sulfuric acid + nitric acid → damages trees, lakes, buildings",
-          "I know: toothpaste neutralises mouth acids; antacids neutralise excess stomach acid; lime treats acidic soil; ocean acidification threatens coral"
-        ],
-        quiz: [
-          { q: "What pH value represents a neutral substance?", opts: ["0","14","7","5"], correct: 2 },
-          { q: "Lemon juice turns blue litmus paper RED. What does this tell us?", opts: ["It is an alkali","It is neutral","It is an acid","It is a base"], correct: 2 },
-          { q: "At what pH does tooth enamel start to be damaged?", opts: ["Below 7","Below 5.5","Above 7","At exactly 7"], correct: 1 },
-          { q: "What is the main cause of acid rain?", opts: ["Too much sunlight","Ocean evaporation","Burning fossil fuels releasing sulphur dioxide and nitrogen oxides","Volcanic ash only"], correct: 2 },
-          { q: "A substance with a pH of 13 is best described as:", opts: ["A weak acid","A strong acid","A weak alkali","A strong alkali"], correct: 3 },
-          { q: "What is the main advantage of universal indicator over litmus paper?", opts: ["It is cheaper","It is red","It gives an approximate pH value, not just acid/neutral/alkali","It only works with strong acids"], correct: 2 },
-          { q: "Spoiled milk tastes very sour because:", opts: ["It has absorbed CO₂ from the air","Bacteria have produced more lactic acid in the milk","Milk is naturally a strong acid","The milk has absorbed alkali"], correct: 1 },
-          { q: "What do farmers add to acidic soil to improve crop growth?", opts: ["Sulfuric acid","Vinegar","Lime (calcium hydroxide)","Salt water"], correct: 2 }
-        ]
-      },
-      {
-        id: 'microorganisms',
-        nameRu: 'Микроорганизмы и пищевые цепи',
-        nameEn: 'Microorganisms & Food Chains',
-        icon: '🦠',
-        checklist: [
-          "I know the 4 types of microorganisms: bacteria (prokaryote, e.g. E. coli), fungi (e.g. yeast), viruses (acellular, e.g. influenza), protozoa (e.g. Plasmodium → malaria)",
-          "I know why viruses are NOT living: not made of cells, cannot reproduce independently, no metabolism outside host",
-          "I know viral life cycle: attach → inject DNA → hijack host → assemble copies → burst (lysis) → infect neighbours",
-          "I understand food chains: producer → primary consumer → secondary consumer → tertiary consumer; arrows show energy flow",
-          "I know the 10% energy rule: only 10% passes to next level (90% lost as heat, movement, waste) — limits chain length to 4–5 levels",
-          "I know decomposers (bacteria, fungi, earthworms) recycle nutrients, produce humus, aerate soil, regulate carbon cycle",
-          "I know Pasteur's experiment: swan-neck flask blocked airborne microbes → broth stayed clear → proved microbes (not spontaneous generation) cause spoilage",
-          "I know variables: IV = flask shape, DV = broth cloudiness, CVs = same broth/volume/temperature/time",
-          "I know food spoilage factors: HIGH temp → faster; LOW temp → slower; FREEZING → stops; LOW pH (pickling) → inhibits; DRY (dehydration) → stops; SALT/SUGAR → draws out water (osmosis)"
-        ],
-        quiz: [
-          { q: "Which of the following is NOT one of the 4 types of microorganism?", opts: ["Bacteria","Fungi","Algae","Viruses"], correct: 2 },
-          { q: "Why are viruses NOT considered living organisms by many scientists?", opts: ["They are too small","They are not made of cells and cannot reproduce independently","They live in water","They have no colour"], correct: 1 },
-          { q: "In a food chain, what is a PRODUCER?", opts: ["An animal that eats plants","A decomposer","A plant that makes its own food through photosynthesis","A top predator"], correct: 2 },
-          { q: "Only about 10% of energy is transferred from one trophic level to the next. Where does the other 90% go?", opts: ["It disappears","Used for the organism's own movement, heat, growth and waste","It returns to the Sun","Stored in the soil"], correct: 1 },
-          { q: "Why does food spoil faster at higher temperatures?", opts: ["Heat makes food wet","Microorganisms reproduce faster at warmer temperatures","Cold air preserves food","Heat removes nutrients"], correct: 1 },
-          { q: "What is the role of DECOMPOSERS in an ecosystem?", opts: ["They hunt other animals","They break down dead organisms and recycle nutrients back into the soil","They produce food through photosynthesis","They compete with producers"], correct: 1 },
-          { q: "What did Louis Pasteur's swan-neck flask experiment prove?", opts: ["That bacteria grow only in cold conditions","That microorganisms from the air cause food spoilage (not spontaneous generation)","That viruses cause all diseases","That fungi cannot grow on food"], correct: 1 },
-          { q: "In Pasteur's experiment, what was the INDEPENDENT variable?", opts: ["Whether the broth became cloudy","The type of broth used","The shape of the flask neck (open vs. swan-neck)","The room temperature"], correct: 2 },
-          { q: "Which microorganism is used to make bread rise?", opts: ["Bacteria","Virus","Yeast (a fungus)","Protozoa"], correct: 2 },
-          { q: "If the rabbit population in a food web suddenly decreases, what would most likely happen to the fox population?", opts: ["Increase","Decrease","Stay the same","Double immediately"], correct: 1 },
-          { q: "If ALL decomposers were removed from an ecosystem, what would most likely happen?", opts: ["Plants would grow faster","Dead organisms would accumulate and nutrients would not be recycled","Predators would increase","The climate would become cooler"], correct: 1 },
-          { q: "What does pickling food in vinegar do to prevent spoilage?", opts: ["Removes all water","Creates a low pH that inhibits bacterial growth","Heats the food to kill bacteria","Adds sugar to preserve it"], correct: 1 }
-        ]
-      },
-      {
-        id: 'electricity',
-        nameRu: 'Электричество и научный метод',
-        nameEn: 'Electricity & Scientific Method',
-        icon: '⚡',
-        checklist: [
-          "I know the 3 essentials of a circuit: power source (cell/battery), path (conductor/wire), load (bulb/motor/buzzer)",
-          "I know circuit symbols: cell, battery, bulb, switch (open/closed), ammeter (A), voltmeter (V), resistor, motor (M)",
-          "I know: AMMETER measures current (Amperes) — connected IN SERIES; VOLTMETER measures voltage (Volts) — connected IN PARALLEL",
-          "I know: more cells = higher voltage = more current = brighter bulb; more bulbs in series = more resistance = dimmer bulb",
-          "I know electrons flow NEGATIVE → POSITIVE; conventional current flows POSITIVE → NEGATIVE (opposite directions)",
-          "I know conductors (metals, graphite) have free electrons; insulators (plastic, rubber, glass) have tightly bound electrons",
-          "I know the scientific method: observation → hypothesis → experiment → results → conclusion → evaluation",
-          "I know variables: IV (what I change), DV (what I measure), CVs (everything kept the same for a fair test)",
-          "A good hypothesis states the predicted relationship between IV and DV with a reason: 'If [IV], then [DV], because…'"
-        ],
-        quiz: [
-          { q: "What does an ammeter measure?", opts: ["Voltage","Resistance","Electric current","Power"], correct: 2 },
-          { q: "How should an ammeter be connected in a circuit?", opts: ["In parallel with the component","In series in the circuit","Outside the circuit","Between the two battery terminals only"], correct: 1 },
-          { q: "How should a voltmeter be connected in a circuit?", opts: ["In series","In parallel with the component","Outside the circuit","After the switch only"], correct: 1 },
-          { q: "What happens to bulb brightness when you add more bulbs to a SERIES circuit?", opts: ["They get brighter","They stay the same","They get dimmer","They turn off completely"], correct: 2 },
-          { q: "Which of these materials is an electrical CONDUCTOR?", opts: ["Rubber","Plastic","Glass","Copper"], correct: 3 },
-          { q: "The plastic coating on a wire is an example of:", opts: ["A conductor","An insulator","A resistor","A semiconductor"], correct: 1 },
-          { q: "In which direction do ELECTRONS actually flow in a circuit?", opts: ["From positive to negative terminal","From negative to positive terminal","In both directions at once","They don't flow — only charge flows"], correct: 1 },
-          { q: "Which of the following is the BEST scientific hypothesis?", opts: ["I think plants grow.","Does fertiliser affect plant growth?","If more fertiliser is added, then plants will grow taller, because fertiliser provides extra nutrients.","Plants need water."], correct: 2 },
-          { q: "In a scientific experiment, what is the INDEPENDENT variable?", opts: ["The variable that is measured as a result","The variable deliberately changed by the scientist","All variables kept the same","The variable that cannot be measured"], correct: 1 },
-          { q: "What happened when Pasteur tilted the swan-neck flask so the broth reached the curved neck?", opts: ["Nothing changed","The broth turned clearer","The broth quickly became cloudy (microbes grew)","The flask broke"], correct: 2 }
-        ]
-      },
-      {
-        id: 'earth_classification',
-        nameRu: 'Земля и классификация',
-        nameEn: 'Environmental Science — Earth & Classification',
-        icon: '🌱',
-        checklist: [
-          "I know the 3 types of rock (igneous, sedimentary, metamorphic)",
-          "I know the 3 types of plate boundaries (convergent, divergent, transform)",
-          "I can explain Alfred Wegener's theory of continental drift",
-          "I can construct a simple dichotomous identification key",
-          "I know the 7 life processes (MRS GREN) and variation/extinction concepts"
-        ],
-        quiz: [
-          { q: "What evidence did Alfred Wegener use to support continental drift?", opts: ["Ocean colour","Wind patterns","Matching fossils and coastlines on different continents","Temperature differences"], correct: 2 },
-          { q: "At a CONVERGENT plate boundary, what happens?", opts: ["Plates move apart","Plates slide past each other","Plates move toward each other, causing mountains or subduction","Nothing happens"], correct: 2 },
-          { q: "What type of rock is formed from cooled magma or lava?", opts: ["Sedimentary","Metamorphic","Igneous","Fossil"], correct: 2 },
-          { q: "In a dichotomous key, what type of questions must you ask?", opts: ["Open questions with many answers","Yes/No questions with two clear options","Multiple choice questions","Questions about colour only"], correct: 1 }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'maths',
-    name: 'Maths',
-    nameRu: 'Математика',
-    icon: '📐',
-    color: '#C77DFF',
-    colorDark: '#8b3fcc',
-    deadline: '2026-06-07',
-    topics: [
-      {
-        id: 'decimals',
-        nameRu: 'Десятичные числа',
-        nameEn: 'Decimals (Ch 3.6)',
-        icon: '🔢',
-        checklist: [
-          "I can add and subtract decimals without a calculator",
-          "I can multiply decimals (e.g. 1.2 × 3)",
-          "I can divide decimals (e.g. 4.8 ÷ 4)",
-          "I can round decimals to 1 or 2 decimal places",
-          "I can order decimals from smallest to largest"
-        ],
-        quiz: [
-          { q: "What is 3.7 + 2.85?", opts: ["5.55","6.55","5.95","6.50"], correct: 1 },
-          { q: "Round 7.349 to 1 decimal place.", opts: ["7.3","7.4","7.35","7.0"], correct: 0 },
-          { q: "What is 1.2 × 4?", opts: ["4.8","5.2","4.2","48"], correct: 0 }
-        ]
-      },
-      {
-        id: 'geometry',
-        nameRu: 'Геометрия',
-        nameEn: 'Geometry (Ch 4)',
-        icon: '📐',
-        checklist: [
-          "I know the properties of triangles, quadrilaterals and circles",
-          "I can calculate angles in triangles and on a straight line",
-          "I can find the area and perimeter of rectangles, triangles and compound shapes",
-          "I can identify and use symmetry (lines of symmetry, rotational symmetry)",
-          "I know how to use a protractor to measure angles"
-        ],
-        quiz: [
-          { q: "What do all angles in a triangle add up to?", opts: ["90°","360°","180°","270°"], correct: 2 },
-          { q: "A rectangle has length 8 cm and width 5 cm. What is its area?", opts: ["26 cm²","13 cm²","40 cm²","80 cm²"], correct: 2 },
-          { q: "How many lines of symmetry does a square have?", opts: ["2","3","4","1"], correct: 2 },
-          { q: "Angles on a straight line add up to...", opts: ["90°","180°","360°","270°"], correct: 1 }
-        ]
-      },
-      {
-        id: 'percentages',
-        nameRu: 'Проценты',
-        nameEn: 'Percentages (Ch 5)',
-        icon: '💯',
-        checklist: [
-          "I can find a percentage of an amount (e.g. 30% of 200)",
-          "I can convert between fractions, decimals and percentages",
-          "I can calculate percentage increase and decrease",
-          "I can find what percentage one number is of another",
-          "I can solve real-life percentage problems (discounts, tips)"
-        ],
-        quiz: [
-          { q: "What is 25% of 80?", opts: ["25","40","20","16"], correct: 2 },
-          { q: "Convert 3/4 to a percentage.", opts: ["34%","70%","80%","75%"], correct: 3 },
-          { q: "A jacket costs £60. It is reduced by 20%. What is the new price?", opts: ["£40","£48","£50","£42"], correct: 1 },
-          { q: "What percentage is 15 out of 60?", opts: ["15%","20%","25%","30%"], correct: 2 }
-        ]
-      },
-      {
-        id: 'patterns',
-        nameRu: 'Паттерны и правила',
-        nameEn: 'Patterns & Rules (Ch 6)',
-        icon: '🔁',
-        checklist: [
-          "I can identify the rule in a number sequence",
-          "I can continue a pattern (visual and numerical)",
-          "I can find the nth term of a linear sequence",
-          "I can represent a pattern with a formula using letters",
-          "I can create and complete a table of values for a pattern"
-        ],
-        quiz: [
-          { q: "What is the next term in the sequence: 3, 7, 11, 15, ...?", opts: ["17","18","19","20"], correct: 2 },
-          { q: "A pattern adds 4 squares each time. Figure 1 has 1 square. How many squares in Figure 5?", opts: ["16","17","20","25"], correct: 1 },
-          { q: "The rule for a sequence is S = 4F – 3. What is S when F = 3?", opts: ["6","9","12","15"], correct: 1 },
-          { q: "Which formula represents: \"start with 2, add 3 each time\"?", opts: ["S = 3F","S = 3F – 1","S = 2F + 3","S = F + 3"], correct: 1 }
-        ]
-      },
-      {
-        id: 'algebra',
-        nameRu: 'Алгебра и уравнения',
-        nameEn: 'Algebra & Equations (Ch 7)',
-        icon: '🔣',
-        checklist: [
-          "I understand what a variable is and how to write algebraic expressions",
-          "I can simplify expressions by collecting like terms",
-          "I can solve one-step equations (e.g. x + 5 = 12)",
-          "I can solve two-step equations (e.g. 3x + 2 = 14)",
-          "I can substitute values into expressions and check solutions"
-        ],
-        quiz: [
-          { q: "Simplify: x + x + x", opts: ["3","x³","3x","x + 3"], correct: 2 },
-          { q: "Solve: a + 5 = 12", opts: ["a = 5","a = 17","a = 7","a = 6"], correct: 2 },
-          { q: "Solve: 3f = 36", opts: ["f = 3","f = 33","f = 12","f = 108"], correct: 2 },
-          { q: "Solve: 15 – c = –19", opts: ["c = 4","c = –4","c = 34","c = –34"], correct: 2 },
-          { q: "If p = 4, what is the value of 3p – 2?", opts: ["10","12","14","8"], correct: 0 }
-        ]
-      },
-      {
-        id: 'measure',
-        nameRu: 'Измерения',
-        nameEn: 'Measure (Ch 8)',
-        icon: '📏',
-        checklist: [
-          "I can convert between units of length (mm, cm, m, km)",
-          "I can convert between units of mass (g, kg) and volume (ml, l)",
-          "I can calculate perimeter and area of basic shapes",
-          "I can calculate volume of a cuboid (l × w × h)",
-          "I can read and interpret scales and measurements"
-        ],
-        quiz: [
-          { q: "How many centimetres are in 2.5 metres?", opts: ["25 cm","2500 cm","250 cm","0.25 cm"], correct: 2 },
-          { q: "A cuboid has length 4 cm, width 3 cm and height 2 cm. What is its volume?", opts: ["9 cm³","18 cm³","24 cm³","48 cm³"], correct: 2 },
-          { q: "Convert 3500 grams to kilograms.", opts: ["350 kg","0.35 kg","3.5 kg","35 kg"], correct: 2 }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'humanities',
-    name: 'Humanities',
-    nameRu: 'Гуманитарные',
-    icon: '🏛',
-    color: '#FF9F6B',
-    colorDark: '#cc6030',
-    deadline: '2026-06-07',
-    topics: [
-      {
-        id: 'maps_bias',
-        nameRu: 'Карты и предвзятость',
-        nameEn: 'Maps & Bias',
-        icon: '🗺️',
-        checklist: [
-          "I can explain what contour lines show and why they are useful",
-          "I understand that maps can show bias (what is included/excluded)",
-          "I know the difference between a primary and secondary source",
-          "I can write a 4–6 sentence EXPLAIN answer (asking \"but why?\" / \"but how?\")"
-        ],
-        quiz: [
-          { q: "What do contour lines on a map show?", opts: ["Rivers","Roads","Height of the land above sea level","Forests"], correct: 2 },
-          { q: "How can a map show bias?", opts: ["By using colours","By being very large","By choosing what to include or leave out, making some areas seem more important","By being printed in black and white"], correct: 2 },
-          { q: "Which of these is a PRIMARY source for studying Roman Numerals?", opts: ["A website about Roman history","A letter written by a Roman mathematician","A textbook chapter","A documentary film"], correct: 1 }
-        ]
-      },
-      {
-        id: 'global_citizenship',
-        nameRu: 'Глобальное гражданство и экология',
-        nameEn: 'Global Citizenship & Environment',
-        icon: '🌍',
-        checklist: [
-          "I can explain how plastic waste travels from cities to oceans (rain → drains → rivers → ocean currents)",
-          "I can explain how deforestation affects climate (less CO₂ absorbed, more in atmosphere)",
-          "I know why the Universal Declaration of Human Rights was created in 1948",
-          "I can explain how consumerism damages environments",
-          "I know the difference between GDP and Gross National Happiness"
-        ],
-        quiz: [
-          { q: "How does plastic from a city street eventually reach the middle of an ocean?", opts: ["Wind blows it directly","People throw it from boats","Rain washes it into drains → rivers → sea, then ocean currents carry it","It evaporates and falls as rain"], correct: 2 },
-          { q: "How does deforestation affect climate change?", opts: ["It creates more oxygen","Fewer trees means less CO₂ is absorbed, increasing greenhouse gases","It makes the land wetter","Trees produce CO₂"], correct: 1 },
-          { q: "Why was the Universal Declaration of Human Rights created in 1948?", opts: ["To start the United Nations","To end all wars","In response to the horrors of World War II to protect basic human rights","To create the European Union"], correct: 2 },
-          { q: "What does GDP measure?", opts: ["A country's happiness","Population size","The total value of goods and services produced in a country","The number of schools in a country"], correct: 2 }
-        ]
-      },
-      {
-        id: 'trees_sustainability',
-        nameRu: 'Деревья, экология и официальное письмо',
-        nameEn: 'Trees, Sustainability & Formal Writing',
-        icon: '🌳',
-        checklist: [
-          "I can explain at least 4 benefits of trees in cities (air quality, flood prevention, soil binding, temperature reduction)",
-          "I can write a formal email (150–200 words) with proper structure",
-          "I understand the Arbor Day Foundation water cycle diagram (rainfall interception, stem flow, runoff, roots)",
-          "I know the criteria for Humanities exam (A: Knowing, C: Communicating, D: Critical Thinking)"
-        ],
-        quiz: [
-          { q: "According to the Arbor Day Foundation diagram, how do tree roots help the environment?", opts: ["They produce oxygen underground","They bind soil to prevent erosion","They filter the air","They create water"], correct: 1 },
-          { q: "What is the correct structure for a formal email?", opts: ["Start with your name, end with \"bye\"","Dear [Name], body paragraphs, Kind regards","Any structure is fine","Start with a question"], correct: 1 },
-          { q: "When writing an EXPLAIN answer, which self-checking question helps make it complete?", opts: ["\"Is this interesting?\"","\"Is this long enough?\"","\"But why? / But how?\"","\"Did I use paragraphs?\""], correct: 2 }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'greek',
-    name: 'Greek',
-    nameRu: 'Греческий',
-    icon: '🇬🇷',
-    color: '#4ECDC4',
-    colorDark: '#287a74',
-    deadline: '2026-06-07',
-    topics: [
-      {
-        id: 'weather_days',
-        nameRu: 'Погода и дни недели',
-        nameEn: 'Weather & Days (Καιρός)',
-        icon: '☀️',
-        checklist: [
-          "I know all 10 weather words: ο καιρός (weather), ζέστη (heat/hot), κρύο (cold), η βροχή (rain), βρέχει (it rains), τα σύννεφα (clouds), η καταιγίδα (storm), οι αστραπές (lightning), ο ήλιος (sun), ο ουρανός (sky)",
-          "I know all 7 days of the week: Δευτέρα, Τρίτη, Τετάρτη, Πέμπτη, Παρασκευή, Σάββατο, Κυριακή",
-          "I can form future tense with θα: θα βρέξει (it will rain), θα κάνει ζέστη (it will be hot), θα αλλάξει (it will change)",
-          "I can answer: Τι καιρό κάνει; (What is the weather like?) / Πότε θα βρέξει; (When will it rain?) / Πότε θα έχει ήλιο; (When will it be sunny?)",
-          "I can write 3–4 sentences describing the weather (e.g. Σήμερα ο καιρός είναι καλός…)"
-        ],
-        quiz: [
-          { q: "What does 'βροχή' mean?", opts: ["Sun","Storm","Rain","Cloud"], correct: 2 },
-          { q: "What does 'η καταιγίδα' mean?", opts: ["Lightning","Cloud","Sun","Storm"], correct: 3 },
-          { q: "How do you form the future tense in Greek?", opts: ["Change the verb ending","Use 'θα' before the verb","Add '-ed' to the verb","Use 'να' before the verb"], correct: 1 },
-          { q: "What does 'Τι καιρό κάνει;' mean in English?", opts: ["What time is it?","What day is it?","What is the weather like?","Where are you going?"], correct: 2 },
-          { q: "Which is the Greek word for 'Wednesday'?", opts: ["Δευτέρα","Παρασκευή","Τετάρτη","Κυριακή"], correct: 2 },
-          { q: "What does 'θα βρέξει' mean?", opts: ["It is raining","It rained","It will rain","It stopped raining"], correct: 2 }
-        ]
-      },
-      {
-        id: 'travel_theatre',
-        nameRu: 'Путешествия и театр',
-        nameEn: 'Travel & Theatre (Ταξίδι / Θέατρο)',
-        icon: '✈️',
-        checklist: [
-          "I know travel vocabulary: ταξιδεύω (travel), τρένο (train), αεροπλάνο (airplane), εισιτήριο (ticket), πτήση (flight), σταθμός (station), θάλασσα (sea), παράθυρο (window), θέση (seat), καφετέρια (café)",
-          "I can write about a trip: 'Ταξίδεψα στην Αθήνα με αεροπλάνο. Το ταξίδι ήταν ωραίο. Είδα τη θάλασσα και πολλά μουσεία.'",
-          "I know theatre vocabulary: θέατρο, παράσταση (performance), κλείνω (book/reserve), αγοράζω (buy), πληρώνω (pay), θέση (seat), ευρώ, εισιτήριο",
-          "I can act out a ticket-buying dialogue (Πελάτης: Θέλω δύο εισιτήρια. / Για ποια ώρα; / Για τις οκτώ. / Τα εισιτήρια κοστίζουν 15 ευρώ.)",
-          "I can answer: Τι ώρα είναι η παράσταση; / Πόσο κάνει το εισιτήριο; / Μπορώ να κλείσω θέσεις;"
-        ],
-        quiz: [
-          { q: "What does 'εισιτήριο' mean?", opts: ["Passport","Ticket","Seat","Flight"], correct: 1 },
-          { q: "What does 'παράσταση' mean?", opts: ["Theatre","Ticket","Performance","Station"], correct: 2 },
-          { q: "How would you say \"I travelled to Athens by plane\" in Greek?", opts: ["Ταξίδεψα στην Αθήνα με τρένο","Ταξίδεψα στην Αθήνα με αεροπλάνο","Πήγα στην Αθήνα με αεροπλάνο χθες","Θα ταξιδέψω στην Αθήνα"], correct: 1 },
-          { q: "What does 'κλείνω θέσεις' mean?", opts: ["Pay for tickets","Cancel a reservation","Book/reserve seats","Change seats"], correct: 2 },
-          { q: "In a theatre dialogue, a customer says: \"Θέλω δύο εισιτήρια.\" What do they want?", opts: ["One ticket","Two tickets","Two seats at the front","Two programmes"], correct: 1 },
-          { q: "The seller says 'Τα εισιτήρια κοστίζουν 15 ευρώ.' What does this mean?", opts: ["The show is at 15:00","The tickets cost 15 euros","There are 15 seats left","You need to pay tomorrow"], correct: 1 }
-        ]
-      },
-      {
-        id: 'daily_routine',
-        nameRu: 'Распорядок дня и настоящее время',
-        nameEn: 'Daily Routine & Present Tense (Καθημερινό)',
-        icon: '📅',
-        checklist: [
-          "I know daily routine verbs: ξυπνάω (wake up), πηγαίνω (go), δουλεύω (work), τρώω (eat), διαβάζω (study/read), κοιμάμαι (sleep), βοηθάω (help), βλέπω (watch/see)",
-          "I know time expressions: το πρωί, το μεσημέρι, το απόγευμα, το βράδυ, πάντα, μερικές φορές",
-          "I can fully conjugate ταξιδεύω in present tense: ταξιδεύω / ταξιδεύεις / ταξιδεύει / ταξιδεύουμε / ταξιδεύετε / ταξιδεύουν",
-          "I can fully conjugate βλέπω in present tense: βλέπω / βλέπεις / βλέπει / βλέπουμε / βλέπετε / βλέπουν",
-          "I can fully conjugate πηγαίνω in present tense: πηγαίνω / πηγαίνεις / πηγαίνει / πηγαίνουμε / πηγαίνετε / πηγαίνουν",
-          "I can write 4–5 sentences about my daily routine using correct verb forms"
-        ],
-        quiz: [
-          { q: "What does 'ξυπνάω' mean?", opts: ["Go to sleep","Eat","Wake up","Study"], correct: 2 },
-          { q: "Complete: Εγώ ___ στο σχολείο. (πηγαίνω)", opts: ["πηγαίνει","πηγαίνεις","πηγαίνω","πηγαίνουμε"], correct: 2 },
-          { q: "What does 'το απόγευμα' mean?", opts: ["In the morning","At night","In the afternoon","At noon"], correct: 2 },
-          { q: "Which is the correct form of βλέπω for 'we'?", opts: ["βλέπω","βλέπετε","βλέπουμε","βλέπουν"], correct: 2 },
-          { q: "Which word means 'always' in Greek?", opts: ["μερικές φορές","πάντα","το βράδυ","ποτέ"], correct: 1 }
-        ]
-      },
-      {
-        id: 'airplane_party',
-        nameRu: 'Самолёт, Вечеринка и Будущее время',
-        nameEn: 'Airplane Travel, Party & Future Tense',
-        icon: '🎉',
-        checklist: [
-          "I know airplane travel vocabulary: αλλάζω (change), πληρώνω (pay), κρατώ ανοικτό (keep open), ημερομηνία (date), ώρα (time), αριθμός εισιτηρίου (ticket number)",
-          "I can answer airplane questions: Πότε είναι η πτήση; / Τι ώρα φεύγουμε; / Πόσο κοστίζει το εισιτήριο;",
-          "I know party vocabulary: πάρτι, έκπληξη (surprise), φίλοι (friends), αυλή (yard), ψώνια (shopping), ποτά (drinks), φαγητό (food)",
-          "I can conjugate ταξιδεύω in future tense: θα ταξιδέψω / θα ταξιδέψεις / θα ταξιδέψει / θα ταξιδέψουμε / θα ταξιδέψετε / θα ταξιδέψουν",
-          "I can conjugate πηγαίνω in future tense: θα πάω / θα πας / θα πάει / θα πάμε / θα πάτε / θα πάνε",
-          "I can conjugate κάνω in future tense: θα κάνω / θα κάνεις / θα κάνει / θα κάνουμε / θα κάνετε / θα κάνουν"
-        ],
-        quiz: [
-          { q: "What does 'ημερομηνία' mean?", opts: ["Flight","Ticket number","Date","Time"], correct: 2 },
-          { q: "What does 'έκπληξη' mean?", opts: ["Party","Friends","Shopping","Surprise"], correct: 3 },
-          { q: "How do you say 'We will go' in Greek?", opts: ["Θα πάω","Θα πάτε","Θα πάμε","Θα πάει"], correct: 2 },
-          { q: "What question asks 'What time does the flight leave?'", opts: ["Πότε είναι η πτήση;","Τι ώρα φεύγουμε;","Πόσο κοστίζει;","Πού είναι ο σταθμός;"], correct: 1 },
-          { q: "What does 'κρατώ ανοικτό' mean?", opts: ["I pay","I change","I keep open","I book"], correct: 2 }
-        ]
-      },
-      {
-        id: 'past_tense',
-        nameRu: 'Прошедшее время (Αόριστος)',
-        nameEn: 'Past Tense — Αόριστος',
-        icon: '⏰',
-        checklist: [
-          "I can conjugate ταξιδεύω in past tense: ταξίδεψα / ταξίδεψες / ταξίδεψε / ταξιδέψαμε / ταξιδέψατε / ταξίδεψαν",
-          "I can conjugate βλέπω in past tense: είδα / είδες / είδε / είδαμε / είδατε / είδαν",
-          "I can conjugate πηγαίνω in past tense: πήγα / πήγες / πήγε / πήγαμε / πήγατε / πήγαν",
-          "I can conjugate κάνω in past tense: έκανα / έκανες / έκανε / κάναμε / κάνατε / έκαναν",
-          "I can conjugate καλώ in past tense: κάλεσα / κάλεσες / κάλεσε / καλέσαμε / καλέσατε / κάλεσαν",
-          "I can use past tense in sentences: 'Το καλοκαίρι ταξίδεψα στην Αγγλία.' / 'Πέρσι πήγαμε στην Ελλάδα.'"
-        ],
-        quiz: [
-          { q: "How do you say 'I travelled' (past tense) in Greek?", opts: ["Ταξιδεύω","Θα ταξιδέψω","Ταξίδεψα","Ταξίδεψε"], correct: 2 },
-          { q: "What does 'Πέρσι πήγαμε στην Ελλάδα' mean?", opts: ["We will go to Greece","We are going to Greece","Last year we went to Greece","We went to Greece today"], correct: 2 },
-          { q: "What is the past tense of 'βλέπω' for 'I'?", opts: ["Θα δω","Βλέπω","Είδες","Είδα"], correct: 3 },
-          { q: "Complete: 'Χθες ___ τα μαθήματά μου.' (κάνω)", opts: ["κάνω","θα κάνω","έκανα","κάναμε"], correct: 2 },
-          { q: "How do you say 'She invited her friends to the party'?", opts: ["Η Μαρία καλεί τους φίλους","Η Μαρία θα καλέσει τους φίλους","Η Μαρία κάλεσε τους φίλους της στο πάρτι","Η Μαρία κάλεσε τους φίλους στο σχολείο"], correct: 2 }
-        ]
-      }
-    ]
-  }
-];
-
-const DUCK_PHRASES = [
-  "Привет, Melly! Ты сегодня молодец! 🌟",
-  "Кря! Сегодня узнаем что-то новое? 📚",
-  "Каждая звёздочка делает тебя умнее! ⭐",
-  "Маленькие шаги → большие результаты! 🐥",
-  "Ты справишься с экзаменами! Я верю! 💛",
-  "Готова учиться? Я готова помогать! 🎉",
-  "Кря-кря! Сегодня хороший день для учёбы! ☀️",
-  "Не забудь сделать перерыв после занятий! 🌸",
-];
-const CORRECT_PHRASES = ["Правильно! 🎉", "Умница! ⭐", "Отлично! 💛", "Так держать! 🌟"];
-const WRONG_PHRASES = ["Не беда! Запомни этот ответ 💪", "Попробуй ещё раз в следующий раз! 🐥", "Ошибки — это тоже обучение! 📚"];
-
-const BADGES_DEF = [
-  { id: 'first_quiz', name: 'Первый квиз! 🎉' },
-  { id: 'perfect', name: 'Отличница! ⭐' },
-  { id: 'streak_3', name: '3 дня подряд! 🔥' },
-  { id: 'streak_5', name: 'Целая неделя! 🏅' },
-  { id: 'english_cup', name: 'Писатель! ✍️' },
-  { id: 'science_cup', name: 'Учёный! 🔬' },
-  { id: 'maths_cup', name: 'Математик! 📐' },
-  { id: 'humanities_cup', name: 'Гражданин мира! 🌍' },
-  { id: 'greek_cup', name: 'Эллинист! 🇬🇷' },
-  { id: 'all_cups', name: 'Суперзвезда! 🌟' },
-];
-
-// Schedule data (May 19 – June 13)
-const SCHEDULE = [
-  // Week of 19 May — Project deadline + start revision
-  { date:'2026-05-19', subject:'english', task:'🚨 СДАТЬ проект "Реклама" (дедлайн сегодня!)', isExamDay:false },
-  { date:'2026-05-20', subject:'english', task:'Wonder: персонажи — Auggie, Via, Jack, Summer, Julian', isExamDay:false },
-  { date:'2026-05-21', subject:'science', task:'Гравитация: масса vs вес, формула W = m × g', isExamDay:false },
-  { date:'2026-05-22', subject:'maths', task:'Десятичные числа (Ch 3.6) — сложение, вычитание, округление', isExamDay:false },
-  { date:'2026-05-23', subject:'humanities', task:'Карты и контурные линии — первичные vs вторичные источники', isExamDay:false },
-  // Week of 25 May
-  { date:'2026-05-25', subject:'greek', task:'Погода: βροχή, ζέστη, σύννεφα + дни недели', isExamDay:false },
-  { date:'2026-05-26', subject:'english', task:'Wonder: темы (Choose Kind, дружба, перспектива) и символы', isExamDay:false },
-  { date:'2026-05-27', subject:'science', task:'Солнечная система: 8 планет по порядку, эллиптические орбиты', isExamDay:false },
-  { date:'2026-05-28', subject:'maths', task:'Геометрия (Ch 4): углы в треугольнике, площади, симметрия', isExamDay:false },
-  { date:'2026-05-29', subject:'humanities', task:'Глобальное гражданство: пластик → океан, вырубка лесов', isExamDay:false },
-  { date:'2026-05-30', subject:'greek', task:'Путешествия и театр: εισιτήριο, θέση, диалог в кассе', isExamDay:false },
-  // Week of 1 June
-  { date:'2026-06-01', subject:'english', task:'PEA параграфы и убедительная речь — риторические вопросы', isExamDay:false },
-  { date:'2026-06-02', subject:'science', task:'Луна и затмения: солнечное vs лунное, приливы Spring/Neap', isExamDay:false },
-  { date:'2026-06-03', subject:'maths', task:'Проценты (Ch 5): нахождение %, конвертация дроби↔%', isExamDay:false },
-  { date:'2026-06-04', subject:'humanities', task:'Деревья в городе — официальное письмо 150–200 слов', isExamDay:false },
-  { date:'2026-06-05', subject:'greek', task:'Распорядок дня: спряжение πηγαίνω, βλέπω, ταξιδεύω (настоящее)', isExamDay:false },
-  { date:'2026-06-06', subject:'english', task:'Мифы, медиа и реклама: анализ постеров, документалистика', isExamDay:false },
-  // Week of 7 June — final revision
-  { date:'2026-06-07', subject:'science', task:'Металлы, сплавы, кислоты и pH — финальное повторение', isExamDay:false },
-  // Exam week (8–12 June — Пн–Пт)
-  { date:'2026-06-08', subject:'english', task:'📝 ЭКЗАМЕН: English Language & Literature (2 часа)', isExamDay:true },
-  { date:'2026-06-09', subject:'science', task:'📝 ЭКЗАМЕН: Integrated Science (2 часа) — 80% Science + 20% Environmental', isExamDay:true },
-  { date:'2026-06-10', subject:'maths', task:'📝 ЭКЗАМЕН: Maths', isExamDay:true },
-  { date:'2026-06-11', subject:'humanities', task:'📝 ЭКЗАМЕН: Humanities', isExamDay:true },
-  { date:'2026-06-12', subject:'greek', task:'📝 ЭКЗАМЕН: Greek (Beginners)', isExamDay:true },
-  // Post-exam
-  { date:'2026-06-19', subject:'english', task:'🎢 Поездка в аквапарк! (если нет — остаёмся дома)', isExamDay:false },
-  { date:'2026-06-22', subject:'english', task:'🏫 Обратная связь от учителей (школа до 13:15)', isExamDay:false },
-  { date:'2026-06-23', subject:'english', task:'🏫 Обратная связь + последний день в школе (до 13:15)', isExamDay:false },
-];
-
-// ============================================================
-//  STATE
-// ============================================================
-
-const STATE_KEY = 'mellys_exam_v1';
-const DEFAULT_STATE = {
-  stars: 0,
-  cups: [],
-  badges: [],
-  topics: {},
-  dailyTasks: {},
-  streak: 0,
-  lastActiveDate: null,
-  version: 1
-};
-
-let STATE = loadState();
-
-function loadState() {
-  try {
-    const raw = localStorage.getItem(STATE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (parsed.version === 1) return Object.assign({}, DEFAULT_STATE, parsed);
-    }
-  } catch(e) {}
-  return Object.assign({}, DEFAULT_STATE);
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');
+  window.scrollTo(0,0);
 }
 
-function saveState() {
-  localStorage.setItem(STATE_KEY, JSON.stringify(STATE));
-}
+function goHome(){ renderHome(); show('home'); }
 
-function getTopicState(subjId, topicId) {
-  const key = subjId + '_' + topicId;
-  if (!STATE.topics[key]) STATE.topics[key] = { checklist: [], quizDone: false, quizScore: 0, quizMax: 0 };
-  return STATE.topics[key];
-}
-
-function isTopicComplete(subjId, topicId) {
-  const t = getTopicState(subjId, topicId);
-  const topic = findTopic(subjId, topicId);
-  if (!topic) return false;
-  return t.checklist.length === topic.checklist.length && t.quizDone;
-}
-
-function findSubject(id) { return SUBJECTS.find(s => s.id === id); }
-function findTopic(subjId, topicId) {
-  const s = findSubject(subjId);
-  return s ? s.topics.find(t => t.id === topicId) : null;
-}
-
-function subjectProgress(subjId) {
-  const s = findSubject(subjId);
-  if (!s) return { done: 0, total: 0, stars: 0 };
-  let done = 0, stars = 0;
-  for (const t of s.topics) {
-    if (isTopicComplete(subjId, t.id)) done++;
-    const ts = getTopicState(subjId, t.id);
-    stars += ts.quizScore;
-  }
-  return { done, total: s.topics.length, stars };
-}
-
-function allTopicsComplete(subjId) {
-  const p = subjectProgress(subjId);
-  return p.done === p.total && p.total > 0;
-}
-
-// ============================================================
-//  STREAK
-// ============================================================
-
-function updateStreak() {
-  const today = todayStr();
-  if (STATE.lastActiveDate === today) return;
-  const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
-  const yStr = yesterday.toISOString().slice(0,10);
-  if (STATE.lastActiveDate === yStr) {
-    STATE.streak++;
-  } else if (STATE.lastActiveDate !== today) {
-    STATE.streak = 1;
-  }
-  STATE.lastActiveDate = today;
-  saveState();
-  checkBadges();
-}
-
-function todayStr() { return new Date().toISOString().slice(0,10); }
-
-// ============================================================
-//  BADGES
-// ============================================================
-
-function checkBadges() {
-  const add = id => { if (!STATE.badges.includes(id)) { STATE.badges.push(id); saveState(); } };
-  if (Object.values(STATE.topics).some(t => t.quizDone)) add('first_quiz');
-  if (Object.values(STATE.topics).some(t => t.quizDone && t.quizScore === t.quizMax && t.quizMax > 0)) add('perfect');
-  if (STATE.streak >= 3) add('streak_3');
-  if (STATE.streak >= 5) add('streak_5');
-  for (const s of SUBJECTS) {
-    if (STATE.cups.includes(s.id)) add(s.id + '_cup');
-  }
-  if (SUBJECTS.every(s => STATE.cups.includes(s.id))) add('all_cups');
-}
-
-// ============================================================
-//  NAVIGATION
-// ============================================================
-
-let currentScreen = 'home';
-let currentSubject = null;
-let currentTopic = null;
-let quizState = null; // { questions, idx, score, subjId, topicId, isFinal }
-
-function showScreen(name, params) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('screen-' + name).classList.add('active');
-  currentScreen = name;
-
-  // Update nav
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  const navMap = { home: 'nav-home', schedule: 'nav-schedule', achievements: 'nav-achievements' };
-  if (navMap[name]) document.getElementById(navMap[name]).classList.add('active');
-
-  if (name === 'home') renderHome();
-  if (name === 'subject') renderSubject(params);
-  if (name === 'topic') renderTopic(params);
-  if (name === 'quiz') renderQuiz(params);
-  if (name === 'schedule') renderSchedule();
-  if (name === 'achievements') renderAchievements();
-
-  updateAllHeaders();
-}
-
-// ============================================================
-//  RENDER HOME
-// ============================================================
-
-function renderHome() {
-  // Duck phrase
-  const phrase = DUCK_PHRASES[Math.floor(Math.random() * DUCK_PHRASES.length)];
-  document.getElementById('speech-bubble').textContent = phrase;
-
-  // Stats
-  document.getElementById('home-stars-num').textContent = STATE.stars + ' ⭐';
-  document.getElementById('home-cups-num').textContent = STATE.cups.length + ' 🏆';
-  document.getElementById('home-streak-num').textContent = STATE.streak + ' 🔥';
-
-  // Today's task
-  renderToday();
-
-  // Countdown
-  const today = new Date(); today.setHours(0,0,0,0);
-  const examStart = new Date(EXAM_DATES.examsStart); examStart.setHours(0,0,0,0);
-  const examEnd = new Date(EXAM_DATES.examsEnd); examEnd.setHours(0,0,0,0);
-  const waterpark = new Date(EXAM_DATES.waterpark); waterpark.setHours(0,0,0,0);
-  const graduation = new Date(EXAM_DATES.graduation); graduation.setHours(0,0,0,0);
-  const diff = Math.ceil((examStart - today) / 86400000);
-  const cdBadge = document.getElementById('countdown-badge');
-  if (diff > 0) cdBadge.textContent = '🗓 До экзаменов: ' + diff + ' дн. (с 8 июня)';
-  else if (diff === 0) cdBadge.textContent = '🎓 Сегодня начало экзаменов!';
-  else if (today <= examEnd) cdBadge.textContent = '📝 Идут экзамены (до 12 июня)';
-  else if (today < waterpark) cdBadge.textContent = '🎉 Экзамены позади! 🎢 Аквапарк: ' + Math.ceil((waterpark - today)/86400000) + ' дн.';
-  else if (today <= graduation) cdBadge.textContent = '🎓 Выпускной: ' + formatDate(EXAM_DATES.graduation) + ' в 20:30';
-  else cdBadge.textContent = '🌟 Каникулы! Наслаждайся!';
-
-  // English project deadline
-  const projDate = new Date(EXAM_DATES.englishProject); projDate.setHours(0,0,0,0);
-  const projDiff = Math.ceil((projDate - today) / 86400000);
-  const dlBadge = document.getElementById('deadline-badge');
-  if (projDiff > 0) {
-    dlBadge.style.display = 'inline-flex';
-    dlBadge.className = projDiff <= 2 ? 'deadline-badge' : 'deadline-badge warning';
-    dlBadge.innerHTML = '⚠️ Проект "Реклама" (English): через ' + projDiff + ' дн.';
-  } else if (projDiff === 0) {
-    dlBadge.style.display = 'inline-flex';
-    dlBadge.className = 'deadline-badge';
-    dlBadge.innerHTML = '🚨 СЕГОДНЯ сдать проект "Реклама"!';
+// ── COUNTDOWN ────────────────────────────────────────────────────
+function renderCountdown(){
+  const exam = new Date('2026-05-18T09:00:00');
+  const diff = exam - new Date();
+  const days = Math.ceil(diff/(1000*60*60*24));
+  const el = document.getElementById('countdown');
+  if(days>0){
+    el.innerHTML=`<div class="cd-days">${days}</div><div class="cd-lbl">days until your Science Exam</div><div class="cd-date">Monday, 18 May 2026</div>`;
+  } else if(days===0){
+    el.innerHTML=`<div class="cd-days">📝</div><div class="cd-lbl">TODAY is your Science Exam — you've got this!</div>`;
   } else {
-    dlBadge.style.display = 'none';
-  }
-
-  // Subjects
-  renderSubjectCards();
-}
-
-function renderToday() {
-  const today = todayStr();
-  const sched = SCHEDULE.find(s => s.date === today);
-  const mainEl = document.getElementById('today-task-main');
-  const smallEl = document.getElementById('today-task-small');
-  if (sched) {
-    const subj = findSubject(sched.subject);
-    mainEl.textContent = (subj ? subj.icon : '') + ' ' + sched.task;
-    const p = subjectProgress(sched.subject);
-    smallEl.textContent = 'Прогресс ' + sched.subject + ': ' + p.done + '/' + p.total + ' тем';
-  } else {
-    const upcoming = SCHEDULE.find(s => s.date > today);
-    if (upcoming) {
-      const subj = findSubject(upcoming.subject);
-      mainEl.textContent = (subj ? subj.icon : '') + ' ' + upcoming.task;
-      smallEl.textContent = 'Следующее задание: ' + formatDate(upcoming.date);
-    } else {
-      mainEl.textContent = '🎉 Все задания выполнены! Отдыхай!';
-      smallEl.textContent = '';
-    }
+    el.innerHTML=`<div class="cd-days">✅</div><div class="cd-lbl">Exam complete! All that revision paid off!</div>`;
   }
 }
 
-function renderSubjectCards() {
-  const container = document.getElementById('subjects-scroll');
-  container.innerHTML = '';
-  for (const s of SUBJECTS) {
-    const p = subjectProgress(s.id);
-    const pct = p.total ? Math.round(p.done / p.total * 100) : 0;
-    const hasCup = STATE.cups.includes(s.id);
-    const card = document.createElement('div');
-    card.className = 'subject-card';
-    card.style.background = `linear-gradient(135deg, ${s.color}, ${s.colorDark})`;
-    card.innerHTML = `
-      <div class="subj-trophy">${hasCup ? '🏆' : '🔒'}</div>
-      <div class="subj-icon">${s.icon}</div>
-      <div class="subj-name">${s.nameRu}</div>
-      <div class="subj-stars">⭐ ${p.stars} звёзд</div>
-      <div class="subj-progress"><div class="subj-progress-fill" style="width:${pct}%"></div></div>
-      <div style="color:rgba(255,255,255,0.8);font-size:0.7rem;margin-top:4px;font-weight:700">${pct}% пройдено</div>
-    `;
-    card.onclick = () => showScreen('subject', { subjId: s.id });
-    container.appendChild(card);
-  }
-}
+// ── HOME ─────────────────────────────────────────────────────────
+function renderHome(){
+  renderCountdown();
+  let mastered=0, read=0;
+  GROUPS.forEach(g=>g.topics.forEach(t=>{
+    const s=ts(t.id);
+    if(s.passed) mastered++;
+    else if(s.read) read++;
+  }));
+  const total=18;
+  const pct=Math.round(mastered/total*100);
+  document.getElementById('overall-bar').style.width=pct+'%';
+  document.getElementById('overall-label').textContent=`${mastered} of ${total} topics mastered`;
+  document.getElementById('s-mastered').textContent=mastered;
+  document.getElementById('s-read').textContent=read;
+  document.getElementById('home-badge').textContent=pct+'%';
 
-// ============================================================
-//  RENDER SUBJECT
-// ============================================================
-
-function renderSubject({ subjId }) {
-  currentSubject = subjId;
-  const s = findSubject(subjId);
-  if (!s) return;
-
-  document.getElementById('subj-header-title').textContent = s.nameRu;
-  document.getElementById('subject-title').textContent = s.icon + ' ' + s.name;
-  const subjectHeaderDiv = document.getElementById('subject-header-div');
-  subjectHeaderDiv.style.background = `linear-gradient(135deg, ${s.color}, ${s.colorDark})`;
-
-  const today = new Date(); today.setHours(0,0,0,0);
-  const dl = new Date(s.deadline); dl.setHours(0,0,0,0);
-  const dlDiff = Math.ceil((dl - today) / 86400000);
-  document.getElementById('subject-deadline').textContent =
-    dlDiff > 0 ? `Подготовиться до: ${formatDate(s.deadline)} (${dlDiff} дн.)` :
-    dlDiff === 0 ? 'Сегодня дедлайн!' : 'Дедлайн прошёл';
-
-  const p = subjectProgress(subjId);
-  const pct = p.total ? Math.round(p.done / p.total * 100) : 0;
-  document.getElementById('subj-topics-done').textContent = `${p.done} из ${p.total} тем изучено`;
-  document.getElementById('subj-stars-earned').textContent = `⭐ ${p.stars}`;
-  document.getElementById('subj-progress-fill').style.width = pct + '%';
-  document.getElementById('subj-progress-fill').style.background = s.color;
-
-  // Topics
-  const list = document.getElementById('topics-list');
-  list.innerHTML = '';
-  for (const t of s.topics) {
-    const ts = getTopicState(subjId, t.id);
-    const complete = isTopicComplete(subjId, t.id);
-    const checkDone = ts.checklist.length === t.checklist.length;
-    let status, statusColor;
-    if (complete) { status = '⭐ Квиз пройден'; statusColor = '#e6a800'; }
-    else if (checkDone) { status = '📖 Чеклист готов'; statusColor = '#4CAF50'; }
-    else if (ts.checklist.length > 0) { status = `📖 В процессе (${ts.checklist.length}/${t.checklist.length})`; statusColor = '#FF9F6B'; }
-    else { status = '🔒 Не начато'; statusColor = '#aaa'; }
-
-    const card = document.createElement('div');
-    card.className = 'topic-card';
-    card.innerHTML = `
-      <div class="topic-icon">${t.icon}</div>
-      <div class="topic-info">
-        <div class="topic-name">${t.nameRu}</div>
-        <div class="topic-name-en">${t.nameEn}</div>
-        <div class="topic-status" style="color:${statusColor}">${status}</div>
-      </div>
-      <div class="topic-arrow">›</div>
-    `;
-    card.onclick = () => showScreen('topic', { subjId, topicId: t.id });
-    list.appendChild(card);
-  }
-
-  // Final quiz button
-  const fqs = document.getElementById('final-quiz-section');
-  const fqb = document.getElementById('final-quiz-btn');
-  if (allTopicsComplete(subjId)) {
-    fqs.style.display = 'block';
-    const hasCup = STATE.cups.includes(subjId);
-    fqb.textContent = hasCup ? '🏆 Кубок получен!' : '🏆 Финальный квиз предмета!';
-    fqb.disabled = hasCup;
-    fqb.style.background = s.color;
-    fqb.style.color = '#fff';
-  } else {
-    fqs.style.display = 'none';
-  }
-
-  document.getElementById('topic-back-btn');
-}
-
-// ============================================================
-//  RENDER TOPIC
-// ============================================================
-
-function renderTopic({ subjId, topicId }) {
-  currentSubject = subjId;
-  currentTopic = topicId;
-  const s = findSubject(subjId);
-  const t = findTopic(subjId, topicId);
-  if (!s || !t) return;
-
-  document.getElementById('topic-header-title').textContent = t.nameRu;
-  document.getElementById('topic-breadcrumb').textContent = s.icon + ' ' + s.nameRu + ' › ' + t.nameRu;
-  document.getElementById('topic-screen-title').textContent = t.icon + ' ' + t.nameRu;
-  document.getElementById('topic-back-btn').onclick = () => showScreen('subject', { subjId });
-
-  const ts = getTopicState(subjId, topicId);
-  const container = document.getElementById('checklist-container');
-  container.innerHTML = '';
-
-  t.checklist.forEach((item, i) => {
-    const checked = ts.checklist.includes(i);
-    const row = document.createElement('div');
-    row.className = 'checklist-item';
-    row.innerHTML = `
-      <input type="checkbox" class="checklist-cb" id="cb_${i}" ${checked ? 'checked' : ''}>
-      <label class="checklist-label" for="cb_${i}">
-        <span class="cb-box">${checked ? '✓' : ''}</span>
-        <span>${item}</span>
-      </label>
-    `;
-    const cb = row.querySelector('input');
-    cb.addEventListener('change', () => onChecklistChange(subjId, topicId, i, cb.checked));
-    container.appendChild(row);
-  });
-
-  updateQuizUnlock(subjId, topicId);
-}
-
-function onChecklistChange(subjId, topicId, idx, checked) {
-  const ts = getTopicState(subjId, topicId);
-  if (checked && !ts.checklist.includes(idx)) {
-    ts.checklist.push(idx);
-    addStars(0); // no stars for individual check, only for full checklist
-  } else if (!checked) {
-    ts.checklist = ts.checklist.filter(i => i !== idx);
-  }
-  const t = findTopic(subjId, topicId);
-  if (ts.checklist.length === t.checklist.length && !ts.checklistRewarded) {
-    ts.checklistRewarded = true;
-    addStars(2, 'Чеклист завершён!');
-  }
-  saveState();
-  updateQuizUnlock(subjId, topicId);
-}
-
-function updateQuizUnlock(subjId, topicId) {
-  const ts = getTopicState(subjId, topicId);
-  const t = findTopic(subjId, topicId);
-  const banner = document.getElementById('quiz-unlock-banner');
-  const checkDone = ts.checklist.length === t.checklist.length;
-  if (checkDone && !ts.quizDone) {
-    banner.classList.add('visible');
-    animateDuck('wobble');
-  } else if (ts.quizDone) {
-    banner.classList.add('visible');
-    banner.querySelector('p').textContent = `Квиз пройден! ${ts.quizScore}/${ts.quizMax} ⭐`;
-    const qBtn = banner.querySelector('button');
-    if (qBtn) { qBtn.textContent = '🔄 Пройти снова'; }
-  } else {
-    banner.classList.remove('visible');
-  }
-}
-
-function startTopicQuiz() {
-  const t = findTopic(currentSubject, currentTopic);
-  quizState = {
-    questions: shuffle([...t.quiz]),
-    idx: 0,
-    score: 0,
-    subjId: currentSubject,
-    topicId: currentTopic,
-    isFinal: false
-  };
-  showScreen('quiz', {});
-}
-
-function startFinalQuiz() {
-  const s = findSubject(currentSubject);
-  if (!s) return;
-  // Collect all quiz questions from all topics
-  let allQ = [];
-  for (const t of s.topics) {
-    allQ = allQ.concat(t.quiz.map(q => ({ ...q, _topicId: t.id })));
-  }
-  quizState = {
-    questions: shuffle(allQ).slice(0, 10),
-    idx: 0,
-    score: 0,
-    subjId: currentSubject,
-    topicId: null,
-    isFinal: true
-  };
-  showScreen('quiz', {});
-}
-
-// ============================================================
-//  RENDER QUIZ
-// ============================================================
-
-function renderQuiz() {
-  if (!quizState) return;
-  const s = findSubject(quizState.subjId);
-  document.getElementById('quiz-header-title').textContent = quizState.isFinal ? '🏆 Финальный квиз' : '🎯 Мини-квиз';
-  document.getElementById('quiz-back-btn').onclick = () => {
-    if (quizState.isFinal) showScreen('subject', { subjId: quizState.subjId });
-    else showScreen('topic', { subjId: quizState.subjId, topicId: quizState.topicId });
-  };
-  renderQuizQuestion();
-}
-
-function renderQuizQuestion() {
-  const content = document.getElementById('quiz-content');
-  const qs = quizState.questions;
-  const idx = quizState.idx;
-  const total = qs.length;
-
-  if (idx >= total) {
-    renderQuizResult();
-    return;
-  }
-
-  const q = qs[idx];
-  const s = findSubject(quizState.subjId);
-  const pct = Math.round(idx / total * 100);
-
-  content.innerHTML = `
-    <div class="quiz-progress-bar">
-      <div class="quiz-q-num">Вопрос ${idx + 1} из ${total}</div>
-      <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:${s ? s.color : '#FFD166'}"></div></div>
-    </div>
-    <div class="quiz-question-card">${q.q}</div>
-    <div class="quiz-answers" id="quiz-answers"></div>
-    <div class="quiz-duck-msg" id="quiz-duck-msg"></div>
-  `;
-
-  const answersDiv = document.getElementById('quiz-answers');
-  q.opts.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'answer-btn';
-    btn.textContent = opt;
-    btn.onclick = () => onAnswer(i, q.correct, btn, answersDiv);
-    answersDiv.appendChild(btn);
+  const list=document.getElementById('groups-list');
+  list.innerHTML='';
+  GROUPS.forEach(g=>{
+    let gm=0;
+    g.topics.forEach(t=>{ if(ts(t.id).passed) gm++; });
+    const gp=Math.round(gm/g.topics.length*100);
+    const c=document.createElement('div');
+    c.className='g-card';
+    c.style.background=g.gradient;
+    c.innerHTML=`<div class="g-top"><span class="g-icon">${g.icon}</span><div><div class="g-name">${g.name}</div><div class="g-count">${gm}/${g.topics.length} mastered</div></div><span class="g-arrow">›</span></div><div class="pb-wrap"><div class="pb-fill" style="width:${gp}%;background:rgba(255,255,255,.9)"></div></div><div class="pb-label">${gp}% complete</div>`;
+    c.onclick=()=>showGroup(g.id);
+    list.appendChild(c);
   });
 }
 
-function onAnswer(chosen, correct, clickedBtn, answersDiv) {
-  const btns = answersDiv.querySelectorAll('.answer-btn');
-  btns.forEach(b => b.disabled = true);
-  const msgEl = document.getElementById('quiz-duck-msg');
+// ── GROUP ────────────────────────────────────────────────────────
+function showGroup(gid){
+  curGroup=gid;
+  const g=GROUPS.find(x=>x.id===gid);
+  document.getElementById('g-title').textContent=g.icon+' '+g.name;
+  let gm=0;
+  g.topics.forEach(t=>{ if(ts(t.id).passed) gm++; });
+  const gp=Math.round(gm/g.topics.length*100);
+  document.getElementById('g-bar').style.width=gp+'%';
+  document.getElementById('g-bar-lbl').textContent=`${gm} of ${g.topics.length} topics mastered`;
 
-  if (chosen === correct) {
-    clickedBtn.classList.add('correct');
-    quizState.score++;
-    addStars(1);
-    const phrase = CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)];
-    msgEl.textContent = phrase;
-    animateDuck('wobble');
-  } else {
-    clickedBtn.classList.add('wrong');
-    btns[correct].classList.add('correct');
-    const phrase = WRONG_PHRASES[Math.floor(Math.random() * WRONG_PHRASES.length)];
-    msgEl.textContent = phrase;
-    animateDuck('shake');
-  }
-
-  setTimeout(() => {
-    quizState.idx++;
-    renderQuizQuestion();
-  }, 1500);
-}
-
-function renderQuizResult() {
-  const score = quizState.score;
-  const total = quizState.questions.length;
-  const perfect = score === total;
-  const s = findSubject(quizState.subjId);
-
-  if (perfect) addStars(1, 'Идеальный результат!');
-
-  if (!quizState.isFinal) {
-    const ts = getTopicState(quizState.subjId, quizState.topicId);
-    ts.quizDone = true;
-    ts.quizScore = score;
-    ts.quizMax = total;
-    checkBadges();
-    saveState();
-  } else {
-    // Award cup
-    if (!STATE.cups.includes(quizState.subjId)) {
-      STATE.cups.push(quizState.subjId);
-      saveState();
-      checkBadges();
-      setTimeout(() => {
-        launchConfetti();
-        openCupModal(s);
-      }, 400);
-    }
-  }
-
-  const emoji = perfect ? '🌟' : score >= total / 2 ? '😊' : '🐥';
-  const content = document.getElementById('quiz-content');
-  content.innerHTML = `
-    <div class="card quiz-result-card">
-      <div class="result-emoji">${emoji}</div>
-      <h2>${perfect ? 'Отлично!' : score >= total/2 ? 'Хорошо!' : 'Не беда!'}</h2>
-      <div class="result-score">Ты ответила правильно на ${score} из ${total}</div>
-      <div class="stars-earned">+${score}${perfect ? ' +1 бонус' : ''} ⭐ заработано!</div>
-      <button class="btn btn-primary btn-full" onclick="${quizState.isFinal ? `showScreen('subject',{subjId:'${quizState.subjId}'})` : `showScreen('topic',{subjId:'${quizState.subjId}',topicId:'${quizState.topicId}'})`}">
-        ← Назад
-      </button>
-    </div>
-  `;
-}
-
-// ============================================================
-//  RENDER SCHEDULE
-// ============================================================
-
-function renderSchedule() {
-  const container = document.getElementById('schedule-content');
-  container.innerHTML = '';
-  const today = todayStr();
-
-  // Group by week
-  const weeks = {};
-  for (const day of SCHEDULE) {
-    const d = new Date(day.date);
-    const wk = getWeekKey(d);
-    if (!weeks[wk]) weeks[wk] = [];
-    weeks[wk].push(day);
-  }
-
-  for (const [wk, days] of Object.entries(weeks)) {
-    const weekDiv = document.createElement('div');
-    weekDiv.className = 'week-group';
-    weekDiv.innerHTML = `<div class="week-label">${wk}</div>`;
-    const row = document.createElement('div');
-    row.className = 'days-row';
-    row.style.overflowX = 'auto';
-    row.style.display = 'flex';
-    row.style.gap = '10px';
-    row.style.paddingBottom = '4px';
-
-    for (const d of days) {
-      const s = findSubject(d.subject);
-      const done = STATE.dailyTasks[d.date];
-      const isToday = d.date === today;
-      const card = document.createElement('div');
-      card.className = 'day-card' + (d.isExamDay ? ' exam-day' : '') + (isToday ? ' today' : '');
-      card.style.cssText = 'min-width:115px;flex-shrink:0';
-      card.innerHTML = `
-        <div class="day-color-strip" style="background:${s ? s.color : '#ccc'}"></div>
-        <div style="padding-left:8px">
-          <div class="day-date">${formatShortDate(d.date)}</div>
-          <div class="day-name">${getDayName(d.date)}${isToday ? ' 📍' : ''}</div>
-          <div class="day-task">${d.task}</div>
-          ${d.isExamDay ? '<div class="exam-badge">ЭКЗАМЕН</div>' : ''}
-          ${!d.isExamDay ? `
-            <input type="checkbox" class="day-done-cb" id="day_${d.date}" ${done ? 'checked' : ''}>
-            <label class="day-done-label" for="day_${d.date}">
-              <span class="day-done-box">${done ? '✓' : ''}</span>
-              <span>Выполнено</span>
-            </label>
-          ` : ''}
-        </div>
-      `;
-      if (!d.isExamDay) {
-        const cb = card.querySelector('input');
-        if (cb) cb.addEventListener('change', () => onDayDone(d.date, cb.checked));
-      }
-      row.appendChild(card);
-    }
-    weekDiv.appendChild(row);
-    container.appendChild(weekDiv);
-  }
-}
-
-function onDayDone(date, checked) {
-  if (checked && !STATE.dailyTasks[date]) {
-    STATE.dailyTasks[date] = true;
-    addStars(2, 'День выполнен! +2 ⭐');
-    updateStreak();
-  } else if (!checked) {
-    delete STATE.dailyTasks[date];
-  }
-  saveState();
-}
-
-function getWeekKey(d) {
-  const mon = new Date(d);
-  mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
-  return 'Неделя с ' + formatShortDate(mon.toISOString().slice(0,10));
-}
-
-// ============================================================
-//  RENDER ACHIEVEMENTS
-// ============================================================
-
-function renderAchievements() {
-  // Cups
-  const shelf = document.getElementById('cups-shelf');
-  shelf.innerHTML = '';
-  for (const s of SUBJECTS) {
-    const earned = STATE.cups.includes(s.id);
-    const item = document.createElement('div');
-    item.className = 'cup-item';
-    item.innerHTML = `
-      <div class="cup-icon ${earned ? 'earned' : ''}">${s.icon}🏆</div>
-      <div class="cup-label">${s.nameRu}</div>
-    `;
-    shelf.appendChild(item);
-  }
-
-  // Stars
-  document.getElementById('stars-big-num').textContent = STATE.stars + ' ⭐';
-
-  // Badges
-  const grid = document.getElementById('badges-grid');
-  grid.innerHTML = '';
-  for (const b of BADGES_DEF) {
-    const earned = STATE.badges.includes(b.id);
-    const item = document.createElement('div');
-    item.className = 'badge-item' + (earned ? ' earned' : '');
-    item.textContent = b.name;
-    grid.appendChild(item);
-  }
-}
-
-// ============================================================
-//  STARS & ANIMATIONS
-// ============================================================
-
-function addStars(n, msg) {
-  if (n <= 0) return;
-  STATE.stars += n;
-  saveState();
-  updateAllHeaders();
-  flyStars(n);
-}
-
-function updateAllHeaders() {
-  const n = STATE.stars;
-  ['header-stars','header-stars-subj','header-stars-topic','header-stars-quiz','header-stars-sched','header-stars-ach'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = '⭐ ' + n;
+  const list=document.getElementById('topics-list');
+  list.innerHTML='';
+  g.topics.forEach(t=>{
+    const s=ts(t.id);
+    let status,color;
+    if(s.passed){status='✅ Mastered';color='#6BCB77';}
+    else if(s.read){status='📖 Studied — ready to test!';color='#FF9F6B';}
+    else{status='🔒 Not started yet';color='#aaa';}
+    const row=document.createElement('div');
+    row.className='t-row';
+    row.innerHTML=`<span class="t-icon">${t.icon}</span><div class="t-info"><div class="t-name">${t.name}</div><div class="t-status" style="color:${color}">${status}</div></div><span class="t-arr">›</span>`;
+    row.onclick=()=>showTopic(t.id);
+    list.appendChild(row);
   });
-  document.getElementById('header-stars').textContent = '⭐ ' + n;
-  document.getElementById('header-cups').textContent = '🏆 ' + STATE.cups.length;
+  show('group');
 }
 
-function flyStars(n) {
-  for (let i = 0; i < Math.min(n, 3); i++) {
-    setTimeout(() => {
-      const star = document.createElement('div');
-      star.className = 'star-fly';
-      star.textContent = '⭐';
-      star.style.left = (Math.random() * 60 + 20) + '%';
-      star.style.top = '50%';
-      document.body.appendChild(star);
-      setTimeout(() => star.remove(), 800);
-    }, i * 150);
-  }
-}
+// ── TOPIC ────────────────────────────────────────────────────────
+function showTopic(tid){
+  curTopic=tid;
+  let topic=null;
+  GROUPS.forEach(g=>g.topics.forEach(t=>{ if(t.id===tid) topic=t; }));
+  if(!topic) return;
 
-function animateDuck(type) {
-  const duck = document.getElementById('duck-svg');
-  if (!duck) return;
-  duck.classList.remove('duck-wobble','duck-bounce','duck-shake','duck-float','duck-pulse');
-  void duck.offsetWidth;
-  duck.classList.add('duck-' + type);
-  const dur = type === 'shake' ? 500 : type === 'bounce' ? 700 : 600;
-  setTimeout(() => {
-    duck.classList.remove('duck-' + type);
-    duck.classList.add('duck-float');
-  }, dur);
-}
+  document.getElementById('t-title').textContent=topic.icon+' '+topic.name;
+  document.getElementById('t-back').onclick=()=>showGroup(curGroup);
+  document.getElementById('notes-body').innerHTML=topic.notesHtml;
+  document.getElementById('notes-links').innerHTML=
+    '<div class="links-head">📚 Further Reading</div>'+
+    topic.links.map(l=>`<a class="link-item" href="${l.url}" target="_blank" rel="noopener">🔗 ${l.label}</a>`).join('');
 
-// Duck click interaction
-document.getElementById('duck-svg').addEventListener('click', () => {
-  animateDuck('bounce');
-  const bubble = document.getElementById('speech-bubble');
-  bubble.textContent = DUCK_PHRASES[Math.floor(Math.random() * DUCK_PHRASES.length)];
-});
+  const s=ts(tid);
+  if(!s.read){ s.read=true; saveST(); }
+  updateSteps(s);
 
-// ============================================================
-//  CONFETTI
-// ============================================================
-
-function launchConfetti() {
-  const colors = ['#FFD166','#FF8FAB','#C77DFF','#6BCB77','#FF9F6B','#4ECDC4','#fff'];
-  for (let i = 0; i < 70; i++) {
-    setTimeout(() => {
-      const p = document.createElement('div');
-      p.className = 'confetti-piece';
-      p.style.background = colors[Math.floor(Math.random() * colors.length)];
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.top = '-10px';
-      p.style.width = (Math.random() * 8 + 6) + 'px';
-      p.style.height = (Math.random() * 8 + 6) + 'px';
-      p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-      p.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
-      p.style.animationDelay = Math.random() * 0.5 + 's';
-      document.body.appendChild(p);
-      setTimeout(() => p.remove(), 3500);
-    }, i * 30);
-  }
-}
-
-// ============================================================
-//  MODALS
-// ============================================================
-
-function openSaveModal() {
-  const code = btoa(unescape(encodeURIComponent(JSON.stringify(STATE))));
-  document.getElementById('save-code-display').textContent = code;
-  document.getElementById('modal-save').classList.add('open');
-}
-
-function copyCode() {
-  const code = document.getElementById('save-code-display').textContent;
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(code).then(() => alert('Скопировано! 📋'));
+  const btn=document.getElementById('quiz-btn');
+  if(s.passed){
+    btn.textContent='✅ Passed! Retake?';
+    btn.className='btn btn-success';
   } else {
-    const ta = document.createElement('textarea');
-    ta.value = code;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    alert('Скопировано! 📋');
+    btn.textContent='🎯 Take the Test';
+    btn.className='btn btn-primary';
   }
+  show('topic');
 }
 
-function openRestoreModal() {
-  document.getElementById('restore-input').value = '';
-  document.getElementById('modal-restore').classList.add('open');
+function updateSteps(s){
+  document.getElementById('step1').className='step'+(s.passed?' done':' active');
+  document.getElementById('step2').className='step'+(s.passed?' done':(s.read?' active':''));
 }
 
-function restoreCode() {
-  const code = document.getElementById('restore-input').value.trim();
-  try {
-    const parsed = JSON.parse(decodeURIComponent(escape(atob(code))));
-    if (parsed.version === 1) {
-      STATE = Object.assign({}, DEFAULT_STATE, parsed);
-      saveState();
-      closeModals();
-      showScreen('home');
-      alert('Прогресс восстановлен! 🎉');
-    } else {
-      alert('Неверный код или версия не совпадает.');
-    }
-  } catch(e) {
-    alert('Ошибка! Проверь код и попробуй снова.');
-  }
+// ── QUIZ ─────────────────────────────────────────────────────────
+function startQuiz(){
+  let topic=null;
+  GROUPS.forEach(g=>g.topics.forEach(t=>{ if(t.id===curTopic) topic=t; }));
+  if(!topic) return;
+  qzQs=[...topic.quiz];
+  qzIdx=0; qzScore=0; qzDone=false;
+  document.getElementById('qz-back').onclick=()=>showTopic(curTopic);
+  renderQ();
+  show('quiz');
 }
 
-function openCupModal(subj) {
-  document.getElementById('cup-modal-title').textContent = '🏆 Кубок по ' + (subj ? subj.nameRu : '') + '!';
-  document.getElementById('cup-modal-msg').textContent = 'Ты прошла все темы и финальный квиз! Гордимся тобой, Melly! 🌟';
-  document.getElementById('modal-cup').classList.add('open');
+function renderQ(){
+  const q=qzQs[qzIdx];
+  qzDone=false;
+  document.getElementById('qz-prog').textContent=`${qzIdx+1}/${qzQs.length}`;
+  document.getElementById('qz-bar').style.width=`${(qzIdx/qzQs.length)*100}%`;
+  document.getElementById('qz-body').innerHTML=
+    `<div class="card"><div class="qz-q">${q.q}</div><div class="qz-opts">`+
+    q.opts.map((o,i)=>`<button class="qz-opt" onclick="pick(${i})">${o}</button>`).join('')+
+    `</div><div class="qz-explain" id="qz-exp"><strong>💡 Explanation:</strong> ${q.explain}</div>`+
+    `<button class="btn-next" id="qz-next" onclick="nextQ()">${qzIdx<qzQs.length-1?'Next →':'See Results 🎉'}</button></div>`;
 }
 
-function closeModals() {
-  document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
+function pick(i){
+  if(qzDone) return;
+  qzDone=true;
+  const q=qzQs[qzIdx];
+  document.querySelectorAll('.qz-opt').forEach((b,j)=>{
+    b.disabled=true;
+    if(j===q.correct) b.classList.add('ok');
+    else if(j===i) b.classList.add('bad');
+  });
+  if(i===q.correct) qzScore++;
+  document.getElementById('qz-exp').style.display='block';
+  document.getElementById('qz-next').style.display='block';
 }
 
-document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', e => { if (e.target === m) closeModals(); });
-});
-
-// ============================================================
-//  HELPERS
-// ============================================================
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
+function nextQ(){
+  qzIdx++;
+  if(qzIdx<qzQs.length){ renderQ(); }
+  else { showResult(); }
 }
 
-function formatDate(str) {
-  const d = new Date(str);
-  return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+function showResult(){
+  const total=qzQs.length;
+  const pct=Math.round(qzScore/total*100);
+  const passed=pct>=70;
+  const s=ts(curTopic);
+  s.score=qzScore; s.max=total;
+  if(passed) s.passed=true;
+  saveST();
+
+  const emoji=pct>=90?'🌟':pct>=70?'🎉':pct>=50?'🤔':'😅';
+  const title=pct>=90?'Outstanding!':pct>=70?'Well Done!':pct>=50?'Good Try!':'Keep Practising!';
+  const msg=passed?`Topic mastered! Score: ${qzScore}/${total}`:`Need 70% to pass. Score: ${qzScore}/${total}. Review the notes and try again!`;
+  const clr=passed?'var(--mint)':'var(--peach)';
+
+  document.getElementById('result-body').innerHTML=
+    `<div class="r-emoji">${emoji}</div>`+
+    `<div class="r-title">${title}</div>`+
+    `<div class="r-pct" style="color:${clr}">${pct}%</div>`+
+    `<div class="r-msg">${msg}</div>`+
+    `<div class="r-btns">`+
+    (!passed?`<button class="btn-action btn-primary" onclick="startQuiz()" style="background:linear-gradient(135deg,#4ECDC4,#2b8fc0);color:#fff">🔄 Try Again</button>`:'')+
+    `<button class="btn-action" onclick="showTopic(curTopic)" style="background:var(--border);color:var(--text)">📖 Review Notes</button>`+
+    `<button class="btn-action" onclick="showGroup(curGroup)" style="background:var(--border);color:var(--text)">← Back to Topics</button>`+
+    `</div>`;
+  show('result');
 }
 
-function formatShortDate(str) {
-  const [y,m,day] = str.split('-');
-  return day + '.' + m;
-}
+// ── DATA (populated below) ────────────────────────────────────────
+const GROUPS = [];
 
-function getDayName(str) {
-  const d = new Date(str);
-  const names = ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'];
-  return names[d.getDay()];
-}
-
-// ============================================================
-//  INIT
-// ============================================================
-
-updateStreak();
-showScreen('home');
+// ── INIT ─────────────────────────────────────────────────────────
+loadST();
+renderHome();
+show('home');
 </script>
 </body>
 </html>
