@@ -845,9 +845,13 @@ const SUBJECTS = [
         ],
         quiz: [
           { q: "What is the unit of WEIGHT?", opts: ["Kilograms (kg)","Metres (m)","Newtons (N)","Watts (W)"], correct: 2 },
-          { q: "An object has a mass of 5 kg. What is its weight on Earth? (g = 10 N/kg)", opts: ["5 N","0.5 N","50 N","500 N"], correct: 2 },
+          { q: "An object has a mass of 8 kg. What is its weight on Earth? (g = 9.8 N/kg)", opts: ["8 N","78.4 N","0.82 N","800 N"], correct: 1 },
           { q: "Gravity is described as a 'non-contact force'. What does this mean?", opts: ["Objects must touch to feel gravity","Gravity only works in space","Objects don't need to touch for gravity to act","Gravity pushes objects apart"], correct: 2 },
-          { q: "In which direction does gravitational force always point?", opts: ["Upward","Sideways","Toward the centre of the Earth","Away from the Earth"], correct: 2 }
+          { q: "In which direction does gravitational force always point?", opts: ["Upward","Sideways","Toward the centre of the attracting object","Away from the Earth"], correct: 2 },
+          { q: "Which of the following CHANGES when you travel from Earth to the Moon?", opts: ["Mass","Weight","Both mass and weight","Neither mass nor weight"], correct: 1 },
+          { q: "A rock weighs 37 N on Earth (g = 9.8 N/kg). What is its mass (to 1 d.p.)?", opts: ["362.6 kg","3.8 kg","37 kg","9.8 kg"], correct: 1 },
+          { q: "On which planet would you weigh the MOST?", opts: ["Earth (g = 9.8 N/kg)","Mars (g = 3.7 N/kg)","Jupiter (g = 24.8 N/kg)","The Moon (g = 1.6 N/kg)"], correct: 2 },
+          { q: "Two forces act on a book resting on a table. Which pair is correct?", opts: ["Weight downward and air resistance upward","Weight downward and normal (reaction) force upward","Gravity sideways and friction upward","Tension downward and weight upward"], correct: 1 }
         ]
       },
       {
@@ -856,18 +860,24 @@ const SUBJECTS = [
         nameEn: 'Solar System & Space',
         icon: '🌌',
         checklist: [
-          "I can name all 8 planets in order from the Sun",
-          "I know what dwarf planets, asteroids and comets are",
-          "I understand why planets stay in orbit (gravity + forward motion)",
-          "I know why Venus is hot and Mars is cold",
-          "I understand the difference between rotation and revolution"
+          "I can name all 8 planets in order from the Sun (My Very Energetic Mother Just Served Us Nachos)",
+          "I know what dwarf planets, asteroids and comets are (comets' tails point AWAY from Sun)",
+          "I understand why planets stay in orbit (gravity + forward momentum, no friction in space)",
+          "I know why Venus is hot (thick atmosphere, greenhouse effect) and Mars is cold (far from Sun, thin atmosphere)",
+          "I understand the difference between rotation (spin) and revolution (orbit)",
+          "I know how the Solar System formed: solar nebula → collapse → accretion disc → planetesimals → planets",
+          "I know why inner planets are rocky and outer planets are gas giants (heat vaporised light gases near Sun)"
         ],
         quiz: [
           { q: "What shape are planetary orbits around the Sun?", opts: ["Perfectly circular","Square","Elliptical (oval-shaped)","Spiral"], correct: 2 },
           { q: "Why are planets able to keep moving in space without slowing down?", opts: ["Rocket engines keep them going","Space is a vacuum with no friction","The Sun pushes them","They are made of special material"], correct: 1 },
           { q: "Why is Mars much colder than Earth?", opts: ["Mars has no Sun","Mars is farther from the Sun and has a thin atmosphere","Mars rotates faster","Mars has too many clouds"], correct: 1 },
           { q: "What is the difference between a planet and a dwarf planet?", opts: ["Size only","Colour","A dwarf planet does not clear other objects from its orbit","Dwarf planets have no moons"], correct: 2 },
-          { q: "Which direction do most planets orbit the Sun?", opts: ["Clockwise","Anticlockwise","Back and forth","Random directions"], correct: 1 }
+          { q: "Which direction do most planets orbit the Sun?", opts: ["Clockwise","Anticlockwise","Back and forth","Random directions"], correct: 1 },
+          { q: "A comet's tail always points:", opts: ["Towards the Sun","Away from the Sun","In the direction the comet is travelling","Toward Earth"], correct: 1 },
+          { q: "Why are the inner planets (Mercury–Mars) rocky while the outer planets are gas giants?", opts: ["Rocky materials are heavier and fell inward","Heat near the Sun vaporised lighter gases, leaving only rocky material","The Sun attracted only rocky material","Gas planets pushed the rocky ones inward"], correct: 1 },
+          { q: "Which planet rotates in the OPPOSITE direction to most other planets?", opts: ["Mars","Jupiter","Uranus","Venus"], correct: 3 },
+          { q: "Why is Venus so much hotter than Mercury, even though Mercury is closer to the Sun?", opts: ["Venus is larger","Venus has a thick atmosphere that traps heat (extreme greenhouse effect)","Venus rotates faster","Venus is made of different rock"], correct: 1 }
         ]
       },
       {
@@ -876,17 +886,22 @@ const SUBJECTS = [
         nameEn: 'Moon, Eclipses & Tides',
         icon: '🌙',
         checklist: [
-          "I know the phases of the Moon (waxing/waning, new/full)",
-          "I can explain what causes a solar eclipse vs a lunar eclipse",
-          "I understand spring tides and neap tides",
-          "I know why the same side of the Moon always faces Earth (tidal locking)",
-          "I know why eclipses don't happen every month"
+          "I know all Moon phases in order: New → Waxing Crescent → First Quarter → Waxing Gibbous → Full → Waning Gibbous → Third Quarter → Waning Crescent",
+          "I can explain solar eclipse (Moon between Sun & Earth, New Moon) vs lunar eclipse (Earth between Sun & Moon, Full Moon)",
+          "I know: umbra = total eclipse shadow; penumbra = partial eclipse shadow",
+          "I understand spring tides (Sun+Moon aligned, New or Full Moon) vs neap tides (at right angles, Quarter Moons)",
+          "I know why the same side of the Moon always faces Earth (tidal locking / synchronous rotation)",
+          "I know why eclipses don't happen every month (Moon's orbit is tilted ~5° relative to Earth's orbit)"
         ],
         quiz: [
           { q: "During a SOLAR eclipse, what is the correct order?", opts: ["Earth is between Sun and Moon","Moon is between Sun and Earth","Sun is between Earth and Moon","All three are side by side"], correct: 1 },
+          { q: "During which Moon phase does a LUNAR eclipse occur?", opts: ["New Moon","First Quarter","Full Moon","Third Quarter"], correct: 2 },
           { q: "When do SPRING TIDES occur?", opts: ["Only in the spring season","When Sun and Moon are at right angles","When Sun, Moon and Earth are aligned","Every day"], correct: 2 },
+          { q: "What causes NEAP tides?", opts: ["Sun and Moon aligned","Full Moon only","Sun and Moon at right angles to Earth","Very strong winds"], correct: 2 },
           { q: "Why does the same side of the Moon always face Earth?", opts: ["The Moon doesn't rotate","Because of tidal locking — the Moon's rotation matches its orbit","The Moon is flat","Gravity stops the Moon spinning"], correct: 1 },
-          { q: "What causes NEAP tides?", opts: ["Sun and Moon aligned","Full Moon only","Sun and Moon at right angles to Earth","Very strong winds"], correct: 2 }
+          { q: "Why don't we have a solar eclipse every single month?", opts: ["The Moon moves too fast","The Moon's orbit is tilted ~5°, so it usually passes above or below the Sun's line","The Sun is too far away","The Moon is too small"], correct: 1 },
+          { q: "Why does the Moon turn reddish-orange during a LUNAR eclipse?", opts: ["The Moon gets hot","Red light from Earth's atmosphere bends around and reaches the Moon","The shadow of Earth is red","Dust from space colours it"], correct: 1 },
+          { q: "The Moon takes approximately how long to orbit Earth?", opts: ["7 days","14 days","27.3 days","365 days"], correct: 2 }
         ]
       },
       {
@@ -895,17 +910,23 @@ const SUBJECTS = [
         nameEn: 'Metals, Non-metals & Alloys',
         icon: '⚗️',
         checklist: [
-          "I know 5 properties of metals (malleable, ductile, conduct heat/electricity, high melting point, shiny)",
-          "I know 4 properties of non-metals (brittle, dull, insulator, low melting point)",
-          "I can define an alloy and give 2 examples",
-          "I can explain WHY alloys have different properties (particle structure)",
-          "I can justify choosing a material for a specific use"
+          "I know 5+ properties of metals: malleable, ductile, conduct heat & electricity, high melting point, lustrous (shiny)",
+          "I know metals conduct electricity because of FREE ELECTRONS in a metallic lattice",
+          "I know 4 properties of non-metals: brittle (if solid), dull, poor conductor (insulator), low melting point — exception: graphite conducts",
+          "I can define an alloy: a mixture of 2+ elements where at least one is a metal (e.g. steel = iron + carbon)",
+          "I can give 3 alloy examples: steel (Fe+C, stronger), stainless steel (Fe+Cr+Ni, no rust), brass (Cu+Zn, musical instruments)",
+          "I can explain WHY alloys are harder: different-sized atoms disrupt layers, preventing sliding",
+          "I can justify material choices: copper for wires (ductile + conducts), aluminium for aircraft (low density), tungsten for bulbs (high melting point)"
         ],
         quiz: [
           { q: "What does 'malleable' mean?", opts: ["Conducts electricity","Can be hammered into shapes without breaking","Has a high melting point","Reacts with water"], correct: 1 },
-          { q: "What is an alloy?", opts: ["A pure metal","A non-metal compound","A mixture of two or more metals","A liquid metal"], correct: 2 },
-          { q: "Which property makes metals good for electrical wiring?", opts: ["They are shiny","They are malleable","They conduct electricity well","They have high density"], correct: 2 },
-          { q: "Why are non-metals used as electrical insulators?", opts: ["They are cheap","They are strong","They do not conduct electricity","They are lightweight"], correct: 2 }
+          { q: "What is an alloy?", opts: ["A pure metal","A mixture of two or more elements, where at least one is a metal","A non-metal compound","A liquid metal at room temperature"], correct: 1 },
+          { q: "Which property makes metals good for electrical wiring?", opts: ["They are shiny","They are malleable","They conduct electricity well due to free electrons","They have high density"], correct: 2 },
+          { q: "Why are non-metals used as electrical insulators?", opts: ["They are cheap","They are strong","Their electrons are tightly bound — they do not conduct electricity","They are lightweight"], correct: 2 },
+          { q: "Which of the following is NOT a typical property of metals?", opts: ["Malleable","Brittle","Ductile","Lustrous (shiny)"], correct: 1 },
+          { q: "Brass is an alloy of:", opts: ["Iron and carbon","Copper and zinc","Aluminium and copper","Tin and lead"], correct: 1 },
+          { q: "Which non-metal can conduct electricity (and is used in pencils and electrodes)?", opts: ["Sulfur","Diamond","Graphite","Chlorine"], correct: 2 },
+          { q: "Why are alloys generally harder than pure metals?", opts: ["Alloys have more electrons","Different-sized atoms disrupt the regular layers, preventing them from sliding","Alloys are heated to a higher temperature","Pure metals have no atoms"], correct: 1 }
         ]
       },
       {
@@ -914,17 +935,23 @@ const SUBJECTS = [
         nameEn: 'Acids, Alkalis & pH',
         icon: '🧪',
         checklist: [
-          "I understand the pH scale from 0 to 14",
-          "I know: acids pH < 7, neutral = 7, alkalis pH > 7",
-          "I know how litmus paper and universal indicator work",
-          "I can name everyday acids and alkalis (lemon juice, vinegar, baking soda, bleach)",
-          "I can explain what acid rain is and its environmental effects"
+          "I understand the pH scale 0–14: acids (0–6), neutral (7), alkalis (8–14)",
+          "I know acids contain H⁺ ions and alkalis contain OH⁻ ions",
+          "I know litmus: blue → red in acid; red → blue in alkali. Universal indicator gives an approximate pH number",
+          "I can name everyday acids: HCl (stomach), H₂SO₄ (car battery), citric acid (lemons), ethanoic acid (vinegar)",
+          "I can name everyday alkalis: NaOH (oven cleaner), ammonia (cleaning), NaHCO₃ (baking soda), toothpaste",
+          "I can explain acid rain: SO₂ + NOₓ from burning fossil fuels → sulfuric acid + nitric acid → damages trees, lakes, buildings",
+          "I know: toothpaste neutralises mouth acids; antacids neutralise excess stomach acid; lime treats acidic soil; ocean acidification threatens coral"
         ],
         quiz: [
           { q: "What pH value represents a neutral substance?", opts: ["0","14","7","5"], correct: 2 },
           { q: "Lemon juice turns blue litmus paper RED. What does this tell us?", opts: ["It is an alkali","It is neutral","It is an acid","It is a base"], correct: 2 },
           { q: "At what pH does tooth enamel start to be damaged?", opts: ["Below 7","Below 5.5","Above 7","At exactly 7"], correct: 1 },
-          { q: "What is the main cause of acid rain?", opts: ["Too much sunlight","Ocean evaporation","Burning fossil fuels releasing sulphur dioxide and nitrogen oxides","Volcanic ash only"], correct: 2 }
+          { q: "What is the main cause of acid rain?", opts: ["Too much sunlight","Ocean evaporation","Burning fossil fuels releasing sulphur dioxide and nitrogen oxides","Volcanic ash only"], correct: 2 },
+          { q: "A substance with a pH of 13 is best described as:", opts: ["A weak acid","A strong acid","A weak alkali","A strong alkali"], correct: 3 },
+          { q: "What is the main advantage of universal indicator over litmus paper?", opts: ["It is cheaper","It is red","It gives an approximate pH value, not just acid/neutral/alkali","It only works with strong acids"], correct: 2 },
+          { q: "Spoiled milk tastes very sour because:", opts: ["It has absorbed CO₂ from the air","Bacteria have produced more lactic acid in the milk","Milk is naturally a strong acid","The milk has absorbed alkali"], correct: 1 },
+          { q: "What do farmers add to acidic soil to improve crop growth?", opts: ["Sulfuric acid","Vinegar","Lime (calcium hydroxide)","Salt water"], correct: 2 }
         ]
       },
       {
@@ -933,24 +960,29 @@ const SUBJECTS = [
         nameEn: 'Microorganisms & Food Chains',
         icon: '🦠',
         checklist: [
-          "I know the 4 types of microorganisms (bacteria, fungi, viruses, protozoa) with one example each",
-          "I know why viruses are NOT considered fully living organisms (not made of cells, cannot reproduce independently)",
-          "I can explain MRS GREN (7 life processes)",
-          "I understand food chains: producer → primary consumer → secondary consumer → decomposer",
-          "I know that on average 10% of energy is passed from one level to the next in a food chain",
-          "I know the role of decomposers in nutrient recycling in ecosystems",
-          "I know Louis Pasteur's experiment: proved microorganisms cause food spoilage (variables: dependent, independent, controlled)",
-          "I know how temperature, pH and water content affect food spoilage"
+          "I know the 4 types of microorganisms: bacteria (prokaryote, e.g. E. coli), fungi (e.g. yeast), viruses (acellular, e.g. influenza), protozoa (e.g. Plasmodium → malaria)",
+          "I know why viruses are NOT living: not made of cells, cannot reproduce independently, no metabolism outside host",
+          "I know viral life cycle: attach → inject DNA → hijack host → assemble copies → burst (lysis) → infect neighbours",
+          "I understand food chains: producer → primary consumer → secondary consumer → tertiary consumer; arrows show energy flow",
+          "I know the 10% energy rule: only 10% passes to next level (90% lost as heat, movement, waste) — limits chain length to 4–5 levels",
+          "I know decomposers (bacteria, fungi, earthworms) recycle nutrients, produce humus, aerate soil, regulate carbon cycle",
+          "I know Pasteur's experiment: swan-neck flask blocked airborne microbes → broth stayed clear → proved microbes (not spontaneous generation) cause spoilage",
+          "I know variables: IV = flask shape, DV = broth cloudiness, CVs = same broth/volume/temperature/time",
+          "I know food spoilage factors: HIGH temp → faster; LOW temp → slower; FREEZING → stops; LOW pH (pickling) → inhibits; DRY (dehydration) → stops; SALT/SUGAR → draws out water (osmosis)"
         ],
         quiz: [
           { q: "Which of the following is NOT one of the 4 types of microorganism?", opts: ["Bacteria","Fungi","Algae","Viruses"], correct: 2 },
-          { q: "What does MRS GREN stand for? (first letter)", opts: ["Movement, Respiration, Sensitivity, Growth, Reproduction, Excretion, Nutrition","Mass, Rotation, Speed, Gravity, Radius, Energy, Newton","Microbes, Reaction, Size, Growth, Rust, Energy, Nutrition","Movement, Resistance, Sensitivity, Genetics, Reproduction, Excretion, Nutrition"], correct: 0 },
-          { q: "Why are viruses different from other microorganisms?", opts: ["They are larger","They cannot reproduce","They are not made of cells and cannot reproduce independently","They are found only in water"], correct: 2 },
+          { q: "Why are viruses NOT considered living organisms by many scientists?", opts: ["They are too small","They are not made of cells and cannot reproduce independently","They live in water","They have no colour"], correct: 1 },
           { q: "In a food chain, what is a PRODUCER?", opts: ["An animal that eats plants","A decomposer","A plant that makes its own food through photosynthesis","A top predator"], correct: 2 },
+          { q: "Only about 10% of energy is transferred from one trophic level to the next. Where does the other 90% go?", opts: ["It disappears","Used for the organism's own movement, heat, growth and waste","It returns to the Sun","Stored in the soil"], correct: 1 },
           { q: "Why does food spoil faster at higher temperatures?", opts: ["Heat makes food wet","Microorganisms reproduce faster at warmer temperatures","Cold air preserves food","Heat removes nutrients"], correct: 1 },
-          { q: "On average, what percentage of energy is transferred from one level to the next in a food chain?", opts: ["50%","25%","10%","1%"], correct: 2 },
           { q: "What is the role of DECOMPOSERS in an ecosystem?", opts: ["They hunt other animals","They break down dead organisms and recycle nutrients back into the soil","They produce food through photosynthesis","They compete with producers"], correct: 1 },
-          { q: "What did Louis Pasteur's experiment prove?", opts: ["That bacteria grow only in cold conditions","That microorganisms are responsible for food spoilage","That viruses cause all diseases","That fungi cannot grow on food"], correct: 1 }
+          { q: "What did Louis Pasteur's swan-neck flask experiment prove?", opts: ["That bacteria grow only in cold conditions","That microorganisms from the air cause food spoilage (not spontaneous generation)","That viruses cause all diseases","That fungi cannot grow on food"], correct: 1 },
+          { q: "In Pasteur's experiment, what was the INDEPENDENT variable?", opts: ["Whether the broth became cloudy","The type of broth used","The shape of the flask neck (open vs. swan-neck)","The room temperature"], correct: 2 },
+          { q: "Which microorganism is used to make bread rise?", opts: ["Bacteria","Virus","Yeast (a fungus)","Protozoa"], correct: 2 },
+          { q: "If the rabbit population in a food web suddenly decreases, what would most likely happen to the fox population?", opts: ["Increase","Decrease","Stay the same","Double immediately"], correct: 1 },
+          { q: "If ALL decomposers were removed from an ecosystem, what would most likely happen?", opts: ["Plants would grow faster","Dead organisms would accumulate and nutrients would not be recycled","Predators would increase","The climate would become cooler"], correct: 1 },
+          { q: "What does pickling food in vinegar do to prevent spoilage?", opts: ["Removes all water","Creates a low pH that inhibits bacterial growth","Heats the food to kill bacteria","Adds sugar to preserve it"], correct: 1 }
         ]
       },
       {
@@ -959,20 +991,27 @@ const SUBJECTS = [
         nameEn: 'Electricity & Scientific Method',
         icon: '⚡',
         checklist: [
-          "I know the 3 components of a circuit: power source, path (wire), load (bulb/buzzer/motor)",
-          "I know circuit symbols and can draw and read a simple series circuit diagram",
-          "I understand what an ammeter measures (current, Amperes) and connect it IN SERIES",
-          "I know: more cells = more energy; more bulbs in series = dimmer light (more resistance)",
-          "I know electrons and conventional current flow in OPPOSITE directions",
-          "I know the difference between conductors and insulators (copper = conductor; rubber/plastic = insulator)",
-          "Scientific method: hypothesis, independent variable, dependent variable, controlled variables",
-          "A hypothesis describes the relationship between the independent and dependent variable"
+          "I know the 3 essentials of a circuit: power source (cell/battery), path (conductor/wire), load (bulb/motor/buzzer)",
+          "I know circuit symbols: cell, battery, bulb, switch (open/closed), ammeter (A), voltmeter (V), resistor, motor (M)",
+          "I know: AMMETER measures current (Amperes) — connected IN SERIES; VOLTMETER measures voltage (Volts) — connected IN PARALLEL",
+          "I know: more cells = higher voltage = more current = brighter bulb; more bulbs in series = more resistance = dimmer bulb",
+          "I know electrons flow NEGATIVE → POSITIVE; conventional current flows POSITIVE → NEGATIVE (opposite directions)",
+          "I know conductors (metals, graphite) have free electrons; insulators (plastic, rubber, glass) have tightly bound electrons",
+          "I know the scientific method: observation → hypothesis → experiment → results → conclusion → evaluation",
+          "I know variables: IV (what I change), DV (what I measure), CVs (everything kept the same for a fair test)",
+          "A good hypothesis states the predicted relationship between IV and DV with a reason: 'If [IV], then [DV], because…'"
         ],
         quiz: [
           { q: "What does an ammeter measure?", opts: ["Voltage","Resistance","Electric current","Power"], correct: 2 },
-          { q: "How should an ammeter be connected in a circuit?", opts: ["In parallel","In series","Outside the circuit","Between two bulbs and a battery simultaneously"], correct: 1 },
+          { q: "How should an ammeter be connected in a circuit?", opts: ["In parallel with the component","In series in the circuit","Outside the circuit","Between the two battery terminals only"], correct: 1 },
+          { q: "How should a voltmeter be connected in a circuit?", opts: ["In series","In parallel with the component","Outside the circuit","After the switch only"], correct: 1 },
           { q: "What happens to bulb brightness when you add more bulbs to a SERIES circuit?", opts: ["They get brighter","They stay the same","They get dimmer","They turn off completely"], correct: 2 },
-          { q: "Which of these materials is an electrical CONDUCTOR?", opts: ["Rubber","Plastic","Glass","Copper"], correct: 3 }
+          { q: "Which of these materials is an electrical CONDUCTOR?", opts: ["Rubber","Plastic","Glass","Copper"], correct: 3 },
+          { q: "The plastic coating on a wire is an example of:", opts: ["A conductor","An insulator","A resistor","A semiconductor"], correct: 1 },
+          { q: "In which direction do ELECTRONS actually flow in a circuit?", opts: ["From positive to negative terminal","From negative to positive terminal","In both directions at once","They don't flow — only charge flows"], correct: 1 },
+          { q: "Which of the following is the BEST scientific hypothesis?", opts: ["I think plants grow.","Does fertiliser affect plant growth?","If more fertiliser is added, then plants will grow taller, because fertiliser provides extra nutrients.","Plants need water."], correct: 2 },
+          { q: "In a scientific experiment, what is the INDEPENDENT variable?", opts: ["The variable that is measured as a result","The variable deliberately changed by the scientist","All variables kept the same","The variable that cannot be measured"], correct: 1 },
+          { q: "What happened when Pasteur tilted the swan-neck flask so the broth reached the curved neck?", opts: ["Nothing changed","The broth turned clearer","The broth quickly became cloudy (microbes grew)","The flask broke"], correct: 2 }
         ]
       },
       {
