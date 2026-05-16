@@ -918,6 +918,409 @@ ALLOY: different-sized atoms disrupt the layers → harder
     ]
   }
   ]
+},
+// ═══════════════════════════════════════════════════════════
+// GROUP 4 — BIOLOGY
+// ═══════════════════════════════════════════════════════════
+{
+  id:'biology', name:'Biology', icon:'🦠',
+  gradient:'linear-gradient(135deg,#6BCB77,#3a8a45)',
+  topics:[
+  {
+    id:'food_chains', name:'Feeding Relationships', icon:'🌿',
+    notesHtml:`
+<h3 class="n-h3">1. Food Chains</h3>
+<p class="n-p">A <strong>food chain</strong> shows the transfer of energy from one organism to another through feeding. It always starts with a <strong>producer</strong>. Arrows show the <strong>direction of energy flow</strong> (from what is eaten → to what eats it).</p>
+<table class="n-table"><thead><tr><th>Term</th><th>Definition</th><th>Example</th></tr></thead>
+<tbody><tr><td><strong>Producer</strong></td><td>Makes its own food by photosynthesis. Always a plant or algae</td><td>Grass, oak tree, algae</td></tr>
+<tr><td><strong>Primary consumer</strong></td><td>Eats the producer; always a herbivore</td><td>Grasshopper, rabbit</td></tr>
+<tr><td><strong>Secondary consumer</strong></td><td>Eats the primary consumer</td><td>Frog, fox</td></tr>
+<tr><td><strong>Tertiary consumer</strong></td><td>Eats the secondary consumer</td><td>Eagle, large predator</td></tr>
+<tr><td><strong>Decomposer</strong></td><td>Breaks down dead organisms and returns nutrients to soil</td><td>Bacteria, fungi, worms</td></tr>
+<tr><td><strong>Herbivore</strong></td><td>Eats only plants</td><td>Cow, rabbit</td></tr>
+<tr><td><strong>Carnivore</strong></td><td>Eats only animals</td><td>Lion, shark</td></tr>
+<tr><td><strong>Omnivore</strong></td><td>Eats plants AND animals</td><td>Bear, humans, badger</td></tr></tbody></table>
+<pre class="diagram">Example food chain:
+Grass → Grasshopper → Frog → Hawk
+(producer) (primary) (secondary) (tertiary)
+
+Energy flows in the direction of the arrows →</pre>
+<div class="warn-box">⚠️ Common mistake: Arrows in a food chain point from prey to predator (they show ENERGY FLOW, not "who eats what").</div>
+
+<h3 class="n-h3">2. The 10% Energy Rule</h3>
+<div class="key-box">Only about <strong>10%</strong> of the energy from one trophic level is transferred to the next.<br>The other <strong>90%</strong> is lost — used by the organism for movement, body heat, growth, reproduction, or lost in waste.</div>
+<pre class="diagram">Grass        10,000 J
+                ↓ 10%
+Grasshopper   1,000 J
+                ↓ 10%
+Frog            100 J
+                ↓ 10%
+Hawk             10 J
+
+This is why food chains rarely exceed 4–5 levels — there is not enough
+energy left to support more levels.</pre>
+
+<h3 class="n-h3">3. Food Webs</h3>
+<p class="n-p">A <strong>food web</strong> is a network of interconnected food chains in an ecosystem. Food webs are more realistic than food chains because most animals eat more than one type of food.</p>
+<p class="n-p"><strong>Predicting population changes:</strong></p>
+<ul class="n-ul">
+<li>If prey decreases → predators may decrease (less food available)</li>
+<li>If a predator decreases → its prey may increase (less predation)</li>
+<li>Changes ripple through the whole web</li>
+</ul>`,
+    links:[
+      {label:'BBC Bitesize — Food Chains and Webs', url:'https://www.bbc.co.uk/bitesize/subjects/z4882hv'}
+    ],
+    quiz:[
+      {q:'What do arrows in a food chain represent?', opts:['Which organism is stronger','The direction of energy flow (from food to feeder)','Which organism eats which — pointing from predator to prey','The size of each organism'], correct:1, explain:'Arrows in a food chain show the direction of ENERGY FLOW — from the organism being eaten to the organism that eats it. So grass → rabbit → fox means energy flows from grass to rabbit to fox.'},
+      {q:'What is a <strong>producer</strong> in a food chain?', opts:['An organism that hunts other animals','A decomposer that breaks down dead matter','An organism that makes its own food through photosynthesis (plant or algae)','The largest animal in the ecosystem'], correct:2, explain:'Producers (plants and algae) make their own food using sunlight through photosynthesis. They are ALWAYS the first organism in a food chain — the original source of energy.'},
+      {q:'Only about 10% of energy is transferred from one trophic level to the next. Where does the other 90% go?', opts:['It disappears','It is used by the organism for movement, heat, growth, and is lost in waste','It returns to the soil','It is stored in the producer'], correct:1, explain:'90% of energy at each level is used by the organism itself for movement, maintaining body temperature, growth, and reproduction — or lost in waste. Only 10% is stored in body tissues and passed on when that organism is eaten.'},
+      {q:'Grass contains 100,000 J of energy. Using the 10% rule, how much energy does the eagle receive at the end of the chain: Grass → Rabbit → Fox → Eagle?', opts:['10,000 J','1,000 J','100 J','10 J'], correct:2, explain:'Grass (100,000 J) → Rabbit (10,000 J = 10%) → Fox (1,000 J = 10%) → Eagle (100 J = 10%). Three transfers each at 10% gives 100,000 × 0.1 × 0.1 × 0.1 = 100 J.'},
+      {q:'In a food web, if the rabbit population suddenly decreases, what would most likely happen to the fox population?', opts:['Increase — because there is less competition','Decrease — because there is less food available','Stay the same','Double immediately'], correct:1, explain:'If rabbits decrease, foxes have less food. Without enough food, fox numbers will also decrease. This is how population changes ripple through a food web.'},
+      {q:'Why are food webs more realistic than simple food chains?', opts:['Food webs are easier to draw','Most animals eat more than one type of food, so a simple chain oversimplifies reality','Food chains show more organisms','Food webs only include producers'], correct:1, explain:'Most animals eat multiple food sources. A food web shows all these complex interconnections, making it a much more accurate representation of feeding relationships in real ecosystems.'}
+    ]
+  },
+  {
+    id:'microorganisms', name:'Microorganisms & Viruses', icon:'🦠',
+    notesHtml:`
+<h3 class="n-h3">1. What Are Microorganisms?</h3>
+<p class="n-p">Microorganisms (microbes) are living things too small to see with the naked eye. They are found everywhere: soil, water, air, surfaces, and inside other organisms.</p>
+<table class="n-table"><thead><tr><th>Type</th><th>Cell type</th><th>Key features</th><th>Example</th></tr></thead>
+<tbody><tr><td><strong>Bacteria</strong></td><td>Prokaryotic (no nucleus)</td><td>Single-celled; reproduce rapidly by binary fission (splitting in two)</td><td>E. coli, Lactobacillus</td></tr>
+<tr><td><strong>Fungi</strong></td><td>Eukaryotic (has nucleus)</td><td>Single or multi-celled; reproduce by spores; decompose organic matter</td><td>Yeast, moulds, mushrooms</td></tr>
+<tr><td><strong>Viruses</strong></td><td>NOT a cell (acellular)</td><td>Made of DNA/RNA + protein coat; NOT considered living; reproduce only inside host cells</td><td>Influenza, COVID-19, common cold</td></tr>
+<tr><td><strong>Protozoa</strong></td><td>Eukaryotic (has nucleus)</td><td>Single-celled; animal-like; often in water</td><td>Amoeba, Plasmodium (malaria)</td></tr></tbody></table>
+
+<h3 class="n-h3">2. Why Viruses Are Different — Not Truly Living</h3>
+<div class="key-box">Viruses are NOT considered living organisms because:<br>
+• Not made of cells — made of genetic material (DNA or RNA) + a <strong>protein coat (capsid)</strong><br>
+• Cannot reproduce independently — must invade a host cell<br>
+• Have no metabolism (no respiration, no growth) outside a host<br>
+• Do not carry out any life processes on their own</div>
+
+<h3 class="n-h3">3. Viral Life Cycle</h3>
+<ol class="n-ol">
+<li>Virus <strong>attaches</strong> to a specific host cell (like a lock and key)</li>
+<li>Virus <strong>injects its genetic material</strong> into the host cell</li>
+<li>The host cell's machinery is <strong>hijacked</strong> to make copies of the virus</li>
+<li>New virus particles are <strong>assembled</strong> inside the host cell</li>
+<li>Host cell <strong>bursts (lysis)</strong>, releasing hundreds of new viruses</li>
+<li>New viruses <strong>infect neighbouring cells</strong> and repeat the cycle</li>
+</ol>
+
+<h3 class="n-h3">4. Microorganisms in Food Production</h3>
+<table class="n-table"><thead><tr><th>Food</th><th>Microorganism</th><th>What happens</th></tr></thead>
+<tbody><tr><td><strong>Cheese</strong></td><td>Bacteria (Lactobacillus)</td><td>Bacteria ferment lactose (milk sugar) → produce lactic acid → milk proteins curdle → forms cheese</td></tr>
+<tr><td><strong>Bread</strong></td><td>Yeast (a fungus)</td><td>Yeast ferments sugars in dough → produces CO₂ gas → gas bubbles trapped in dough → dough rises</td></tr>
+<tr><td><strong>Yoghurt</strong></td><td>Bacteria</td><td>Bacteria ferment lactose → lactic acid thickens the milk</td></tr></tbody></table>`,
+    links:[
+      {label:'BBC Bitesize — Microorganisms', url:'https://www.bbc.co.uk/bitesize/subjects/z4882hv'}
+    ],
+    quiz:[
+      {q:'Which of the following is <strong>NOT</strong> made of cells — making it different from all other microorganisms?', opts:['Bacteria','Fungi','Viruses','Protozoa'], correct:2, explain:'Viruses are acellular — they are not made of cells. Instead they consist of genetic material (DNA or RNA) surrounded by a protein coat called a capsid. All other microorganisms (bacteria, fungi, protozoa) are made of cells.'},
+      {q:'What type of cell do bacteria have?', opts:['Eukaryotic (with a true nucleus)','Prokaryotic (no true nucleus)','They have no cells at all','Animal cells with a nucleus'], correct:1, explain:'Bacteria are prokaryotes — their cells lack a true nucleus. Their DNA floats freely in the cytoplasm. All other cells (fungi, protozoa, animal cells, plant cells) are eukaryotic — with a true membrane-bound nucleus.'},
+      {q:'Which microorganism is used to make bread rise?', opts:['Bacteria','A virus','Yeast (a fungus)','Protozoa'], correct:2, explain:'Yeast (a single-celled fungus) is added to bread dough. Through fermentation, yeast breaks down sugars and produces carbon dioxide (CO₂) gas. This gas forms bubbles that get trapped in the dough, causing it to rise.'},
+      {q:'What is the protein coat of a virus called?', opts:['Cell wall','Capsid','Nucleus','Cytoplasm'], correct:1, explain:'The outer protein coat of a virus is called a capsid. It protects the genetic material (DNA or RNA) inside and helps the virus attach to host cells. The capsid + genetic material are the two main components of a virus.'},
+      {q:'Why are viruses NOT considered to be living organisms?', opts:['They are too small','They are not made of cells and cannot reproduce independently without a host','They do not have a capsid','They live inside other organisms'], correct:1, explain:'Viruses fail several criteria for life: they are not made of cells, cannot reproduce on their own (they need to hijack a host cell), and have no metabolism when outside a host. They exist in a "grey zone" between living and non-living.'},
+      {q:'What microorganism causes <strong>malaria</strong>?', opts:['A bacterium — Mycobacterium','A fungus — Candida','A virus — similar to influenza','A protozoan — Plasmodium'], correct:3, explain:'Malaria is caused by Plasmodium, a protozoan (single-celled, animal-like microorganism). It is transmitted by infected female Anopheles mosquitoes. It is NOT caused by a bacterium or virus.'},
+      {q:'In cheese-making, what do bacteria (Lactobacillus) do to milk?', opts:['They produce CO₂ to make cheese bubbly','They ferment lactose → produce lactic acid → causes milk proteins to curdle','They digest the fat in milk','They add flavour by producing oxygen'], correct:1, explain:'Lactobacillus bacteria ferment lactose (milk sugar) and produce lactic acid. The lactic acid lowers the pH, causing milk proteins (casein) to curdle — forming solid curds. These curds are then pressed and aged to make different types of cheese.'}
+    ]
+  },
+  {
+    id:'food_spoilage', name:'Food Spoilage & Pasteur', icon:'🧫',
+    notesHtml:`
+<h3 class="n-h3">1. What Is Food Spoilage?</h3>
+<p class="n-p">Food spoilage is when food becomes unsafe or unpleasant to eat due to the activity of <strong>bacteria and fungi (moulds)</strong>. Signs include: bad smell, slimy texture, colour changes, visible mould.</p>
+
+<h3 class="n-h3">2. Factors Affecting Spoilage</h3>
+<table class="n-table"><thead><tr><th>Factor</th><th>Effect on spoilage</th></tr></thead>
+<tbody><tr><td><strong>High temperature</strong> (room temperature, ~20°C)</td><td>Microbes grow rapidly → food spoils quickly</td></tr>
+<tr><td><strong>Cooking</strong> (above ~70°C)</td><td>Kills most microbes → stops spoilage</td></tr>
+<tr><td><strong>Refrigerator</strong> (~4°C)</td><td>Slows microbial growth → food lasts longer</td></tr>
+<tr><td><strong>Freezer</strong> (below 0°C)</td><td>Stops microbial activity almost completely</td></tr>
+<tr><td><strong>Low pH</strong> (acidic, e.g. vinegar)</td><td>Inhibits bacterial growth → pickling preserves food</td></tr>
+<tr><td><strong>Low moisture</strong> (dry food)</td><td>Microbes cannot function → dehydrating preserves food</td></tr>
+<tr><td><strong>Salt or sugar</strong></td><td>Draws water out of microbial cells by osmosis → kills them</td></tr></tbody></table>
+
+<h3 class="n-h3">3. Pasteur's Swan-Neck Flask Experiment (~1859)</h3>
+<div class="key-box"><strong>Background:</strong> People believed in "spontaneous generation" — that microorganisms appeared from nowhere in rotting food.<br><br><strong>Pasteur's hypothesis:</strong> Microorganisms from the air (not spontaneous generation) cause food spoilage.</div>
+<pre class="diagram">Flask 1 (OPEN):          Flask 2 (SWAN-NECK):
+   ┌───┐                   ┌───┐
+   │   │                   │   │S-shaped
+   │broth│                 │broth│neck traps
+   │ OPEN│ air + microbes  │ ↙  │microbes
+   └───┘ enter freely      └───┘
+   → CLOUDY (grew)         → CLEAR (no growth)
+
+When swan-neck flask was TILTED so broth touched the
+curved neck where dust collected → CLOUDY immediately!</pre>
+<p class="n-p"><strong>Conclusion:</strong> Microorganisms come from the air — they cause food spoilage. Spontaneous generation is WRONG.</p>
+<table class="n-table"><thead><tr><th>Variable type</th><th>In Pasteur's experiment</th></tr></thead>
+<tbody><tr><td><strong>Independent variable (IV)</strong></td><td>Shape of the flask neck (open vs. swan-neck)</td></tr>
+<tr><td><strong>Dependent variable (DV)</strong></td><td>Whether the broth became cloudy (whether microbes grew)</td></tr>
+<tr><td><strong>Controlled variables (CVs)</strong></td><td>Same broth, same volume, same room temperature, same time left</td></tr></tbody></table>`,
+    links:[
+      {label:'BBC Bitesize — Microorganisms and Food', url:'https://www.bbc.co.uk/bitesize/subjects/z4882hv'}
+    ],
+    quiz:[
+      {q:'Why does pickling food in vinegar preserve it from spoilage?', opts:['Vinegar is a poison that kills all cells','Vinegar creates a low pH that inhibits bacterial growth','Vinegar removes all the water from the food','Vinegar heats the food to kill bacteria'], correct:1, explain:'Vinegar (ethanoic acid) creates an acidic environment (low pH). Most bacteria cannot grow in very acidic conditions — so pickling inhibits microbial growth and preserves the food.'},
+      {q:'What was Pasteur\'s hypothesis in his swan-neck flask experiment?', opts:['Food spoils due to chemicals in air','Microorganisms from the air cause food spoilage — NOT spontaneous generation','All microorganisms generate spontaneously from dead matter','Boiling food makes it more nutritious'], correct:1, explain:'Pasteur hypothesised that microorganisms already present in the air (not generated spontaneously) are responsible for food spoilage. His experiment proved this by preventing airborne microbes from reaching the broth.'},
+      {q:'What was the <strong>independent variable</strong> in Pasteur\'s swan-neck experiment?', opts:['Whether the broth turned cloudy','The temperature of the room','The shape of the flask neck (open straight neck vs. swan-neck)','The type of broth used'], correct:2, explain:'The independent variable is what the scientist deliberately changes. Pasteur changed the shape of the flask neck — one was open (microbes could enter), one had a curved swan-neck (microbes were trapped in the curve and could not reach the broth).'},
+      {q:'What was the <strong>dependent variable</strong> in Pasteur\'s experiment?', opts:['The shape of the flask neck','The type of broth','Whether the broth became cloudy (whether microbial growth occurred)','The room temperature'], correct:2, explain:'The dependent variable is what is measured as a result of the independent variable changing. Pasteur observed whether the broth became cloudy — cloudiness indicated microbial growth had occurred.'},
+      {q:'What happened when Pasteur tilted the swan-neck flask so the broth touched the curved neck?', opts:['Nothing — the broth stayed clear','The broth turned clear','The broth quickly became cloudy — microbes grew','The flask broke from the pressure'], correct:2, explain:'When the broth touched the curved neck (where airborne dust and microbes had collected), the microbes contacted the broth and began to grow — making it cloudy. This confirmed that the microbes came from the air, not from spontaneous generation.'},
+      {q:'Why does drying (dehydrating) food preserve it?', opts:['Drying kills microbes with heat','Removing water means microorganisms cannot survive or grow — they need water for their metabolism','Drying makes food more acidic','Drying adds salt to the food'], correct:1, explain:'Microorganisms need water for all their life processes (metabolism, reproduction). Removing water from food (dehydration) creates conditions where bacteria and fungi cannot function or multiply — preserving the food.'},
+      {q:'What is pasteurisation?', opts:['Boiling food at 100°C for 30 minutes to kill all microbes','Brief heating (e.g. 72°C for 15 seconds) to kill most harmful microbes without fully cooking the food','Adding sugar to prevent microbial growth','A type of fermentation using bacteria'], correct:1, explain:'Pasteurisation (named after Louis Pasteur) involves briefly heating food (e.g. milk at 72°C for 15 seconds) to kill most harmful microorganisms — without fully cooking the food or changing its taste significantly. It extends shelf life while keeping food close to its natural state.'}
+    ]
+  },
+  {
+    id:'decomposers', name:'Decomposers', icon:'🍄',
+    notesHtml:`
+<h3 class="n-h3">1. What Are Decomposers?</h3>
+<div class="key-box">Decomposers are organisms that break down dead and decaying organic material (dead plants, dead animals, waste products) into simpler substances. They are nature's recyclers.</div>
+<p class="n-p"><strong>Types of decomposers:</strong></p>
+<ul class="n-ul">
+<li><strong>Bacteria</strong> — microscopic, most important decomposers in soil</li>
+<li><strong>Fungi</strong> — moulds and mushrooms break down organic matter</li>
+<li><strong>Detritivores</strong> (invertebrates like earthworms, woodlice, beetles) — break up dead material into smaller pieces for bacteria and fungi to finish</li>
+</ul>
+
+<h3 class="n-h3">2. Role in Natural Ecosystems</h3>
+<ul class="n-ul">
+<li><strong>Nutrient recycling:</strong> Break down dead organisms and return nutrients (carbon, nitrogen, phosphorus) to the soil — plants can then absorb these for growth</li>
+<li><strong>Carbon cycle:</strong> Decomposers release CO₂ back into the atmosphere through respiration as they break down organic matter</li>
+<li><strong>Remove dead matter:</strong> Prevent accumulation of dead bodies and waste</li>
+<li><strong>Climate regulation:</strong> By releasing/storing carbon, they influence greenhouse gas levels</li>
+</ul>
+<div class="key-box">The nutrient cycle: Decomposers break down dead organisms → nutrients return to soil → plants absorb nutrients → animals eat plants → animals die → decomposers break them down again. This cycle keeps nutrients circulating through ecosystems.</div>
+
+<h3 class="n-h3">3. Role in Agriculture</h3>
+<ul class="n-ul">
+<li><strong>Humus production:</strong> Decomposers break down organic matter into <strong>humus</strong> — a dark, rich material that improves soil structure, water retention, and nutrient content</li>
+<li><strong>Natural fertilisation:</strong> As decomposers release nutrients into soil, these become available for crop plants through their roots</li>
+<li><strong>Composting:</strong> Farmers encourage decomposer activity in compost heaps — organic waste becomes rich compost to add to fields</li>
+<li><strong>Earthworms:</strong> Aerate the soil (create tunnels for air and water), mix organic matter into lower layers, and improve drainage</li>
+</ul>`,
+    links:[
+      {label:'BBC Bitesize — Decomposers and Nutrient Cycles', url:'https://www.bbc.co.uk/bitesize/subjects/z4882hv'}
+    ],
+    quiz:[
+      {q:'What is a decomposer?', opts:['A producer that makes food by photosynthesis','An organism that hunts and eats other animals','An organism that breaks down dead organic matter into simpler substances','A consumer that eats plants'], correct:2, explain:'Decomposers break down dead and decaying organic material (dead plants, animals, waste) into simpler substances. They are nature\'s recyclers — returning nutrients to the soil.'},
+      {q:'What is <strong>humus</strong>?', opts:['A type of bacteria found in soil','Dark, rich organic material produced when decomposers break down dead matter — improves soil quality','A gas released by decomposers','The food that earthworms eat'], correct:1, explain:'Humus is the dark, rich organic material formed when decomposers fully break down organic matter. It improves soil structure, increases water retention, and provides nutrients for plants — making it very valuable in agriculture.'},
+      {q:'If ALL decomposers were removed from an ecosystem, what would most likely happen?', opts:['Plants would grow faster with more space','Dead organisms would accumulate and nutrients would not be recycled back to the soil','Predators would increase','The temperature would drop'], correct:1, explain:'Without decomposers, dead organisms and waste would pile up (not be broken down) and the nutrients locked inside them would never be returned to the soil. This would eventually prevent plants from growing — collapsing the entire food web.'},
+      {q:'How do <strong>earthworms</strong> improve soil quality?', opts:['They eat bacteria that harm plants','They produce fertiliser chemicals','They aerate the soil by creating tunnels for air and water, and mix organic matter into lower layers','They neutralise acidic soil with their secretions'], correct:2, explain:'Earthworms are essential for healthy soil. By burrowing, they create channels that allow air and water to penetrate the soil (aeration and drainage). They also physically mix organic matter (dead leaves, etc.) into lower soil layers, aiding decomposition.'},
+      {q:'How do decomposers contribute to the <strong>carbon cycle</strong>?', opts:['They absorb CO₂ from the atmosphere','They convert CO₂ into oxygen','They release CO₂ back into the atmosphere through respiration as they break down organic matter','They store carbon permanently in soil'], correct:2, explain:'Decomposers respire (like all living things) as they break down organic matter. Through respiration they release carbon dioxide (CO₂) back into the atmosphere. This is a key part of the carbon cycle — returning carbon that was locked in dead organisms to the air.'},
+      {q:'What is the key difference between a decomposer and a consumer in a food chain?', opts:['Decomposers are larger than consumers','Consumers break down dead matter; decomposers eat living organisms','Decomposers break down DEAD organic matter; consumers eat LIVING organisms','Consumers recycle nutrients; decomposers do not'], correct:2, explain:'Consumers (herbivores, carnivores, omnivores) eat living organisms. Decomposers specifically break down DEAD organisms and waste material. Both transfer energy, but decomposers also recycle nutrients back into the soil — a key ecosystem service that consumers do not provide.'}
+    ]
+  }
+  ]
+},
+// ═══════════════════════════════════════════════════════════
+// GROUP 5 — ELECTRICITY
+// ═══════════════════════════════════════════════════════════
+{
+  id:'electricity', name:'Electricity', icon:'⚡',
+  gradient:'linear-gradient(135deg,#FFD166,#e8a800)',
+  topics:[
+  {
+    id:'circuits', name:'Electrical Circuits', icon:'🔋',
+    notesHtml:`
+<h3 class="n-h3">1. What Is Electricity?</h3>
+<p class="n-p">Electricity is the flow of <strong>electrons</strong> (negatively charged particles) through a conductor. In a metal wire, atoms release their outer electrons which then flow freely through the wire.</p>
+<div class="key-box"><strong>Conventional current</strong> flows from the <strong>positive terminal to the negative terminal</strong> of a battery.<br><strong>Electron flow</strong> is in the <strong>opposite direction</strong> — from negative to positive.<br>This seems confusing: conventional current was defined before scientists discovered electrons, so they got the direction "backwards."</div>
+
+<h3 class="n-h3">2. The Three Essentials of Every Circuit</h3>
+<table class="n-table"><thead><tr><th>Component</th><th>Description</th><th>Example</th></tr></thead>
+<tbody><tr><td><strong>Power source</strong></td><td>Provides energy that drives electrons</td><td>Cell, battery, solar panel</td></tr>
+<tr><td><strong>Conductor path</strong></td><td>Material electrons flow through</td><td>Copper wires</td></tr>
+<tr><td><strong>Load</strong></td><td>Device that converts electrical energy to another form</td><td>Bulb (→ light), motor (→ movement), buzzer (→ sound)</td></tr></tbody></table>
+<p class="n-p">A <strong>complete (closed) circuit</strong> allows current to flow continuously. If broken at any point → current stops.</p>
+
+<h3 class="n-h3">3. Circuit Symbols</h3>
+<table class="n-table"><thead><tr><th>Component</th><th>Symbol description</th><th>Function</th></tr></thead>
+<tbody><tr><td>Cell</td><td>One long + one short vertical line</td><td>Single unit of electrical energy</td></tr>
+<tr><td>Battery</td><td>Multiple long + short lines</td><td>Two or more cells joined together</td></tr>
+<tr><td>Bulb/lamp</td><td>Circle with X inside</td><td>Converts electrical energy to light (and heat)</td></tr>
+<tr><td>Switch (open)</td><td>Gap with a lever</td><td>Breaks circuit → no current</td></tr>
+<tr><td>Switch (closed)</td><td>Lever completing circuit</td><td>Allows current to flow</td></tr>
+<tr><td>Ammeter</td><td>Circle with letter A</td><td>Measures current — connected <strong>in series</strong></td></tr>
+<tr><td>Voltmeter</td><td>Circle with letter V</td><td>Measures voltage — connected <strong>in parallel</strong></td></tr>
+<tr><td>Resistor</td><td>Rectangle</td><td>Reduces current flow</td></tr>
+<tr><td>Motor</td><td>Circle with M inside</td><td>Converts electrical energy to kinetic (movement) energy</td></tr></tbody></table>
+
+<h3 class="n-h3">4. Cell vs Battery</h3>
+<ul class="n-ul">
+<li>A <strong>cell</strong> is a single unit — provides ~1.5 V</li>
+<li>A <strong>battery</strong> is two or more cells connected together</li>
+<li>More cells → higher voltage → more current → brighter bulb, faster motor</li>
+</ul>`,
+    links:[
+      {label:'BBC Bitesize — Electric Circuits', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'},
+      {label:'PhET — Circuit Construction Kit', url:'https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc'}
+    ],
+    quiz:[
+      {q:'What are the <strong>three essential components</strong> of every working electrical circuit?', opts:['Battery, switch, and resistor','Power source, conductor path, and load','Ammeter, voltmeter, and wire','Cell, battery, and motor'], correct:1, explain:'Every circuit needs: (1) a power source (cell/battery) to provide energy, (2) a conductor path (wire) for current to flow through, and (3) a load (bulb/motor/buzzer) that converts the electrical energy into another useful form.'},
+      {q:'In which direction does <strong>conventional current</strong> flow?', opts:['From negative terminal to positive terminal','From positive terminal to negative terminal','In both directions simultaneously','It does not flow — only electrons move'], correct:1, explain:'By convention, current is defined as flowing from the positive terminal to the negative terminal. In reality, electrons (negatively charged) flow from negative to positive — the opposite direction. Conventional current was defined before electrons were discovered.'},
+      {q:'How should an <strong>ammeter</strong> be connected in a circuit?', opts:['In parallel with the component being tested','In series — so all the current flows through it','Outside the main circuit','Between the two terminals of the battery only'], correct:1, explain:'An ammeter measures current, and must be connected IN SERIES in the circuit so that all the current flows through it. If connected in parallel, it would short-circuit the component.'},
+      {q:'Adding more cells to a circuit (increasing the voltage) will:', opts:['Decrease the current and make the bulb dimmer','Have no effect on the brightness of the bulb','Increase the current and make the bulb brighter','Make the bulb go out'], correct:2, explain:'More cells = higher voltage = more energy given to electrons = more current flows = more energy transferred to the bulb = brighter light. Voltage is the "push" that drives electrons around the circuit.'},
+      {q:'What does the symbol of a circle with an X inside represent in a circuit diagram?', opts:['A motor','A battery','A bulb (lamp)','A resistor'], correct:2, explain:'A circle with an X inside is the standard circuit symbol for a bulb (lamp). It converts electrical energy into light energy (and some heat energy).'},
+      {q:'An open switch means:', opts:['Current flows freely through it','The circuit is broken and no current flows','The voltage increases','The resistance decreases'], correct:1, explain:'An open switch creates a gap in the circuit — breaking it. No current can flow through a broken circuit. Closing the switch completes the circuit and allows current to flow.'}
+    ]
+  },
+  {
+    id:'current_voltage', name:'Electric Current', icon:'⚡',
+    notesHtml:`
+<h3 class="n-h3">1. Current, Voltage and Resistance</h3>
+<table class="n-table"><thead><tr><th>Quantity</th><th>Symbol</th><th>Unit</th><th>Measured by</th><th>Connected</th></tr></thead>
+<tbody><tr><td><strong>Current</strong></td><td>I</td><td>Amperes (A)</td><td>Ammeter</td><td>In <strong>series</strong></td></tr>
+<tr><td><strong>Voltage</strong></td><td>V</td><td>Volts (V)</td><td>Voltmeter</td><td>In <strong>parallel</strong></td></tr>
+<tr><td><strong>Resistance</strong></td><td>R</td><td>Ohms (Ω)</td><td>Calculated or ohmmeter</td><td>—</td></tr></tbody></table>
+<ul class="n-ul">
+<li><strong>Current</strong> = rate of flow of electric charge through a conductor</li>
+<li><strong>Voltage (potential difference)</strong> = energy given to each unit of charge by the power source. Higher voltage = more energy = brighter bulbs, faster motors</li>
+<li><strong>Resistance</strong> = how much a material opposes current flow</li>
+</ul>
+
+<h3 class="n-h3">2. Effects in a Series Circuit</h3>
+<pre class="diagram">Adding more BULBS to a series circuit:
+→ Total resistance INCREASES
+→ Current DECREASES
+→ All bulbs get DIMMER
+→ Voltage is shared equally between bulbs
+
+If ONE bulb breaks → circuit is broken → ALL bulbs go out
+
+Adding more CELLS:
+→ Voltage INCREASES
+→ Current INCREASES
+→ Bulbs get BRIGHTER</pre>
+
+<h3 class="n-h3">3. DC vs AC (Mains Electricity)</h3>
+<table class="n-table"><thead><tr><th></th><th>Battery (DC)</th><th>Mains electricity (AC)</th></tr></thead>
+<tbody><tr><td>Voltage</td><td>Low (1.5 V per cell)</td><td>High (230 V in Cyprus/Europe)</td></tr>
+<tr><td>Current type</td><td>Direct current — electrons flow in ONE direction</td><td>Alternating current — electrons change direction rapidly (~50 times/sec)</td></tr>
+<tr><td>Safety</td><td>Safer</td><td>High voltage — dangerous</td></tr></tbody></table>
+<div class="key-box"><strong>Fuses</strong>: A fuse is a thin wire inside a circuit. If too much current flows, the fuse melts and breaks the circuit — protecting appliances from damage and preventing fires.</div>`,
+    links:[
+      {label:'BBC Bitesize — Current and Voltage', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'},
+      {label:'PhET — Circuit Construction Kit', url:'https://phet.colorado.edu/en/simulations/circuit-construction-kit-dc'}
+    ],
+    quiz:[
+      {q:'What does an <strong>ammeter</strong> measure, and what is the unit?', opts:['Voltage, measured in Volts (V)','Resistance, measured in Ohms (Ω)','Electric current, measured in Amperes (A)','Power, measured in Watts (W)'], correct:2, explain:'An ammeter measures electric current — the rate of flow of electric charge through a conductor. Current is measured in Amperes (A), sometimes called "amps." The ammeter must be connected in series.'},
+      {q:'A <strong>voltmeter</strong> is always connected:', opts:['In series in the main circuit','In parallel with the component it is measuring','Outside the circuit entirely','Between the two terminals of the battery'], correct:1, explain:'A voltmeter measures the voltage (potential difference) across a component. It must be connected IN PARALLEL with that component — across it, not in the main current path. If connected in series, it would block the current.'},
+      {q:'What is <strong>resistance</strong>, and what is its unit?', opts:['The rate of energy flow; measured in Watts (W)','Opposition to the flow of electric current; measured in Ohms (Ω)','The amount of charge flowing; measured in Coulombs (C)','The energy per unit of charge; measured in Volts (V)'], correct:1, explain:'Resistance is how much a material opposes the flow of electric current. High resistance makes it harder for current to flow. It is measured in Ohms (Ω). All components in a circuit have some resistance.'},
+      {q:'You add more bulbs to a series circuit. What happens to the brightness of each bulb?', opts:['Each bulb gets brighter','Each bulb stays the same brightness','Each bulb gets dimmer','The bulbs alternate between bright and dim'], correct:2, explain:'Adding more bulbs in series increases the total resistance of the circuit. Higher resistance means less current flows. Less current means less energy is delivered to each bulb — so all bulbs get dimmer.'},
+      {q:'In a series circuit with three bulbs, one bulb breaks (its filament snaps). What happens to the other two bulbs?', opts:['They continue to glow normally','They get brighter because there is less resistance','They all go out because the circuit is now broken','Two go out, but one stays on'], correct:2, explain:'In a series circuit, all components are in a single loop. If one bulb breaks, it creates a gap (open circuit) — the circuit is broken and current cannot flow anywhere. ALL bulbs go out.'},
+      {q:'What is the difference between DC (direct current) and AC (alternating current)?', opts:['DC is used in power stations; AC in batteries','DC flows in one direction (batteries); AC continuously changes direction (mains electricity)','DC is more dangerous than AC','AC flows faster than DC'], correct:1, explain:'DC (direct current) flows in one direction only — produced by batteries and cells. AC (alternating current) rapidly changes direction (about 50 times per second in Europe) — produced by power stations and delivered to homes as mains electricity at 230 V.'},
+      {q:'What is the purpose of a <strong>fuse</strong> in an electrical circuit?', opts:['To increase the current flow','To store electrical energy','To melt and break the circuit if too much current flows — protecting appliances and preventing fires','To convert AC to DC'], correct:2, explain:'A fuse contains a thin wire with a low melting point. If the current exceeds a safe level (e.g. due to a fault), the wire melts — breaking the circuit and stopping the current. This protects appliances from damage and prevents electrical fires.'}
+    ]
+  },
+  {
+    id:'conductors_insulators', name:'Conductors & Insulators', icon:'🔌',
+    notesHtml:`
+<h3 class="n-h3">1. Electrical Conductors</h3>
+<div class="key-box">An <strong>electrical conductor</strong> is a material that allows electric current to flow through it easily. Conductors have <strong>low resistance</strong>.</div>
+<ul class="n-ul">
+<li>Almost all <strong>metals</strong> are good conductors — due to their free electrons</li>
+<li>Best conductors: <strong>silver, copper, gold</strong> (copper most commonly used — relatively cheap and very abundant)</li>
+<li><strong>Graphite</strong> (carbon) — the only common non-metal conductor</li>
+<li><strong>Water containing dissolved minerals</strong> — conducts electricity (dangerous near appliances!)</li>
+</ul>
+<p class="n-p"><strong>Uses of conductors:</strong> Copper wires in all electrical cables; aluminium overhead power lines; gold contacts in computers and smartphones.</p>
+
+<h3 class="n-h3">2. Electrical Insulators</h3>
+<div class="key-box">An <strong>electrical insulator</strong> is a material that does <strong>not</strong> allow electric current to flow through it easily. Insulators have <strong>very high resistance</strong>.</div>
+<ul class="n-ul">
+<li>Most <strong>non-metals</strong> are insulators: plastic, rubber, glass, wood, ceramic, dry air</li>
+<li><strong>Plastic coating</strong> on wires — prevents electric shock</li>
+<li><strong>Rubber gloves</strong> — protect electricians from shock</li>
+<li><strong>Ceramic insulators</strong> on electricity pylons — prevent current reaching the metal pylon</li>
+</ul>
+
+<h3 class="n-h3">3. Why? — The Electron Explanation</h3>
+<table class="n-table"><thead><tr><th></th><th>Conductors (metals)</th><th>Insulators (non-metals)</th></tr></thead>
+<tbody><tr><td><strong>Electrons</strong></td><td>Free to move through metallic lattice</td><td>Tightly bound to atoms — cannot move freely</td></tr>
+<tr><td><strong>Current flow</strong></td><td>Easy — free electrons carry the charge</td><td>Very difficult — no free charge carriers</td></tr>
+<tr><td><strong>Resistance</strong></td><td>Low</td><td>Very high</td></tr></tbody></table>
+<div class="tip-box">💡 This is why a wire has TWO materials: <strong>copper inside</strong> (conductor — carries the current) + <strong>plastic coating outside</strong> (insulator — prevents accidental electric shock).</div>
+<div class="warn-box">⚠️ NEVER use electrical appliances near water — water with dissolved salts and minerals is a conductor and can cause fatal electric shock!</div>`,
+    links:[
+      {label:'BBC Bitesize — Conductors and Insulators', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'}
+    ],
+    quiz:[
+      {q:'Which three metals are the best electrical conductors (in order)?', opts:['Iron, copper, gold','Silver, copper, gold','Aluminium, copper, iron','Copper, zinc, nickel'], correct:1, explain:'Silver is the best electrical conductor, followed by copper, then gold. Copper is most commonly used for wiring because it is much cheaper than silver or gold while still being an excellent conductor.'},
+      {q:'Why is copper preferred for electrical wiring over silver or gold?', opts:['Copper conducts better than silver or gold','Copper is magnetic','Copper is much cheaper and abundant while still being an excellent conductor','Copper has a higher melting point'], correct:2, explain:'Silver is actually a slightly better conductor than copper, and gold is very corrosion-resistant. However, both silver and gold are extremely expensive. Copper is much cheaper and abundant while still having excellent conductivity — making it the practical choice for wiring.'},
+      {q:'Why are metals good conductors of electricity?', opts:['Their atoms are very heavy','They have free electrons that can move easily through the metallic lattice','They have high melting points','They are malleable'], correct:1, explain:'In metals, each atom releases one or more outer electrons into a "sea of free electrons." These electrons can move freely throughout the metal lattice. When a voltage is applied, these free electrons drift in one direction — this IS the electric current.'},
+      {q:'The plastic coating on an electrical wire is an example of:', opts:['A conductor','An insulator','A resistor','A semiconductor'], correct:1, explain:'Plastic is an electrical insulator — it does not allow current to flow through it. The plastic coating around a copper wire prevents accidental electric shock by ensuring current can only flow through the inner copper conductor, not through someone who touches the wire.'},
+      {q:'True or False: ALL non-metals are electrical insulators.', opts:['TRUE — all non-metals block electrical current','FALSE — graphite (a form of carbon) is a non-metal that can conduct electricity','TRUE — non-metals never have free electrons','FALSE — all non-metals conduct electricity'], correct:1, explain:'FALSE. Graphite is a notable exception — it is a non-metal (a form of carbon) that can conduct electricity. Graphite has a layered structure with free electrons between the layers, making it a conductor. It\'s used in pencils, electrodes, and lubricants.'},
+      {q:'Why is it dangerous to use electrical appliances near water (like using a phone in the bath)?', opts:['Water conducts heat and could overheat the appliance','Water containing dissolved minerals is an electrical conductor — it can complete a circuit through your body causing electric shock','Water is a good insulator but cools the appliance too much','The steam from hot water damages the electronics'], correct:1, explain:'Pure water is actually a poor conductor, but water with dissolved salts and minerals (like tap water or bath water) conducts electricity well. If a live appliance contacts such water, current can flow through the water and through your body — potentially causing a fatal electric shock.'}
+    ]
+  }
+  ]
+},
+// ═══════════════════════════════════════════════════════════
+// GROUP 6 — SCIENTIFIC METHOD
+// ═══════════════════════════════════════════════════════════
+{
+  id:'sci_method', name:'Scientific Method', icon:'🔬',
+  gradient:'linear-gradient(135deg,#C77DFF,#8b3fcc)',
+  topics:[
+  {
+    id:'scientific_method', name:'The Scientific Method', icon:'📋',
+    notesHtml:`
+<h3 class="n-h3">1. Why Is the Scientific Method Important?</h3>
+<ul class="n-ul">
+<li>Provides a <strong>structured and repeatable</strong> way to investigate questions</li>
+<li>Eliminates <strong>bias</strong> (personal opinions) from results</li>
+<li>Makes investigations <strong>reliable</strong> (consistent results) and <strong>valid</strong> (measuring what you intend)</li>
+<li>Allows other scientists to <strong>verify</strong> results</li>
+<li>Protects against wrong conclusions through controlled experiments</li>
+</ul>
+
+<h3 class="n-h3">2. Stages of the Scientific Method</h3>
+<ol class="n-ol">
+<li><strong>Observation</strong> — Notice something interesting; ask a question</li>
+<li><strong>Research</strong> — Find out what is already known</li>
+<li><strong>Hypothesis</strong> — Make a testable prediction</li>
+<li><strong>Experiment design</strong> — Plan a fair test (identify variables, method, equipment)</li>
+<li><strong>Data collection</strong> — Carry out the experiment; record observations carefully</li>
+<li><strong>Data analysis</strong> — Organise, calculate, and interpret results (graphs, tables, averages)</li>
+<li><strong>Conclusion</strong> — State whether results support or reject the hypothesis</li>
+<li><strong>Evaluation</strong> — Discuss limitations, sources of error, improvements</li>
+</ol>
+
+<h3 class="n-h3">3. Types of Variables</h3>
+<table class="n-table"><thead><tr><th>Type</th><th>Definition</th><th>Pasteur's experiment example</th></tr></thead>
+<tbody><tr><td><strong>Independent variable (IV)</strong></td><td>Variable deliberately <em>changed</em> by the scientist</td><td>Shape of the flask neck</td></tr>
+<tr><td><strong>Dependent variable (DV)</strong></td><td>Variable <em>measured</em> as a result of the IV changing</td><td>Whether broth became cloudy (did microbes grow?)</td></tr>
+<tr><td><strong>Controlled variables (CVs)</strong></td><td>All other variables kept the <em>same</em> to make the test fair</td><td>Same broth, same volume, same temperature, same time</td></tr></tbody></table>
+<div class="warn-box">⚠️ Why control variables? If more than one variable changes at a time, you cannot know WHICH variable caused the observed result. Controlling variables ensures the test is FAIR and results are meaningful.</div>
+
+<h3 class="n-h3">4. Writing a Good Hypothesis</h3>
+<div class="key-box">A hypothesis is a <strong>testable prediction</strong> of the relationship between the independent and dependent variable — it is NOT just a question or a simple fact.<br><br>
+<strong>Format:</strong> "If [IV], then [DV], because [reason]."<br><br>
+<strong>Example:</strong> "If more fertiliser is added to plants (IV), then the plants will grow taller (DV), because fertiliser provides additional nutrients needed for cell growth."</div>
+
+<h3 class="n-h3">5. Reliable vs Valid</h3>
+<ul class="n-ul">
+<li><strong>Reliable</strong> = you get consistent results if you repeat the experiment. (Tip: do the experiment multiple times and take averages.)</li>
+<li><strong>Valid</strong> = you are actually measuring what you intend to measure — the test is fair and the results are caused by the IV, not by something else.</li>
+</ul>
+<div class="tip-box">💡 An experiment can be reliable (gives same results each time) but NOT valid (if the controlled variables weren't properly controlled and something else caused the result).</div>`,
+    links:[
+      {label:'BBC Bitesize — Scientific Method', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'},
+      {label:'Khan Academy — Scientific Method', url:'https://www.khanacademy.org/science/biology/intro-to-biology/science-of-biology/a/the-science-of-biology'}
+    ],
+    quiz:[
+      {q:'What is a <strong>hypothesis</strong>?', opts:['A question about what you want to find out','A testable prediction of the relationship between the independent and dependent variable','A conclusion drawn from results','A fact from a textbook'], correct:1, explain:'A hypothesis is a testable prediction — an educated guess about what will happen and why. It must state the expected relationship between the independent variable (what you change) and the dependent variable (what you measure). Format: "If [IV], then [DV], because [reason]."'},
+      {q:'What is the <strong>independent variable</strong> in an experiment?', opts:['The variable that is measured as a result','The variable deliberately changed by the scientist','All the variables that are kept the same','The variable that cannot be controlled'], correct:1, explain:'The independent variable (IV) is the one thing the scientist deliberately changes between experimental groups. For example, in Pasteur\'s experiment, the IV was the shape of the flask neck (open vs. swan-neck).'},
+      {q:'What is the <strong>dependent variable</strong> in an experiment?', opts:['The variable the scientist changes','The variable measured and observed as a result of the IV changing','All the variables kept constant','The conclusion of the experiment'], correct:1, explain:'The dependent variable (DV) is what you measure or observe — it "depends" on the independent variable. In Pasteur\'s experiment, the DV was whether the broth became cloudy (indicating microbial growth had occurred).'},
+      {q:'Why is it important to <strong>control variables</strong> in an experiment?', opts:['To make the experiment faster','To make the experiment look more professional','So you know that any change in the DV was caused by the IV, making the test fair and valid','To reduce the number of measurements needed'], correct:2, explain:'If multiple variables change at once, you cannot determine which one caused the observed result. By keeping all other variables constant (controlled), you can be confident that changes in the DV were caused by the IV — making the test fair and the results valid.'},
+      {q:'Which of the following is the <strong>best</strong> scientific hypothesis?', opts:['"I think plants grow."','"Does fertiliser affect plant growth?"','"If more fertiliser is added to plants, then they will grow taller, because fertiliser provides extra nutrients for cell growth."','"Plants need water to live."'], correct:2, explain:'A good hypothesis: (1) is testable, (2) identifies the independent variable (amount of fertiliser), (3) predicts a specific change in the dependent variable (plant height), and (4) gives a scientific reason ("because fertiliser provides extra nutrients"). The other options are just questions, statements of belief, or facts.'},
+      {q:'True or False: If a hypothesis is NOT supported by the experimental results, the experiment was a failure.', opts:['TRUE — a good hypothesis must always be proven correct','FALSE — a hypothesis that is shown to be wrong is still valuable — it eliminates possibilities and advances scientific knowledge','TRUE — all experiments must confirm the hypothesis','FALSE — all hypotheses are always supported eventually'], correct:1, explain:'FALSE. Science progresses through both confirmed AND rejected hypotheses. Finding that a hypothesis is wrong is still a valuable result — it rules out one explanation and helps scientists narrow down what IS true. A "failed" hypothesis that was properly tested is still good science.'},
+      {q:'In an experiment testing whether water temperature affects yeast growth: a student heats water to 5 different temperatures and measures the volume of CO₂ produced by yeast. What is the <strong>independent variable</strong>?', opts:['The volume of CO₂ produced','The amount of yeast used','The water temperature','The type of container used'], correct:2, explain:'The independent variable is what the scientist deliberately changes — in this case, the water temperature (5 different temperatures). The dependent variable is what is measured as a result: the volume of CO₂ produced. The amount of yeast, type of container, etc. are controlled variables.'}
+    ]
+  }
+  ]
 }
 ];
 
