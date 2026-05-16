@@ -419,7 +419,507 @@ function showResult(){
 }
 
 // ── DATA (populated below) ────────────────────────────────────────
-const GROUPS = [];
+const GROUPS = [
+// ═══════════════════════════════════════════════════════════
+// GROUP 1 — FORCES & SPACE
+// ═══════════════════════════════════════════════════════════
+{
+  id:'forces_space', name:'Forces & Space', icon:'🌍',
+  gradient:'linear-gradient(135deg,#4ECDC4,#2b8fc0)',
+  topics:[
+  {
+    id:'gravity', name:'Gravity', icon:'⬇️',
+    notesHtml:`
+<h3 class="n-h3">1. Mass vs Weight</h3>
+<p class="n-p"><strong>Mass</strong> is the amount of matter in an object. Measured in <strong>kilograms (kg)</strong>. It never changes, no matter where you are.</p>
+<p class="n-p"><strong>Weight</strong> is the gravitational force acting on an object. Measured in <strong>newtons (N)</strong>. It changes depending on where you are.</p>
+<table class="n-table"><thead><tr><th>Property</th><th>Mass</th><th>Weight</th></tr></thead>
+<tbody><tr><td>What is it?</td><td>Amount of matter</td><td>Gravitational force on an object</td></tr>
+<tr><td>Unit</td><td>kilogram (kg)</td><td>newton (N)</td></tr>
+<tr><td>Changes with location?</td><td>No — always the same</td><td>Yes — depends on local gravity</td></tr></tbody></table>
+<div class="tip-box">💡 Memory trick: Mass = how much <em>stuff</em>. Weight = the <em>pull</em> of gravity on that stuff.</div>
+
+<h3 class="n-h3">2. The Weight Formula</h3>
+<div class="formula-box"><div class="f-title">Weight Formula</div><div class="f-eq">W = m × g</div>
+<div class="f-vars">W = Weight (Newtons, N)<br>m = Mass (kilograms, kg)<br>g = Gravitational field strength (N/kg)</div></div>
+<p class="n-p">On Earth, <strong>g ≈ 9.8 N/kg</strong> (often rounded to 10 N/kg for quick calculations).</p>
+<p class="n-p">Example: A 50 kg student on Earth → W = 50 × 9.8 = <strong>490 N</strong></p>
+<p class="n-p">Rearranging: to find mass → <strong>m = W ÷ g</strong> &nbsp;|&nbsp; to find g → <strong>g = W ÷ m</strong></p>
+
+<h3 class="n-h3">3. Gravitational Field Strength on Different Worlds</h3>
+<table class="n-table"><thead><tr><th>Location</th><th>g (N/kg)</th><th>Weight of 50 kg person</th></tr></thead>
+<tbody><tr><td>Earth</td><td>9.8</td><td>490 N</td></tr>
+<tr><td>Moon</td><td>1.6</td><td>80 N</td></tr>
+<tr><td>Mars</td><td>3.7</td><td>185 N</td></tr>
+<tr><td>Jupiter</td><td>24.8</td><td>1240 N</td></tr></tbody></table>
+
+<h3 class="n-h3">4. Gravity as a Non-Contact Force</h3>
+<div class="key-box">Gravity is a <strong>non-contact force</strong> — objects do not need to touch for gravity to act between them. The Sun keeps Earth in orbit across 150 million km of empty space.</div>
+<ul class="n-ul">
+<li>Gravity always <strong>attracts</strong> — it never repels</li>
+<li>Gravity acts in <strong>pairs</strong>: Earth pulls you down with the same force you pull Earth up</li>
+<li>Greater <strong>mass</strong> → stronger gravitational force</li>
+<li>Greater <strong>distance</strong> → weaker gravitational force</li>
+<li>Direction: always toward the <strong>centre of mass</strong> of the attracting object</li>
+</ul>
+
+<h3 class="n-h3">5. Force Diagrams</h3>
+<pre class="diagram">  BOOK ON A TABLE          OBJECT FALLING THROUGH AIR
+
+  ↑ Normal (reaction)        ↑ Air resistance (drag)
+  |  force from table        |
+[BOOK]                    [OBJECT]
+  |                          |
+  ↓ Weight (gravity)         ↓ Weight (gravity)
+
+Balanced forces → resultant = 0 → no acceleration
+Weight > air resistance → net downward force → object accelerates</pre>
+<div class="warn-box">⚠️ Common mistake: "Objects fall because they are heavy." — Actually, ALL objects fall with the same acceleration (ignoring air resistance). A feather and a hammer fall together in a vacuum!</div>`,
+    links:[
+      {label:'BBC Bitesize — Forces (KS3 Physics)', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'},
+      {label:'PhET — Gravity and Orbits Simulation', url:'https://phet.colorado.edu/en/simulations/gravity-and-orbits'},
+      {label:'Khan Academy — Gravity', url:'https://www.khanacademy.org/science/physics/centripetal-force-and-gravitation'}
+    ],
+    quiz:[
+      {q:'What is the unit of <strong>weight</strong>?', opts:['Kilograms (kg)','Metres (m)','Newtons (N)','Watts (W)'], correct:2, explain:'Weight is a force, so it is measured in Newtons (N). Mass is measured in kilograms (kg).'},
+      {q:'An object has a mass of 8 kg. What is its weight on Earth? (g = 9.8 N/kg)', opts:['8 N','78.4 N','0.82 N','800 N'], correct:1, explain:'W = m × g = 8 × 9.8 = 78.4 N.'},
+      {q:'Which of the following <strong>changes</strong> when you travel from Earth to the Moon?', opts:['Mass','Weight','Both mass and weight','Neither mass nor weight'], correct:1, explain:'Mass never changes — it is the same everywhere. Weight changes because the Moon\'s gravity is weaker (g = 1.6 N/kg vs Earth\'s 9.8 N/kg).'},
+      {q:'A rock weighs 37 N on Earth (g = 9.8 N/kg). What is its mass (to 1 d.p.)?', opts:['362.6 kg','3.8 kg','37 kg','9.8 kg'], correct:1, explain:'m = W ÷ g = 37 ÷ 9.8 ≈ 3.8 kg.'},
+      {q:'On which planet/moon would you weigh the <strong>most</strong>?', opts:['Earth (g = 9.8)','Mars (g = 3.7)','Moon (g = 1.6)','Jupiter (g = 24.8)'], correct:3, explain:'Weight = m × g. Jupiter has the highest g (24.8 N/kg), so you would weigh the most there.'},
+      {q:'A book rests on a table and does not move. Which statement is correct?', opts:['Only gravity acts on it','Only the normal force acts on it','Weight and normal force act on it equally — resultant is zero','Gravity is greater than the normal force'], correct:2, explain:'Both weight (downward) and normal/reaction force (upward) act on the book. They are equal in size, so the resultant force is zero and the book does not accelerate.'},
+      {q:'Gravity is described as a "non-contact force". What does this mean?', opts:['Gravity only works when objects touch','Gravity only exists in space','Objects do not need to touch for gravity to act between them','Gravity pushes objects apart'], correct:2, explain:'Non-contact means gravity acts across empty space. The Sun pulls Earth gravitationally across 150 million km of vacuum.'}
+    ]
+  },
+  {
+    id:'solar_system', name:'Our Solar System', icon:'🪐',
+    notesHtml:`
+<h3 class="n-h3">1. The Solar System</h3>
+<p class="n-p">Our <strong>Solar System</strong> consists of the Sun and all objects held by its gravity: 8 planets, dwarf planets, moons, asteroids, and comets.</p>
+<div class="key-box"><strong>Planets in order from the Sun:</strong><br>Mercury · Venus · Earth · Mars · Jupiter · Saturn · Uranus · Neptune<br><br>💡 <em>"<strong>M</strong>y <strong>V</strong>ery <strong>E</strong>nergetic <strong>M</strong>other <strong>J</strong>ust <strong>S</strong>erved <strong>U</strong>s <strong>N</strong>achos"</em></div>
+
+<h3 class="n-h3">2. Types of Objects</h3>
+<table class="n-table"><thead><tr><th>Object</th><th>Description</th></tr></thead>
+<tbody><tr><td><strong>Dwarf planets</strong></td><td>Smaller than planets; do NOT clear other objects from their orbital path (e.g. Pluto, Eris)</td></tr>
+<tr><td><strong>Moons</strong></td><td>Natural satellites orbiting planets. Earth has 1; Jupiter has 90+</td></tr>
+<tr><td><strong>Asteroids</strong></td><td>Rocky bodies, mostly in the asteroid belt between Mars and Jupiter</td></tr>
+<tr><td><strong>Comets</strong></td><td>Ice, dust and rock. Form a bright tail when near the Sun. Tail ALWAYS points AWAY from the Sun</td></tr></tbody></table>
+
+<h3 class="n-h3">3. Planetary Orbits and Motion</h3>
+<ul class="n-ul">
+<li>Planets orbit the Sun in <strong>elliptical (oval-shaped)</strong> paths — not perfect circles</li>
+<li>Most planets orbit <strong>anticlockwise</strong> (viewed from above Earth's North Pole)</li>
+<li>Planets keep moving because <strong>there is no friction</strong> in the vacuum of space</li>
+<li>Orbit = forward momentum <em>balanced by</em> the Sun's gravitational pull inward</li>
+<li>Planets also <strong>rotate (spin)</strong> on their own axis → causes day and night</li>
+</ul>
+<div class="warn-box">⚠️ <strong>Venus</strong> rotates in the <em>opposite</em> direction (retrograde). <strong>Uranus</strong> rotates on its side (axis tilted ~98°).</div>
+
+<h3 class="n-h3">4. Temperature and Atmosphere</h3>
+<table class="n-table"><thead><tr><th>Planet</th><th>Temperature</th><th>Reason</th></tr></thead>
+<tbody><tr><td>Venus</td><td>~465°C (hottest!)</td><td>Thick atmosphere traps heat — extreme greenhouse effect</td></tr>
+<tr><td>Earth</td><td>Moderate</td><td>Right distance from Sun; atmosphere moderate greenhouse</td></tr>
+<tr><td>Mars</td><td>~−60°C</td><td>Far from Sun; very thin atmosphere</td></tr></tbody></table>
+<div class="tip-box">💡 Venus is hotter than Mercury even though Mercury is closer to the Sun — because Venus has a thick CO₂ atmosphere that traps heat. Mercury has almost no atmosphere.</div>`,
+    links:[
+      {label:'NASA — Solar System Exploration', url:'https://solarsystem.nasa.gov'},
+      {label:'BBC Bitesize — The Solar System', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'},
+      {label:'PhET — Gravity and Orbits', url:'https://phet.colorado.edu/en/simulations/gravity-and-orbits'}
+    ],
+    quiz:[
+      {q:'What shape are planetary orbits around the Sun?', opts:['Perfectly circular','Square','Elliptical (oval-shaped)','Spiral'], correct:2, explain:'Planets travel in elliptical (oval-shaped) orbits, not perfect circles. This was confirmed by Kepler.'},
+      {q:'A comet\'s tail always points:', opts:['Toward the Sun','Away from the Sun','In the direction the comet is travelling','Toward Earth'], correct:1, explain:'The tail is blown by solar wind and radiation pressure — it always points AWAY from the Sun, regardless of which way the comet is moving.'},
+      {q:'Why are planets able to keep moving in space without slowing down?', opts:['Rocket engines push them','Space is a vacuum — no friction or air resistance','The Sun pushes them forward','They are made of a special frictionless material'], correct:1, explain:'In the vacuum of space there is no air resistance or friction to slow planets down, so they continue moving indefinitely.'},
+      {q:'Why is Pluto NOT classified as a full planet?', opts:['It is too small','It has no moons','It does not clear other objects from its orbital path','It is made of ice'], correct:2, explain:'A planet must (1) orbit the Sun, (2) be roughly spherical, and (3) clear its orbital neighbourhood. Pluto fails criterion 3, so it is a dwarf planet.'},
+      {q:'Which planet rotates in the OPPOSITE direction to most others (retrograde rotation)?', opts:['Mars','Jupiter','Uranus','Venus'], correct:3, explain:'Venus rotates clockwise (retrograde) when viewed from above — the opposite to most planets. This means the Sun rises in the west on Venus.'},
+      {q:'Why is Venus much hotter than Mercury, even though Mercury is closer to the Sun?', opts:['Venus is larger','Venus has a thick atmosphere that traps heat (extreme greenhouse effect)','Venus rotates faster','Venus has a stronger magnetic field'], correct:1, explain:'Venus has a very thick CO₂ atmosphere that creates an extreme greenhouse effect, pushing its surface temperature to ~465°C. Mercury has virtually no atmosphere and cools dramatically at night.'},
+      {q:'Which direction do most planets orbit the Sun (viewed from above the North Pole)?', opts:['Clockwise','Anticlockwise','Alternating — some clockwise, some anticlockwise','Straight lines'], correct:1, explain:'Almost all planets orbit the Sun anticlockwise when viewed from above Earth\'s North Pole, because they all formed from the same rotating solar nebula.'}
+    ]
+  },
+  {
+    id:'solar_formation', name:'Formation of the Solar System', icon:'💫',
+    notesHtml:`
+<h3 class="n-h3">1. When and From What?</h3>
+<div class="key-box">The Solar System formed approximately <strong>4.6 billion years ago</strong> from a vast cloud of gas and dust called the <strong>solar nebula</strong>.</div>
+
+<h3 class="n-h3">2. Step-by-Step Formation</h3>
+<ol class="n-ol">
+<li>A huge cloud of gas (mainly hydrogen) and dust existed in space.</li>
+<li><strong>Gravity</strong> caused the cloud to collapse inward (possibly triggered by a nearby supernova explosion).</li>
+<li>As material fell toward the centre, it heated enormously → formed the <strong>proto-Sun</strong>.</li>
+<li>Leftover material formed a spinning, flat <strong>accretion disc</strong> around the proto-Sun.</li>
+<li>Particles in the disc collided and stuck together (<strong>accretion</strong>) → grew into <strong>planetesimals</strong> (small proto-planets).</li>
+<li>Planetesimals collided and merged → grew into the <strong>planets</strong>.</li>
+<li><strong>Nuclear fusion</strong> began in the proto-Sun's core → the Sun ignited as a true star.</li>
+<li>The Sun's radiation and solar wind blew away remaining gas and dust → Solar System as we know it.</li>
+</ol>
+
+<h3 class="n-h3">3. Why Inner vs Outer Planets Are Different</h3>
+<table class="n-table"><thead><tr><th></th><th>Inner Planets (Mercury–Mars)</th><th>Outer Planets (Jupiter–Neptune)</th></tr></thead>
+<tbody><tr><td>Type</td><td>Rocky / terrestrial</td><td>Gas giants / ice giants</td></tr>
+<tr><td>Why?</td><td>Heat near the Sun vaporised lighter gases (hydrogen, helium), leaving only heavy rocky materials</td><td>Farther from Sun where temperatures were low enough for gases and ices to condense and be captured</td></tr>
+<tr><td>Examples</td><td>Earth, Mars</td><td>Jupiter, Saturn, Uranus, Neptune</td></tr></tbody></table>
+<div class="tip-box">💡 Think of it like an oven: the closer to the heat, the more lighter stuff burns off, leaving only dense rocky material behind.</div>`,
+    links:[
+      {label:'NASA — Solar System Formation', url:'https://solarsystem.nasa.gov'},
+      {label:'BBC Bitesize — The Universe', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'}
+    ],
+    quiz:[
+      {q:'Approximately how long ago did the Solar System form?', opts:['460 million years ago','4.6 billion years ago','46 billion years ago','4.6 million years ago'], correct:1, explain:'The Solar System formed approximately 4.6 billion years ago from a collapsing cloud of gas and dust called the solar nebula.'},
+      {q:'What was the solar nebula?', opts:['The Sun\'s corona','A vast cloud of gas and dust that collapsed to form the Solar System','The first planet to form','A type of solar flare'], correct:1, explain:'The solar nebula was a vast cloud of gas (mainly hydrogen) and dust. Its gravitational collapse led to the formation of the Solar System.'},
+      {q:'What force caused the gas and dust cloud to collapse inward?', opts:['Magnetism','Pressure','Gravity','The Sun\'s radiation'], correct:2, explain:'Gravity pulled the particles in the cloud together. As the cloud collapsed, it heated up and the proto-Sun formed at the centre.'},
+      {q:'Why are the inner planets (Mercury–Mars) rocky rather than gas giants?', opts:['Rocky materials are heavier and fell inward','Heat near the Sun vaporised lighter gases, leaving only rocky material','The Sun attracted only rocky material','Gas planets pushed rocky ones inward'], correct:1, explain:'The intense heat near the young Sun vaporised and drove away lighter gases (hydrogen, helium), so only heavier rocky materials remained to form the inner planets.'},
+      {q:'What are planetesimals?', opts:['Tiny comets','Small proto-planets formed by accretion that later collided to form full planets','Mini versions of the Sun','Rocks in the asteroid belt'], correct:1, explain:'Planetesimals were small proto-planets built up through accretion (particles sticking together). They collided and merged over millions of years to form the planets.'},
+      {q:'What "switched on" the Sun and ignited it as a true star?', opts:['A nearby supernova','Chemical combustion of hydrogen','Nuclear fusion beginning in the core','Collision with a large asteroid'], correct:2, explain:'When the proto-Sun\'s core became hot and dense enough, nuclear fusion of hydrogen atoms began, releasing enormous energy — this is what makes the Sun shine.'}
+    ]
+  },
+  {
+    id:'moon_eclipses', name:'The Sun, Earth & Moon', icon:'🌙',
+    notesHtml:`
+<h3 class="n-h3">1. Key Facts and Sizes</h3>
+<ul class="n-ul">
+<li>The Sun's diameter is about <strong>109 × Earth's diameter</strong></li>
+<li>Earth's diameter is about <strong>3.7 × the Moon's diameter</strong></li>
+<li>The Moon orbits Earth in approximately <strong>27.3 days</strong> in an elliptical orbit</li>
+<li>The Moon <strong>does not produce its own light</strong> — it reflects sunlight</li>
+</ul>
+
+<h3 class="n-h3">2. Moon Phases</h3>
+<pre class="diagram">🌑  →  🌒  →  🌓  →  🌔  →  🌕  →  🌖  →  🌗  →  🌘  →  🌑
+New   Wax.  1st   Wax.  Full  Wan.  3rd   Wan.  New
+      Cres. Qtr   Gib.        Gib.  Qtr   Cres.</pre>
+<ul class="n-ul">
+<li><strong>Waxing</strong> = visible lit area is growing (New → Full)</li>
+<li><strong>Waning</strong> = visible lit area is shrinking (Full → New)</li>
+<li><strong>Synchronous rotation (tidal locking)</strong>: The Moon rotates on its axis in exactly the same time it takes to orbit Earth → we always see the <em>same side</em> of the Moon</li>
+</ul>
+
+<h3 class="n-h3">3. Solar Eclipses</h3>
+<div class="key-box">A solar eclipse occurs when the Moon passes <strong>between the Sun and Earth</strong>, blocking sunlight.<br><br>Order: <strong>Sun → Moon → Earth</strong><br>Only happens during a <strong>New Moon</strong>.</div>
+<pre class="diagram">   ☀️ SUN ——→ 🌑 MOON ——→ 🌍 EARTH
+
+   Umbra (central shadow) → Total solar eclipse
+   Penumbra (partial shadow) → Partial solar eclipse</pre>
+
+<h3 class="n-h3">4. Lunar Eclipses</h3>
+<div class="key-box">A lunar eclipse occurs when <strong>Earth passes between the Sun and Moon</strong>, blocking sunlight from reaching the Moon.<br><br>Order: <strong>Sun → Earth → Moon</strong><br>Only happens during a <strong>Full Moon</strong>.</div>
+<p class="n-p">During a lunar eclipse the Moon turns <strong>reddish-orange</strong>: some sunlight bends around Earth's atmosphere and reaches the Moon. Blue light scatters away; red/orange light passes through — the same effect as a sunset.</p>
+
+<h3 class="n-h3">5. Why Not Every Month?</h3>
+<div class="warn-box">⚠️ The Moon's orbit is tilted about <strong>5°</strong> relative to Earth's orbit around the Sun. So usually the Moon passes slightly above or below the Sun-Earth line — eclipses only happen when all three align precisely.</div>`,
+    links:[
+      {label:'NASA — Moon Phases', url:'https://moon.nasa.gov'},
+      {label:'BBC Bitesize — Earth, Sun and Moon', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'}
+    ],
+    quiz:[
+      {q:'The Moon takes approximately how long to orbit Earth?', opts:['7 days','14 days','27.3 days','365 days'], correct:2, explain:'The Moon takes about 27.3 days (roughly 4 weeks) to complete one orbit of Earth.'},
+      {q:'What does "waxing" mean in the context of Moon phases?', opts:['The Moon is getting smaller','The Moon is getting brighter (lit area increasing)','The Moon is hidden','The Moon is at its full phase'], correct:1, explain:'Waxing means the visible lit portion of the Moon is increasing — going from New Moon toward Full Moon.'},
+      {q:'During a SOLAR eclipse, what is the correct order from left to right?', opts:['Earth → Moon → Sun','Sun → Earth → Moon','Sun → Moon → Earth','Moon → Sun → Earth'], correct:2, explain:'In a solar eclipse, the Moon passes between the Sun and Earth. Order: Sun → Moon → Earth. This only happens at New Moon.'},
+      {q:'During which Moon phase does a LUNAR eclipse occur?', opts:['New Moon','First Quarter','Full Moon','Third Quarter'], correct:2, explain:'A lunar eclipse requires Earth to be between the Sun and Moon. This alignment only occurs during a Full Moon.'},
+      {q:'Why does the same side of the Moon always face Earth?', opts:['The Moon does not rotate at all','The Moon\'s rotation and orbital period are exactly the same (tidal locking)','Gravity stops the far side from being seen','The Moon is flat on one side'], correct:1, explain:'Tidal locking (synchronous rotation): the Moon rotates once on its axis in the same time it takes to orbit Earth (27.3 days), so we always see the same hemisphere.'},
+      {q:'Why does the Moon appear reddish-orange during a lunar eclipse?', opts:['The Moon gets very hot','Red light from Earth\'s atmosphere bends around and reaches the Moon; blue light scatters away','The shadow of Earth is red','Dust from space colours the Moon'], correct:1, explain:'As sunlight passes through Earth\'s atmosphere, blue light scatters away (like during a sunset) and red/orange light bends around to dimly light the Moon — giving it its "blood moon" appearance.'},
+      {q:'True or False: A solar eclipse can happen during a Full Moon.', opts:['TRUE — it can happen any time','FALSE — solar eclipses only happen at New Moon','TRUE — but only in winter','FALSE — solar eclipses never happen'], correct:1, explain:'FALSE. A solar eclipse requires the Moon to be between the Sun and Earth — this only happens at New Moon. At Full Moon, Earth is between the Sun and Moon (which can cause a lunar eclipse instead).'}
+    ]
+  },
+  {
+    id:'tides', name:'Tides', icon:'🌊',
+    notesHtml:`
+<h3 class="n-h3">1. What Causes Tides?</h3>
+<p class="n-p">Tides are the regular rise and fall of sea levels caused mainly by the <strong>gravitational pull of the Moon</strong>, and to a lesser extent the Sun.</p>
+<div class="key-box">The Moon has a <strong>greater effect</strong> on tides than the Sun, even though the Sun is far more massive. This is because the Moon is <em>much closer</em> to Earth — and distance has a bigger effect on tidal force than mass does.</div>
+
+<h3 class="n-h3">2. Two Tidal Bulges</h3>
+<pre class="diagram">             MOON
+              ↓
+🌊←—[EARTH]—→🌊
+
+Bulge 1: Ocean on the side FACING the Moon → pulled toward Moon
+Bulge 2: Ocean on the side AWAY from Moon → Earth pulled toward
+         Moon but water "left behind" due to inertia
+
+Because of TWO bulges → most places get TWO high tides per day
+Tidal cycle: approximately 12 hours 25 minutes between high tides</pre>
+
+<h3 class="n-h3">3. Spring Tides vs Neap Tides</h3>
+<table class="n-table"><thead><tr><th></th><th>Spring Tides</th><th>Neap Tides</th></tr></thead>
+<tbody><tr><td><strong>When?</strong></td><td>Sun, Moon and Earth are aligned (in a straight line)</td><td>Sun and Moon are at right angles to each other</td></tr>
+<tr><td><strong>Moon phase</strong></td><td>New Moon and Full Moon</td><td>First Quarter and Third Quarter</td></tr>
+<tr><td><strong>Tidal range</strong></td><td>LARGER — higher high tides, lower low tides</td><td>SMALLER — more moderate tides</td></tr>
+<tr><td><strong>Why?</strong></td><td>Sun and Moon gravity add together</td><td>Sun's gravity partly cancels Moon's</td></tr></tbody></table>
+<div class="warn-box">⚠️ "Spring tides" have NOTHING to do with the season "spring"! They happen at New Moon and Full Moon throughout the whole year.</div>`,
+    links:[
+      {label:'BBC Bitesize — Tides', url:'https://www.bbc.co.uk/bitesize/subjects/zrkw2hv'},
+      {label:'NASA — Tides and the Moon', url:'https://solarsystem.nasa.gov'}
+    ],
+    quiz:[
+      {q:'What is the main cause of tides?', opts:['Wind over the ocean','The gravitational pull of the Moon','Earth\'s rotation','Ocean currents'], correct:1, explain:'Tides are mainly caused by the Moon\'s gravitational pull on Earth\'s oceans. The Sun also contributes but has a smaller effect due to its much greater distance.'},
+      {q:'Why does the Moon have a GREATER tidal effect than the Sun, even though the Sun is far more massive?', opts:['The Moon is bigger than the Sun','The Moon\'s light is stronger','The Moon is much closer to Earth, and distance has a bigger effect on tidal force than mass','The Moon orbits Earth faster'], correct:2, explain:'Tidal force depends strongly on distance (it decreases with the cube of distance). The Moon is ~150 times closer to Earth than the Sun, which more than compensates for the Sun\'s greater mass.'},
+      {q:'How many tidal bulges does Earth have at any given time?', opts:['One — on the side facing the Moon','Two — one facing the Moon and one on the opposite side','Three — one toward Moon, one away, one at the equator','Four — one on each side'], correct:1, explain:'There are always TWO tidal bulges: one on the side of Earth facing the Moon (pulled toward it) and one on the opposite side (where water is "left behind" as Earth is pulled toward the Moon).'},
+      {q:'Spring tides occur when:', opts:['It is the spring season (March–May)','The Moon is at its closest to Earth','The Sun, Moon and Earth are aligned in a straight line','The Moon is at a right angle to the Sun'], correct:2, explain:'Spring tides occur when the Sun, Moon and Earth are aligned — at New Moon and Full Moon. Their gravitational pulls combine for a larger tidal range. Nothing to do with the season!'},
+      {q:'Neap tides are SMALLER than average. When do they occur?', opts:['At New Moon and Full Moon','When the Sun and Moon are at right angles to Earth','Only in winter','When the Moon is farthest from Earth'], correct:1, explain:'Neap tides occur at First Quarter and Third Quarter Moon, when the Sun and Moon are at right angles relative to Earth. Their gravitational pulls partly cancel each other out, giving a smaller tidal range.'},
+      {q:'A coastal town experiences two high tides per day. Why two, not one?', opts:['Earth rotates twice per day','There are two tidal bulges — one on each side of Earth — and Earth rotates through both each day','The Moon pulls water twice per orbit','The Sun and Moon each cause one high tide'], correct:1, explain:'Earth has two tidal bulges (one facing the Moon, one opposite). As Earth rotates once every 24 hours, most coastal locations pass through both bulges — experiencing two high tides each day.'}
+    ]
+  }
+  ]
+},
+// ═══════════════════════════════════════════════════════════
+// GROUP 2 — MATERIALS
+// ═══════════════════════════════════════════════════════════
+{
+  id:'materials', name:'Materials', icon:'⚗️',
+  gradient:'linear-gradient(135deg,#FF9F6B,#e8622a)',
+  topics:[
+  {
+    id:'metals', name:'Metals', icon:'🔩',
+    notesHtml:`
+<h3 class="n-h3">1. Physical Properties of Metals</h3>
+<table class="n-table"><thead><tr><th>Property</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody><tr><td><strong>Lustrous</strong></td><td>Shiny surface when cut or polished</td><td>Gold jewellery</td></tr>
+<tr><td><strong>Malleable</strong></td><td>Can be hammered into shapes without breaking</td><td>Gold beaten into gold leaf</td></tr>
+<tr><td><strong>Ductile</strong></td><td>Can be drawn into thin wires</td><td>Copper drawn into electrical wire</td></tr>
+<tr><td><strong>Good electrical conductors</strong></td><td>Allow electric current to flow easily</td><td>Copper wires</td></tr>
+<tr><td><strong>Good thermal conductors</strong></td><td>Allow heat to pass through easily</td><td>Iron cooking pots</td></tr>
+<tr><td><strong>High melting points</strong></td><td>Require high temperatures to melt</td><td>Iron melts at 1538°C</td></tr>
+<tr><td><strong>High density</strong></td><td>Heavy for their size</td><td>Lead, iron</td></tr>
+<tr><td><strong>Solid at room temperature</strong></td><td>Almost all metals are solid</td><td>Exception: Mercury is liquid!</td></tr></tbody></table>
+
+<h3 class="n-h3">2. Why Metals Conduct Electricity and Heat</h3>
+<div class="key-box">Metals have a special atomic structure: their atoms are arranged in a regular <strong>lattice (grid)</strong>, and each atom releases <strong>free electrons</strong>. These electrons can move freely throughout the metal — this "sea of electrons" allows both electric current and heat to flow easily.</div>
+
+<h3 class="n-h3">3. Where Metals Are Found</h3>
+<ul class="n-ul">
+<li><strong>Native (pure) form</strong>: gold, silver, platinum, copper</li>
+<li><strong>Ores</strong> (combined with oxygen, sulfur etc.): most metals must be extracted — iron from haematite, aluminium from bauxite</li>
+</ul>
+
+<h3 class="n-h3">4. Uses Based on Properties</h3>
+<table class="n-table"><thead><tr><th>Metal</th><th>Key property</th><th>Use</th></tr></thead>
+<tbody><tr><td>Copper</td><td>Excellent conductor, ductile</td><td>Electrical wiring</td></tr>
+<tr><td>Aluminium</td><td>Low density, corrosion-resistant</td><td>Aircraft bodies, food cans</td></tr>
+<tr><td>Tungsten</td><td>Extremely high melting point</td><td>Light bulb filaments</td></tr>
+<tr><td>Gold</td><td>Does not corrode, malleable</td><td>Jewellery, electronics contacts</td></tr>
+<tr><td>Iron/Steel</td><td>Strong, hard</td><td>Construction, bridges</td></tr></tbody></table>
+<div class="warn-box">⚠️ Common mistake: "Metals are always magnetic." — Only SOME metals are magnetic: iron, nickel, and cobalt. Most metals are NOT magnetic.</div>`,
+    links:[
+      {label:'BBC Bitesize — Metals and Non-metals', url:'https://www.bbc.co.uk/bitesize/subjects/znxtyrd'},
+      {label:'Khan Academy — Properties of Metals', url:'https://www.khanacademy.org'}
+    ],
+    quiz:[
+      {q:'What does <strong>ductile</strong> mean?', opts:['Can be hammered into shapes without breaking','Can be drawn into thin wires without breaking','Conducts electricity well','Has a high melting point'], correct:1, explain:'Ductile means a material can be stretched or drawn into thin wires without breaking. Copper is highly ductile, which is why it\'s used for electrical wiring.'},
+      {q:'Why are metals good conductors of electricity?', opts:['Their atoms are very close together','They have free electrons that can move throughout the metallic lattice','They are dense and heavy','They have high melting points'], correct:1, explain:'Metals have a "sea of free electrons" — electrons released from their atoms that can move freely through the metallic lattice. This movement of electrons IS the electric current.'},
+      {q:'Which of the following is <strong>NOT</strong> a typical property of metals?', opts:['Malleable','Brittle','Ductile','Lustrous (shiny)'], correct:1, explain:'Brittle is a property of NON-metals (they crack or crumble when force is applied). Metals are malleable (can be shaped) and ductile (can be drawn into wires) — the opposite of brittle.'},
+      {q:'True or False: ALL metals are solid at room temperature.', opts:['TRUE — all metals are solid at room temperature','FALSE — mercury is a liquid metal at room temperature','FALSE — most metals are gases','TRUE — including mercury'], correct:1, explain:'FALSE. Mercury (Hg) is the one exception — it is a liquid at room temperature. All other metals are solid at normal temperatures.'},
+      {q:'Which metal is used for light bulb filaments, and why?', opts:['Copper — because it conducts well','Gold — because it doesn\'t corrode','Aluminium — because it is lightweight','Tungsten — because it has an extremely high melting point'], correct:3, explain:'Tungsten has the highest melting point of all metals (~3422°C). This means it can glow white-hot as a filament without melting.'},
+      {q:'A metal rod feels cold when you pick it up, even though the room temperature is warm. Why?', opts:['Metals absorb body heat','Metals are good thermal conductors — they conduct heat away from your hand quickly, making them feel cold','Metals repel heat','The metal is always at a lower temperature than air'], correct:1, explain:'Metals are good thermal conductors. When you touch a metal rod at room temperature, it rapidly conducts heat away from your warm hand — this makes it feel cold, even though it\'s the same temperature as the room.'}
+    ]
+  },
+  {
+    id:'non_metals', name:'Non-metals', icon:'🫧',
+    notesHtml:`
+<h3 class="n-h3">1. Physical Properties of Non-metals</h3>
+<table class="n-table"><thead><tr><th>Property</th><th>Description</th></tr></thead>
+<tbody><tr><td><strong>Dull appearance</strong></td><td>No metallic shine</td></tr>
+<tr><td><strong>Brittle (if solid)</strong></td><td>Break or crumble when force is applied — cannot be hammered into shapes</td></tr>
+<tr><td><strong>Poor electrical conductors</strong></td><td>Do not allow current to flow easily (insulators)</td></tr>
+<tr><td><strong>Poor thermal conductors</strong></td><td>Do not transfer heat well</td></tr>
+<tr><td><strong>Low density</strong></td><td>Generally lighter than metals</td></tr>
+<tr><td><strong>Low melting/boiling points</strong></td><td>Many are gases or melt at low temperatures</td></tr>
+<tr><td><strong>Various states</strong></td><td>Can be solid, liquid or gas at room temperature</td></tr></tbody></table>
+<div class="warn-box">⚠️ EXCEPTION: Carbon in the form of <strong>graphite</strong> conducts electricity. This is because graphite has layers of carbon atoms with free electrons between layers. Diamond (also carbon) does NOT conduct — it is an insulator. These different forms are called <strong>allotropes</strong> of carbon.</div>
+
+<h3 class="n-h3">2. Biological Roles of Non-metals</h3>
+<table class="n-table"><thead><tr><th>Element</th><th>Symbol</th><th>Biological Role</th></tr></thead>
+<tbody><tr><td>Carbon</td><td>C</td><td>Foundation of ALL living molecules — carbohydrates, proteins, fats, DNA</td></tr>
+<tr><td>Hydrogen</td><td>H</td><td>In water (H₂O) and all organic molecules</td></tr>
+<tr><td>Oxygen</td><td>O</td><td>Respiration; makes up 21% of air</td></tr>
+<tr><td>Nitrogen</td><td>N</td><td>In proteins and DNA; makes up 78% of air</td></tr>
+<tr><td>Phosphorus</td><td>P</td><td>In DNA and cell membranes</td></tr>
+<tr><td>Sulfur</td><td>S</td><td>In some proteins</td></tr></tbody></table>
+
+<h3 class="n-h3">3. Metals vs Non-metals Comparison</h3>
+<table class="n-table"><thead><tr><th>Feature</th><th>Metals</th><th>Non-metals</th></tr></thead>
+<tbody><tr><td>Appearance</td><td>Shiny/lustrous</td><td>Dull</td></tr>
+<tr><td>Electrical conduction</td><td>Good conductors</td><td>Poor conductors (insulators)</td></tr>
+<tr><td>Malleability</td><td>Malleable</td><td>Brittle (if solid)</td></tr>
+<tr><td>Melting point</td><td>Generally high</td><td>Generally low</td></tr>
+<tr><td>Density</td><td>Generally high</td><td>Generally low</td></tr></tbody></table>`,
+    links:[
+      {label:'BBC Bitesize — Metals and Non-metals', url:'https://www.bbc.co.uk/bitesize/subjects/znxtyrd'}
+    ],
+    quiz:[
+      {q:'Which non-metal can conduct electricity — making it an exception to the usual rule?', opts:['Sulfur','Diamond (carbon)','Graphite (carbon)','Chlorine'], correct:2, explain:'Graphite (a form of carbon) is an unusual non-metal that conducts electricity. It has layers of carbon atoms with free electrons between the layers. Diamond — another form of carbon — does NOT conduct electricity.'},
+      {q:'Why are solid non-metals typically brittle?', opts:['They have too many electrons','They lack a metallic lattice and free electrons — their atoms are bonded rigidly so they crack under force instead of bending','They are always cold','They have high melting points'], correct:1, explain:'Non-metals lack the "sea of free electrons" and flexible metallic lattice that allow metals to bend and be shaped. Non-metal atoms are bonded more rigidly, so they crack or crumble when force is applied.'},
+      {q:'What percentage of air is <strong>nitrogen</strong>?', opts:['21%','50%','78%','99%'], correct:2, explain:'Nitrogen makes up about 78% of the air we breathe. Oxygen makes up about 21%, and the remaining ~1% is argon and other gases.'},
+      {q:'Which non-metal is the foundation of ALL living molecules (carbohydrates, proteins, DNA, fats)?', opts:['Oxygen','Nitrogen','Carbon','Silicon'], correct:2, explain:'Carbon is unique — it can form four bonds and can chain together into enormously complex molecules. All biological molecules are based on carbon skeletons. This is why life on Earth is called "carbon-based life."'},
+      {q:'Which non-metals are essential components of both DNA and proteins?', opts:['Only nitrogen','Only carbon','Both nitrogen and carbon','Oxygen and sulfur only'], correct:2, explain:'Both nitrogen (N) and carbon (C) are essential for DNA and proteins. Carbon forms the backbone of all organic molecules; nitrogen is found in the base pairs of DNA and in amino acids (building blocks of proteins).'},
+      {q:'A student is testing whether materials conduct electricity using a simple circuit with a bulb. The bulb lights up for iron but NOT for sulfur. What does this tell us?', opts:['Iron is a non-metal and sulfur is a metal','Iron is an electrical conductor; sulfur is an electrical insulator','Both are insulators','Sulfur has a higher melting point'], correct:1, explain:'Iron is a metal with free electrons and is therefore a good electrical conductor. Sulfur is a non-metal with tightly bound electrons and is an electrical insulator.'}
+    ]
+  },
+  {
+    id:'alloys', name:'Alloys', icon:'🔧',
+    notesHtml:`
+<h3 class="n-h3">1. What Is an Alloy?</h3>
+<div class="key-box">An <strong>alloy</strong> is a <strong>mixture of two or more elements, where at least one is a metal</strong>. Alloys are made by melting the elements together and allowing them to cool.</div>
+<p class="n-p">Pure metals often have limitations (e.g. pure iron is soft and rusts easily). Mixing elements creates materials with improved properties.</p>
+
+<h3 class="n-h3">2. Why Alloys Are Harder Than Pure Metals</h3>
+<pre class="diagram">PURE METAL: all atoms same size → layers slide easily → soft, malleable
+◦ ◦ ◦ ◦ ◦
+◦ ◦ ◦ ◦ ◦   ← layers can slide over each other
+◦ ◦ ◦ ◦ ◦
+
+ALLOY: different-sized atoms disrupt the layers → harder
+◦ ◦ ◦ ◦ ◦
+◦ ◦ ● ◦ ◦   ← ● = different-sized atom; prevents sliding
+◦ ◦ ◦ ◦ ◦</pre>
+<p class="n-p">Two types of alloys:</p>
+<ul class="n-ul">
+<li><strong>Substitutional</strong>: Atoms of similar size replace each other (e.g. Brass: Cu+Zn)</li>
+<li><strong>Interstitial</strong>: Smaller atoms fill gaps between larger atoms (e.g. Steel: Fe+C)</li>
+</ul>
+
+<h3 class="n-h3">3. Common Alloys</h3>
+<table class="n-table"><thead><tr><th>Alloy</th><th>Made From</th><th>Improved Property</th><th>Use</th></tr></thead>
+<tbody><tr><td><strong>Steel</strong></td><td>Iron + carbon</td><td>Much harder and stronger than iron</td><td>Construction, cars, tools</td></tr>
+<tr><td><strong>Stainless steel</strong></td><td>Iron + chromium + nickel</td><td>Corrosion-resistant (doesn't rust)</td><td>Cutlery, surgical instruments</td></tr>
+<tr><td><strong>Brass</strong></td><td>Copper + zinc</td><td>Harder than copper, attractive colour</td><td>Musical instruments, door handles, taps</td></tr>
+<tr><td><strong>Bronze</strong></td><td>Copper + tin</td><td>Harder than copper</td><td>Statues, medals, bearings</td></tr>
+<tr><td><strong>Solder</strong></td><td>Tin + lead</td><td>Lower melting point</td><td>Joining electrical components</td></tr>
+<tr><td><strong>Duralumin</strong></td><td>Aluminium + copper</td><td>Stronger but still lightweight</td><td>Aircraft parts</td></tr></tbody></table>
+<div class="warn-box">⚠️ An alloy is NOT simply a mixture of two metals — it must contain at least one metal, but the other element(s) can be non-metals. Steel = iron + carbon (carbon is a non-metal!).</div>`,
+    links:[
+      {label:'BBC Bitesize — Alloys', url:'https://www.bbc.co.uk/bitesize/subjects/znxtyrd'}
+    ],
+    quiz:[
+      {q:'What is the correct definition of an alloy?', opts:['A pure metal refined to 99.9% purity','A mixture of two or more elements where at least one is a metal','A liquid metal at room temperature','A naturally occurring metallic compound'], correct:1, explain:'An alloy is a mixture of 2 or more elements where at least one must be a metal. The other element(s) can be metals OR non-metals (e.g. carbon in steel is a non-metal).'},
+      {q:'Brass is an alloy of:', opts:['Iron and carbon','Copper and zinc','Aluminium and copper','Tin and lead'], correct:1, explain:'Brass is made from copper and zinc. It is harder than pure copper, has an attractive golden colour, and is used for musical instruments, taps, and door handles.'},
+      {q:'Steel is an alloy of:', opts:['Iron and zinc','Copper and tin','Iron and carbon','Aluminium and copper'], correct:2, explain:'Steel is made from iron and carbon. The carbon atoms (smaller than iron atoms) fill the gaps in the iron lattice (interstitial alloy), disrupting the layers and making it much harder and stronger than pure iron.'},
+      {q:'Why are alloys generally <strong>harder</strong> than the pure metals they are made from?', opts:['They have more electrons','Different-sized atoms disrupt the regular atomic layers, preventing them from sliding over each other','They are heated to higher temperatures','They contain more atoms'], correct:1, explain:'In a pure metal, all atoms are the same size and layers can slide easily (making it soft). When a different-sized atom is added, it disrupts the regular pattern and prevents layer-sliding — making the alloy harder and stronger.'},
+      {q:'Which alloy is used for surgical instruments, and why?', opts:['Bronze — because it is cheap','Brass — because it is golden','Stainless steel — because it does not rust/corrode','Duralumin — because it is lightweight'], correct:2, explain:'Stainless steel (iron + chromium + nickel) is used for surgical instruments because it is corrosion-resistant — it does not rust even when exposed to blood and sterilisation processes.'},
+      {q:'True or False: An alloy can only be made from two metals — it cannot contain non-metals.', opts:['TRUE — alloys must only contain metals','FALSE — alloys can contain non-metals (e.g. carbon in steel)','TRUE — by definition an alloy is two metals','FALSE — alloys can only contain non-metals'], correct:1, explain:'FALSE. Steel is a classic example: it contains iron (a metal) and carbon (a non-metal). The definition of an alloy is a mixture where AT LEAST ONE element is a metal — other components can be non-metals.'}
+    ]
+  }
+  ]
+},
+// ═══════════════════════════════════════════════════════════
+// GROUP 3 — CHEMISTRY
+// ═══════════════════════════════════════════════════════════
+{
+  id:'chemistry', name:'Chemistry', icon:'🧪',
+  gradient:'linear-gradient(135deg,#FF8FAB,#c4407a)',
+  topics:[
+  {
+    id:'acids_bases', name:'Acids & Bases', icon:'⚗️',
+    notesHtml:`
+<h3 class="n-h3">1. The pH Scale</h3>
+<div class="key-box">The <strong>pH scale</strong> runs from 0 to 14 and measures how acidic or alkaline a substance is.<br>
+• <strong>0–6</strong> = Acid (lower number = stronger acid)<br>
+• <strong>7</strong> = Neutral (pure water)<br>
+• <strong>8–14</strong> = Alkali/Base (higher number = stronger alkali)</div>
+<table class="n-table"><thead><tr><th>Substance</th><th>pH</th><th>Type</th></tr></thead>
+<tbody><tr><td>Battery acid</td><td>~0</td><td>Strong acid</td></tr>
+<tr><td>Stomach acid (HCl)</td><td>1–2</td><td>Strong acid</td></tr>
+<tr><td>Lemon juice</td><td>~2</td><td>Strong acid</td></tr>
+<tr><td>Vinegar (ethanoic acid)</td><td>~3</td><td>Weak acid</td></tr>
+<tr><td>Pure water</td><td>7</td><td>Neutral</td></tr>
+<tr><td>Baking soda</td><td>~9</td><td>Weak alkali</td></tr>
+<tr><td>Bleach</td><td>~13</td><td>Strong alkali</td></tr>
+<tr><td>Oven cleaner</td><td>~14</td><td>Strong alkali</td></tr></tbody></table>
+
+<h3 class="n-h3">2. Acids</h3>
+<ul class="n-ul">
+<li>pH <strong>below 7</strong></li>
+<li>Contain <strong>hydrogen ions (H⁺)</strong> — more H⁺ = lower pH = stronger acid</li>
+<li>Taste sour (lemon juice, vinegar) — never taste in the lab!</li>
+<li>Turn <strong>blue litmus paper RED</strong></li>
+<li>React with metals to produce hydrogen gas</li>
+<li>React with carbonates to produce CO₂</li>
+</ul>
+<p class="n-p"><strong>Common acids:</strong> Hydrochloric acid (HCl) — stomach; Sulfuric acid (H₂SO₄) — car batteries; Nitric acid (HNO₃) — fertilisers; Citric acid — lemons; Ethanoic acid — vinegar; Carbonic acid — fizzy drinks</p>
+
+<h3 class="n-h3">3. Bases and Alkalis</h3>
+<ul class="n-ul">
+<li>A <strong>base</strong> is any substance that can neutralise an acid</li>
+<li>An <strong>alkali</strong> is a base that <em>dissolves in water</em></li>
+<li>pH <strong>above 7</strong></li>
+<li>Contain <strong>hydroxide ions (OH⁻)</strong></li>
+<li>Feel soapy or slippery; taste bitter</li>
+<li>Turn <strong>red litmus paper BLUE</strong></li>
+</ul>
+<p class="n-p"><strong>Common alkalis:</strong> Sodium hydroxide (NaOH) — oven cleaner; Ammonia (NH₃) — cleaning products; Calcium hydroxide — limewater, treating soil; Baking soda (NaHCO₃) — antacids; Toothpaste — slightly alkaline</p>
+
+<h3 class="n-h3">4. Indicators</h3>
+<table class="n-table"><thead><tr><th>Indicator</th><th>In Acid</th><th>In Neutral</th><th>In Alkali</th><th>Advantage</th></tr></thead>
+<tbody><tr><td>Litmus paper</td><td>Turns red</td><td>Purple</td><td>Turns blue</td><td>Simple — tells you acid/alkali</td></tr>
+<tr><td>Universal indicator</td><td>Red/orange/yellow</td><td>Green</td><td>Blue/purple</td><td>Gives approximate <strong>pH number</strong> — more informative</td></tr></tbody></table>
+<div class="tip-box">💡 Key advantage of universal indicator over litmus: Universal indicator gives you the <em>approximate pH value</em>, not just "it's an acid" or "it's an alkali."</div>`,
+    links:[
+      {label:'BBC Bitesize — Acids and Alkalis', url:'https://www.bbc.co.uk/bitesize/subjects/znxtyrd'},
+      {label:'PhET — pH Scale Interactive', url:'https://phet.colorado.edu/en/simulations/ph-scale'}
+    ],
+    quiz:[
+      {q:'What pH value represents a <strong>neutral</strong> substance?', opts:['0','14','7','5'], correct:2, explain:'pH 7 is neutral. Values below 7 are acidic (0 = strongest acid) and values above 7 are alkaline (14 = strongest alkali).'},
+      {q:'What type of ions do acids produce in solution?', opts:['Hydroxide ions (OH⁻)','Hydrogen ions (H⁺)','Sodium ions (Na⁺)','Chloride ions (Cl⁻)'], correct:1, explain:'Acids produce hydrogen ions (H⁺) in solution. The more H⁺ ions, the lower the pH and the stronger the acid. Alkalis produce hydroxide ions (OH⁻).'},
+      {q:'Blue litmus paper is placed in a solution and turns red. What does this tell us?', opts:['The solution is an alkali','The solution is neutral','The solution is an acid','The solution has a pH of exactly 7'], correct:2, explain:'Blue litmus turns red in acidic conditions. Red litmus turns blue in alkaline conditions. Litmus stays purple in neutral solutions.'},
+      {q:'A substance has a pH of 13. It is best described as:', opts:['A weak acid','A strong acid','A weak alkali','A strong alkali'], correct:3, explain:'pH 13 is high on the alkaline side and is close to the maximum of 14. This makes it a strong alkali. Strong alkalis (pH 12–14) are very corrosive.'},
+      {q:'What is the main difference between a <strong>base</strong> and an <strong>alkali</strong>?', opts:['There is no difference','An alkali is a base that dissolves in water','A base is stronger than an alkali','A base has a lower pH than an alkali'], correct:1, explain:'All alkalis are bases, but not all bases are alkalis. The key distinction: an ALKALI is a base that dissolves in water to produce hydroxide ions (OH⁻).'},
+      {q:'What is the key advantage of <strong>universal indicator</strong> over litmus paper?', opts:['It is cheaper to buy','It only works with strong acids','It gives an approximate pH number, not just acid/neutral/alkali','It changes colour more quickly'], correct:2, explain:'Litmus only tells you whether something is an acid or an alkali. Universal indicator gives you a specific colour for each pH value (1–14), so you can estimate the actual pH — much more informative.'},
+      {q:'Which of the following is a weak acid found in everyday life?', opts:['Hydrochloric acid (HCl, pH ~1)','Sulfuric acid (H₂SO₄, pH ~0)','Citric acid found in lemons and oranges (pH ~2–3)','Sodium hydroxide (NaOH, pH ~14)'], correct:2, explain:'Citric acid (found in lemons and oranges) is a weak acid — it partially ionises in water and has a pH of about 2–3. HCl and H₂SO₄ are strong acids. NaOH is a strong alkali.'}
+    ]
+  },
+  {
+    id:'acids_everyday', name:'Acids in Everyday Life', icon:'🦷',
+    notesHtml:`
+<h3 class="n-h3">1. Acids in the Mouth and Teeth</h3>
+<ul class="n-ul">
+<li>Bacteria in the mouth feed on sugars and produce <strong>acids as a waste product</strong></li>
+<li>These acids lower the pH in the mouth</li>
+<li>When pH drops <strong>below ~5.5</strong>, the acid begins to dissolve <strong>tooth enamel</strong> → tooth decay (cavities)</li>
+<li>Toothpaste is slightly <strong>alkaline</strong> — it neutralises the mouth acids and helps protect enamel</li>
+<li>Fluoride in toothpaste strengthens enamel</li>
+</ul>
+
+<h3 class="n-h3">2. Acids in the Stomach</h3>
+<ul class="n-ul">
+<li>The stomach produces <strong>hydrochloric acid (HCl)</strong> at pH 1–2</li>
+<li>Functions: helps <strong>digest food</strong> and <strong>kills harmful bacteria</strong> that enter with food</li>
+<li>Too much acid → <strong>indigestion</strong></li>
+<li><strong>Antacids</strong> are alkaline tablets/liquids taken to neutralise excess stomach acid (e.g. calcium carbonate, magnesium hydroxide)</li>
+</ul>
+
+<h3 class="n-h3">3. Acid Rain</h3>
+<div class="key-box">Normal rainwater has a pH of about <strong>5.6</strong> — slightly acidic because CO₂ in the air dissolves in water to form carbonic acid. This is natural and harmless.<br><br><strong>Acid rain</strong> has pH below 5.6, caused by air pollutants from burning fossil fuels.</div>
+<table class="n-table"><thead><tr><th>Pollutant</th><th>Source</th><th>Forms</th></tr></thead>
+<tbody><tr><td>Sulfur dioxide (SO₂)</td><td>Burning coal and oil in power stations</td><td>Sulfuric acid in rain</td></tr>
+<tr><td>Nitrogen oxides (NOₓ)</td><td>Vehicle exhausts, power stations</td><td>Nitric acid in rain</td></tr></tbody></table>
+<p class="n-p"><strong>Effects of acid rain:</strong></p>
+<ul class="n-ul">
+<li>Damages and kills trees and plants</li>
+<li>Acidifies lakes and rivers → kills fish and aquatic life</li>
+<li>Erodes limestone buildings and statues</li>
+<li>Damages soil chemistry → reduces ability to support crop growth</li>
+</ul>
+
+<h3 class="n-h3">4. Ocean Acidification</h3>
+<p class="n-p">The oceans absorb large amounts of CO₂ from the atmosphere. CO₂ + water → carbonic acid → oceans become <strong>more acidic over time</strong>. This threatens coral reefs and shell-forming animals (their calcium carbonate shells dissolve in acid).</p>
+
+<h3 class="n-h3">5. Soil pH and Farming</h3>
+<p class="n-p">Most crops grow best in <strong>slightly acidic to neutral soil</strong> (pH 6–7). Farmers add <strong>lime (calcium hydroxide)</strong> to acidic soil to raise the pH and improve crop growth.</p>`,
+    links:[
+      {label:'BBC Bitesize — Acids in Everyday Life', url:'https://www.bbc.co.uk/bitesize/subjects/znxtyrd'}
+    ],
+    quiz:[
+      {q:'What acid does the stomach produce, and what is its approximate pH?', opts:['Citric acid, pH ~5','Sulfuric acid, pH ~0','Hydrochloric acid (HCl), pH 1–2','Carbonic acid, pH ~6'], correct:2, explain:'The stomach produces hydrochloric acid (HCl) at pH 1–2. This strong acid helps digest food and kills harmful bacteria that enter with food.'},
+      {q:'At what pH does tooth enamel begin to dissolve?', opts:['Below 7','Below 5.5','Below 4','Above 7'], correct:1, explain:'Tooth enamel begins to dissolve when the pH in the mouth drops below about 5.5. Bacteria produce acids from sugars, lowering the pH and causing tooth decay.'},
+      {q:'Normal rainwater has a pH of about 5.6. Why is it slightly acidic (not neutral pH 7)?', opts:['It picks up acid from plants','CO₂ in the air dissolves in rainwater to form carbonic acid','It contains sulfuric acid from factories','It absorbs oxygen from the air'], correct:1, explain:'Carbon dioxide (CO₂) naturally present in the atmosphere dissolves in rainwater to form carbonic acid — making normal rain slightly acidic (pH ~5.6). This is natural and not harmful. Acid rain (from industrial pollutants) has a much lower pH.'},
+      {q:'What are the two main gases that cause acid rain, and where do they come from?', opts:['CO₂ and O₂ from animal respiration','SO₂ and NOₓ from burning fossil fuels in power stations and vehicles','Methane and ammonia from farming','Water vapour and nitrogen from factories'], correct:1, explain:'Acid rain is caused by sulfur dioxide (SO₂) — from burning coal and oil — and nitrogen oxides (NOₓ) — from vehicle exhausts and power stations. These dissolve in rainwater to form sulfuric acid and nitric acid.'},
+      {q:'Why do farmers add <strong>lime (calcium hydroxide)</strong> to their fields?', opts:['To make crops grow faster by adding calcium','To raise the pH of acidic soil to the ideal range for crop growth','To kill weeds','To increase soil moisture'], correct:1, explain:'Lime (calcium hydroxide) is an alkali. Adding it to acidic soil raises the pH toward the neutral range (pH 6–7), which is ideal for most crops. This neutralisation reaction improves soil chemistry and crop yields.'},
+      {q:'Spoiled milk tastes very sour. Why?', opts:['It has absorbed CO₂ from the air making it fizzy','Bacteria have broken down milk sugars and produced more lactic acid','Milk naturally becomes more acidic as it ages without any microorganisms','The milk has absorbed alkali from the container'], correct:1, explain:'Bacteria in milk break down lactose (milk sugar) through fermentation, producing lactic acid. As more bacteria multiply, more lactic acid accumulates, lowering the pH and giving spoiled milk its sour taste.'},
+      {q:'How does ocean acidification threaten coral reefs?', opts:['Warmer water dissolves coral','More acidic water dissolves the calcium carbonate shells and skeletons of corals and shellfish','CO₂ blocks sunlight reaching coral','Acid rain falls directly on coral reefs'], correct:1, explain:'As oceans absorb CO₂ and become more acidic, the lower pH dissolves calcium carbonate — the material that makes up coral skeletons and the shells of oysters, clams, and other marine animals. This threatens entire reef ecosystems.'}
+    ]
+  }
+  ]
+}
+];
 
 // ── INIT ─────────────────────────────────────────────────────────
 loadST();
